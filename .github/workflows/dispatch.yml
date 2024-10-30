@@ -12,5 +12,6 @@ jobs:
       - name: Вызов репозитория развертывания
         uses: peter-evans/repository-dispatch@v2
         with:
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
           repository: kuda-sobrat-docker/deployment
           event-type: deploy
