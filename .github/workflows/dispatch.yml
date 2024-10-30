@@ -1,0 +1,16 @@
+name: Вызов развертывания
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Вызов репозитория развертывания
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          repository: kuda-sobrat-docker/deployment
+          event-type: deploy
