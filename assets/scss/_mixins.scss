@@ -1,0 +1,24 @@
+
+@mixin bg-primary {
+  @apply bg-primary dark:bg-primary text-white;
+}
+
+@mixin input-base {
+  transition: all ease-in-out .1s;
+  @apply py-[4px] px-[8px] w-[100%];
+  @apply text-dark-gray text-[16px];
+  @apply outline outline-[1px] outline-light-gray-secondary rounded;
+
+  &::placeholder {
+    @apply text-light-gray-secondary;
+  }
+
+  &:hover:not(.v-input_error) {
+    transition: all ease-in-out .1s;
+    @apply outline-primary;
+  }
+
+  &:focus:not(.v-input_error) {
+    @apply outline-primary outline-2;
+  }
+}

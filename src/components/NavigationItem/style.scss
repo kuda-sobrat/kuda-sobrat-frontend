@@ -1,0 +1,5 @@
+.navigation-item {
+  @apply cursor-pointer;
+
+  @apply inline-flex items-center gap-1;
+}

@@ -1,0 +1,23 @@
+.v-button {
+  transition: .1s ease-in-out all;
+  @apply h-[36px];
+  @apply py-[4px] px-[8px];
+  @apply bg-primary text-white rounded;
+  @apply text-[16px] font-[500] align-middle;
+
+  &*{
+    transition: .1s ease-in-out all;
+  }
+
+  &:hover {
+    @apply bg-primary-dark
+  }
+
+  &:active {
+    @apply bg-coral text-dark-gray;
+  }
+
+  &:disabled {
+    @apply bg-light-gray-secondary;
+  }
+}

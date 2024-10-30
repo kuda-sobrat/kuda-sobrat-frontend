@@ -1,0 +1,32 @@
+.header {
+  @apply w-full sticky top-0 z-[1000];
+  @apply bg-white text-dark-gray;
+  @apply h-[56px];
+  @apply leading-normal;
+  @apply drop-shadow-sm;
+
+  .sections {
+    .section-a {
+      @apply text-[20px] text-primary;
+    }
+
+    .section-main {
+    }
+
+    .section-c {
+    }
+  }
+
+  &__icon {
+    transition: all .15s ease-in-out;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    color: transparent;
+    stroke-width: 2px;
+    @apply p-1;
+    @apply text-white hover:text-coral-dark;
+    @apply cursor-pointer;
+    @apply w-[28px] h-[28px];
+    @apply stroke-dark-gray hover:stroke-coral
+  }
+}

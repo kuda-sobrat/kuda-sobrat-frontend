@@ -1,0 +1,14 @@
+.block-scraper {
+  &__item {
+    transition: .3s ease-in-out all;
+  }
+
+  &__item_active {
+    transition: .3s ease-in-out all;
+  }
+
+  &__item_disabled {
+    transition: .3s ease-in-out all;
+    display: none !important;
+  }
+}

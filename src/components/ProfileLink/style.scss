@@ -1,0 +1,34 @@
+.profile-link {
+  @apply relative;
+
+  &__menu {
+    @apply bg-white;
+    @apply px-[8px] py-[4px];
+    @apply min-w-[200px];
+    @apply drop-shadow-sm;
+    @apply rounded border-[2px] border-solid border-primary border-opacity-20;
+    @apply hidden;
+  }
+
+  &__menu-wrapper {
+    @apply absolute top-[100%] right-0;
+
+  }
+
+  &:hover {
+    .profile-link__menu {
+      @apply block;
+    }
+  }
+
+  .icon {
+    @apply text-dark-gray hover:text-coral;
+  }
+
+  &__menu-item:hover {
+
+    * {
+      @apply text-coral stroke-coral;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "extends": "./.nuxt/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./*"],
+      "@/*": ["./*"],
+      "#app": [".nuxt/types/app/index.d.ts"],
+      "#imports": [".nuxt/types/imports.d.ts"],
+      "#components": [".nuxt/types/components.d.ts"]
+    },
+    "typeRoots": [
+      "./node_modules/@types",
+      "./common/types"
+    ]
+  },
+  "exclude": ["node_modules"]
+}

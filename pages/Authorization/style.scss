@@ -1,0 +1,27 @@
+.authorization-page {
+  @mixin authorization-tile {
+    @apply rounded-md border-2 border-solid border-primary border-opacity-20;
+    @apply px-[27px] py-[8px];
+    @apply bg-white;
+    @apply max-w-[500px];
+  }
+
+  &__form {
+    @include authorization-tile;
+    @apply pb-[20px] pl-[27px] pr-[27px] pt-[36px];
+    @apply flex flex-col gap-7;
+  }
+
+  &__prepended {
+    @apply text-center;
+    @include  authorization-tile;
+  }
+
+  &__title {
+    @apply text-[36px] font-serif italic text-center text-primary drop-shadow-md;
+  }
+
+  &>.page-content {
+    @apply flex flex-col gap-3;
+  }
+}

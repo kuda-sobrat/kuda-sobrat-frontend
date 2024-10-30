@@ -1,0 +1,18 @@
+.authorization-form-module {
+  &__form {
+    @apply flex flex-col gap-2;
+
+    &>div:first-child {
+      @apply flex flex-col gap-1;
+    }
+  }
+
+  &__button {
+    @apply h-[44px];
+    @apply text-[19px] italic;
+  }
+
+  &__buttons {
+    @apply flex flex-row gap-2;
+  }
+}

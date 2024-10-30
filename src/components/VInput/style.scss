@@ -1,0 +1,41 @@
+@import "assets/scss/mixins";
+
+.v-input-wrapper {
+  @apply flex flex-col;
+}
+
+.v-input-label {
+  @apply text-[14px] text-dark-gray;
+  @apply space-x-1;
+
+  &__error {
+    @apply text-[12px] text-dark-gray;
+    @apply text-coral
+  }
+}
+
+.v-input {
+  @include input-base;
+
+  &__inner {
+    @apply p-1;
+    @apply absolute top-0 h-[100%];
+    @apply flex items-center max-w-[24px] overflow-hidden;
+  }
+
+  &__inner_left {
+    @apply max-w-[24px] left-0;
+  }
+
+  &__inner_right {
+    @apply max-w-[32px] right-0;
+  }
+}
+
+.v-input_error {
+  @apply outline-coral;
+
+  &:focus {
+    @apply outline-coral outline-2;
+  }
+}

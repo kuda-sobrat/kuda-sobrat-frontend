@@ -1,0 +1,359 @@
+$path: '../fonts/OpenSans/';
+
+// Regular
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('#{$path}OpenSans-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300; // Light
+  src: url('#{$path}OpenSans-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600; // SemiBold
+  src: url('#{$path}OpenSans-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700; // Bold
+  src: url('#{$path}OpenSans-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 800; // ExtraBold
+  src: url('#{$path}OpenSans-ExtraBold.ttf') format('truetype');
+}
+
+// Italic
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: url('#{$path}OpenSans-Italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 300; // Light Italic
+  src: url('#{$path}OpenSans-LightItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 600; // SemiBold Italic
+  src: url('#{$path}OpenSans-SemiBoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 700; // Bold Italic
+  src: url('#{$path}OpenSans-BoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 800; // ExtraBold Italic
+  src: url('#{$path}OpenSans-ExtraBoldItalic.ttf') format('truetype');
+}
+
+// Variable Fonts
+@font-face {
+  font-family: 'Open Sans Variable';
+  src: url('#{$path}OpenSans-VariableFont_wdth,wght.ttf') format('truetype');
+  font-weight: 100 900; // Указать диапазон весов
+}
+
+@font-face {
+  font-family: 'Open Sans Variable';
+  src: url('#{$path}OpenSans-Italic-VariableFont_wdth,wght.ttf') format('truetype');
+  font-weight: 100 900; // Указать диапазон весов
+}
+
+// Condensed
+@font-face {
+  font-family: 'Open Sans Condensed';
+  font-style: normal;
+  font-weight: 400;
+  src: url('#{$path}OpenSans_Condensed-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Open Sans Condensed';
+  font-style: normal;
+  font-weight: 300; // Light
+  src: url('#{$path}OpenSans_Condensed-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Open Sans Condensed';
+  font-style: normal;
+  font-weight: 600; // SemiBold
+  src: url('#{$path}OpenSans_Condensed-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Open Sans Condensed';
+  font-style: normal;
+  font-weight: 700; // Bold
+  src: url('#{$path}OpenSans_Condensed-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Open Sans Condensed';
+  font-style: normal;
+  font-weight: 800; // ExtraBold
+  src: url('#{$path}OpenSans_Condensed-ExtraBold.ttf') format('truetype');
+}
+
+// Condensed Italic
+@font-face {
+  font-family: 'Open Sans Condensed';
+  font-style: italic;
+  font-weight: 400;
+  src: url('#{$path}OpenSans_Condensed-Italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Open Sans Condensed';
+  font-style: italic;
+  font-weight: 300; // Light Italic
+  src: url('#{$path}OpenSans_Condensed-LightItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Open Sans Condensed';
+  font-style: italic;
+  font-weight: 600; // SemiBold Italic
+  src: url('#{$path}OpenSans_Condensed-SemiBoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Open Sans Condensed';
+  font-style: italic;
+  font-weight: 700; // Bold Italic
+  src: url('#{$path}OpenSans_Condensed-BoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Open Sans Condensed';
+  font-style: italic;
+  font-weight: 800; // ExtraBold Italic
+  src: url('#{$path}OpenSans_Condensed-ExtraBoldItalic.ttf') format('truetype');
+}
+
+// SemiCondensed
+@font-face {
+  font-family: 'Open Sans SemiCondensed';
+  font-style: normal;
+  font-weight: 400;
+  src: url('#{$path}OpenSans_SemiCondensed-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Open Sans SemiCondensed';
+  font-style: normal;
+  font-weight: 300; // Light
+  src: url('#{$path}OpenSans_SemiCondensed-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Open Sans SemiCondensed';
+  font-style: normal;
+  font-weight: 600; // SemiBold
+  src: url('#{$path}OpenSans_SemiCondensed-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Open Sans SemiCondensed';
+  font-style: normal;
+  font-weight: 700; // Bold
+  src: url('#{$path}OpenSans_SemiCondensed-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Open Sans SemiCondensed';
+  font-style: normal;
+  font-weight: 800; // ExtraBold
+  src: url('#{$path}OpenSans_SemiCondensed-ExtraBold.ttf') format('truetype');
+}
+
+// SemiCondensed Italic
+@font-face {
+  font-family: 'Open Sans SemiCondensed';
+  font-style: italic;
+  font-weight: 400;
+  src: url('#{$path}OpenSans_SemiCondensed-Italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Open Sans SemiCondensed';
+  font-style: italic;
+  font-weight: 300; // Light Italic
+  src: url('#{$path}OpenSans_SemiCondensed-LightItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Open Sans SemiCondensed';
+  font-style: italic;
+  font-weight: 600; // SemiBold Italic
+  src: url('#{$path}OpenSans_SemiCondensed-SemiBoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Open Sans SemiCondensed';
+  font-style: italic;
+  font-weight: 700; // Bold Italic
+  src: url('#{$path}OpenSans_SemiCondensed-BoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Open Sans SemiCondensed';
+  font-style: italic;
+  font-weight: 800; // ExtraBold Italic
+  src: url('#{$path}OpenSans_SemiCondensed-ExtraBoldItalic.ttf') format('truetype');
+}
+
+$path: '../fonts/Montserrat/';
+
+// Regular
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400; // Regular
+  src: url('#{$path}Montserrat-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 300; // Light
+  src: url('#{$path}Montserrat-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 350; // ExtraLight
+  src: url('#{$path}Montserrat-ExtraLight.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600; // SemiBold
+  src: url('#{$path}Montserrat-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700; // Bold
+  src: url('#{$path}Montserrat-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 800; // ExtraBold
+  src: url('#{$path}Montserrat-ExtraBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 900; // Black
+  src: url('#{$path}Montserrat-Black.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 100; // Thin
+  src: url('#{$path}Montserrat-Thin.ttf') format('truetype');
+}
+
+// Italic
+@font-face {
+  font-family: 'Montserrat';
+  font-style: italic;
+  font-weight: 400; // Regular Italic
+  src: url('#{$path}Montserrat-Italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: italic;
+  font-weight: 300; // Light Italic
+  src: url('#{$path}Montserrat-LightItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: italic;
+  font-weight: 350; // ExtraLight Italic
+  src: url('#{$path}Montserrat-ExtraLightItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: italic;
+  font-weight: 600; // SemiBold Italic
+  src: url('#{$path}Montserrat-SemiBoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: italic;
+  font-weight: 700; // Bold Italic
+  src: url('#{$path}Montserrat-BoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: italic;
+  font-weight: 800; // ExtraBold Italic
+  src: url('#{$path}Montserrat-ExtraBoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: italic;
+  font-weight: 900; // Black Italic
+  src: url('#{$path}Montserrat-BlackItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: italic;
+  font-weight: 100; // Thin Italic
+  src: url('#{$path}Montserrat-ThinItalic.ttf') format('truetype');
+}
+
+// Variable Fonts
+@font-face {
+  font-family: 'Montserrat Variable';
+  src: url('#{$path}Montserrat-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900; // Указать диапазон весов
+}
+
+@font-face {
+  font-family: 'Montserrat Variable';
+  src: url('#{$path}Montserrat-Italic-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900; // Указать диапазон весов
+}

@@ -1,0 +1,6 @@
+@import "assets/scss/mixins";
+
+.search-input {
+  font-size: 14px !important;
+  @apply max-w-[400px];
+}
