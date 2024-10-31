@@ -8,6 +8,7 @@
 
   &__form {
     @include authorization-tile;
+    @apply mt-4;
     @apply pb-[20px] pl-[27px] pr-[27px] pt-[36px];
     @apply flex flex-col gap-7;
   }
