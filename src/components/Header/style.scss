@@ -1,3 +1,5 @@
+@import "assets/scss/mixins";
+
 .header {
   @apply w-full sticky top-0 z-[1000];
   @apply bg-white text-dark-gray;
@@ -34,7 +36,13 @@
     @apply stroke-dark-gray hover:stroke-coral
   }
 
+  img {
+    @include filter-dark-gray;
+    @apply sm:w-[42px] sm:min-w-[42px] md:w-[24px] md:min-w-[24px];
+  }
+
   &__title {
+    @apply cursor-pointer;
     @apply max-md:text-[27px] md:text-[24px] max-md:font-medium;
   }
 }
