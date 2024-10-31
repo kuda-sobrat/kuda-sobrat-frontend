@@ -1,3 +1,5 @@
+@import "assets/scss/mixins";
+
 $color_link_hover_red: #924840;
 $color_link_hover_red_bottom: #e6dad8;
 $color_link_hover_blue: #c9e5ff;
@@ -182,6 +184,10 @@ h1 {
   }
 }
 
+.container {
+  @apply max-h-screen h-[100%];
+}
+
 .icon {
   transition: all .15s ease-in-out;
   stroke-linecap: round;
@@ -195,10 +201,9 @@ h1 {
 .sections {
   @apply w-[100%] h-[100%];
   @apply flex flex-row gap-1;
-  @apply p-4;
 
   .section-a {
-    flex: 50%;
+    @include section-a_width;
   }
 
   .section-main {
@@ -207,10 +212,6 @@ h1 {
 
   .section-c {
     flex: 500px;
-  }
-
-  > *:not(.section-a):not(.section-main):not(.section-c) {
-    @apply hidden;
   }
 
   &:nth-child(n + 4) {
@@ -222,4 +223,14 @@ h1 {
   @apply text-blue-500;
   @apply cursor-pointer;
   @apply hover:underline active:text-red-700;
+}
+
+// Фильтры
+
+.filter-primary {
+
+}
+
+.filter-dark-gray {
+  @include filter-dark-gray
 }

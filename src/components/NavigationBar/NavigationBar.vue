@@ -1,7 +1,12 @@
 <template>
-  <div class=navigation-bar>
-    <div v-for="(navigationItem, index) in navigationItems">
-      <navigation-item v-model="navigationItems[index]"/>
+  <div class=navigation-bar-wrapper>
+    <div class=navigation-bar>
+      <div v-if="sm" class="navigation-bar__items">
+        <navigation-item v-for="(navigationItem, index) in mobileNavigationItems" v-model="mobileNavigationItems[index]" class="navigation-bar__item"/>
+      </div>
+      <div v-else class="navigation-bar__items">
+        <navigation-item v-for="(navigationItem, index) in mainNavigationItems" v-model="mainNavigationItems[index]" class="navigation-bar__item"/>
+      </div>
     </div>
   </div>
 </template>
@@ -16,31 +21,80 @@ const i18nPrefix = "components.NavigationBar"
 const nuxtApp = useNuxtApp()
 const $i = nuxtApp.$i(i18nPrefix)
 
-// TODO: navigationItems
-const navigationItems: NavigationItem[] = reactive([
+const sm = ref(nuxtApp.$sm)
+
+const mainNavigationItems: NavigationItem[] = reactive([
   {
     title: 'Профиль',
     name: 'profile',
-    to: '',
-    logo: ''
+    to: nuxtApp.$generateRoutePathDefault('Profile'),
+    icon: '/icons/navigation/profile-1.svg'
   },
   {
-    title: 'Главная',
-    name: 'home',
-    to: '',
-    logo: ''
+    title: 'Мероприятия',
+    name: 'events',
+    to: nuxtApp.$generateRoutePathDefault('Events'),
+    icon: '/icons/navigation/events-2.svg'
   },
   {
     title: 'Личный календарь',
-    name: 'personal_calendar',
-    to: '',
-    logo: ''
+    name: 'personal-calendar',
+    to: nuxtApp.$generateRoutePathDefault('PersonalCalendar'),
+    icon: '/icons/navigation/calendar-2.svg'
+  },
+  {
+    title: 'Уведомления',
+    name: 'notifications',
+    to: nuxtApp.$generateRoutePathDefault('Notifications'),
+    icon: '/icons/navigation/notifications-5.svg'
   },
   {
     title: 'Геолокация',
     name: 'geolocation',
-    to: '',
-    logo: ''
+    to: nuxtApp.$generateRoutePathDefault('Geolocation'),
+    icon: '/icons/navigation/geolocation-1.svg'
+  },
+  {
+    title: 'Настройки',
+    name: 'settings',
+    to: nuxtApp.$generateRoutePathDefault('Settings'),
+    icon: '/icons/navigation/settings-1.svg'
+  },
+])
+
+const mobileNavigationItems: NavigationItem[] = reactive([
+  {
+    title: 'Профиль',
+    name: 'profile',
+    to: nuxtApp.$generateRoutePathDefault('Profile'),
+    logo: '',
+    icon: '/icons/navigation/profile-1.svg'
+  },
+  {
+    title: 'Личный календарь',
+    name: 'personal_calendar',
+    to: nuxtApp.$generateRoutePathDefault('PersonalCalendar'),
+    logo: '',
+    icon: '/icons/navigation/calendar-2.svg'
+  },
+  {
+    title: 'Мероприятия',
+    name: 'events',
+    to: nuxtApp.$generateRoutePathDefault('Events'),
+    logo: '',
+    icon: '/icons/navigation/events-3.svg'
+  },
+  {
+    title: 'Уведомления',
+    name: 'notifications',
+    to: nuxtApp.$generateRoutePathDefault('Notifications'),
+    icon: '/icons/navigation/notifications-5.svg'
+  },
+  {
+    title: 'Дополнительно меню',
+    name: 'additional_menu',
+    to: '/',
+    icon: '/icons/navigation/menu-2.svg'
   },
 ])
 </script>

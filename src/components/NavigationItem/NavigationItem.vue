@@ -1,9 +1,12 @@
 <template>
   <nuxt-link class=navigation-item v-bind="$attrs" :to="model?.to">
-    <div v-if="model?.logo">
+    <div v-if="model?.icon">
+      <img :src="`${model?.icon}`" :alt="model.title">
+    </div>
+    <div v-else-if="model?.logo">
       <Icon :icon="model.logo" class="icon"/>
     </div>
-    <div>{{ model?.title }}</div>
+    <span class="navigation-item__title">{{ model?.title }}</span>
   </nuxt-link>
 </template>
 

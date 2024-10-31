@@ -1,12 +1,16 @@
 .header {
   @apply w-full sticky top-0 z-[1000];
   @apply bg-white text-dark-gray;
-  @apply h-[56px];
   @apply leading-normal;
   @apply drop-shadow-sm;
+  @apply max-md:h-[64px] h-[56px];
+  @apply max-md:border-b-[2px] max-md:border-primary max-md:border-solid max-md:border-opacity-30;
 
   .sections {
+    @apply md:p-4;
     .section-a {
+      @apply flex items-center justify-items-center;
+      @apply h-[100%];
       @apply text-[20px] text-primary;
     }
 
@@ -28,5 +32,9 @@
     @apply cursor-pointer;
     @apply w-[28px] h-[28px];
     @apply stroke-dark-gray hover:stroke-coral
+  }
+
+  &__title {
+    @apply max-md:text-[27px] md:text-[24px] max-md:font-medium;
   }
 }

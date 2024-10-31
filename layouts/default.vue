@@ -3,10 +3,8 @@
     <Header/>
     <div class="default-layout min-h-[100vh]">
       <div class="container">
-        <div class="sections items-start justify-items-center">
-          <div class="section-a max-md:hidden">
-            <navigation-bar/>
-          </div>
+        <div class="sections max-md:block items-start justify-items-center">
+          <navigation-bar/>
           <div class="section-main page-content">
             <slot/>
           </div>

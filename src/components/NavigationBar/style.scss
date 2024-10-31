@@ -1,1 +1,79 @@
-.navigation-bar {}
+@import "assets/scss/mixins";
+
+.navigation-bar-wrapper {
+  @include section-a_width;
+  @apply overflow-hidden;
+  @apply md:mt-2.5 md:pl-[4px];
+}
+
+.navigation-bar {
+  @apply md:mr-1 md:py-2;
+  @apply md:rounded-xl md:drop-shadow-sm;
+
+  @apply bg-white md:border-r-[2px] md:border-solid md:border-primary md:border-opacity-15;
+  // Стили для мобилок
+  @apply max-md:fixed max-md:bottom-0 max-md:left-0;
+  @apply max-md:flex max-md:flex-row max-md:text-center max-md:w-[100%];
+  @apply max-md:bg-white max-md:drop-shadow-md max-md:rounded-t-xl;
+  @apply max-md:border-t-[2px] max-md:border-primary max-md:border-solid max-md:border-opacity-30;
+
+  & > div {
+    @apply flex flex-1;
+    //@apply max-md:p-1.5;
+  }
+
+  &__items {
+    @apply max-md:flex max-md:gap-1 max-md:justify-evenly md:flex-col;
+    @apply max-md:py-1;
+  }
+
+  &__item {
+    transition: all .1s ease-in;
+    align-items: normal;
+    @apply relative;
+    @apply flex items-center justify-items-center;
+    @apply md:py-1.5 md:pr-3 md:pl-3;
+    @apply md:hover:text-amber-dark;
+    // Мобилки
+    @apply max-md:p-1;
+    @apply max-md:rounded-[16px];
+
+    img {
+      @include filter-dark-gray;
+      @apply sm:w-[42px] sm:min-w-[42px] md:w-[24px] md:min-w-[24px];
+    }
+
+    & > .navigation-item__title {
+      transition: all .1s ease-in-out;
+      @apply max-md:hidden;
+    }
+
+    &:active {
+      path {
+        fill: white
+      }
+      @apply max-md:bg-coral;
+    }
+
+    &:before {
+      transition: all .1s ease-in-out;
+      content: '';
+      @apply w-[2px] h-[60%];
+      @apply absolute top-[20%] left-[-2px];
+      @apply max-md:hidden;
+    }
+
+    &:hover {
+      //@apply md:pl-3.5;
+      &:before {
+        @apply bg-amber;
+        @apply rounded-l-full;
+      }
+
+      & > .navigation-item__title {
+        transition: all .1s ease-in-out;
+        @apply pl-0.5;
+      }
+    }
+  }
+}

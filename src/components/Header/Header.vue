@@ -3,7 +3,7 @@
     <div class="container">
       <div class="sections">
         <div class="section-a">
-          Куда, собрат?
+          <span class="header__title">Куда, собрат?</span>
         </div>
         <div class="section-main max-md:hidden">
           <search-bar class="flex-1"/>

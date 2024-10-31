@@ -1,6 +1,6 @@
 .authorization-page {
   @mixin authorization-tile {
-    @apply rounded-md border-2 border-solid border-primary border-opacity-20;
+    @apply rounded-md border-[2px] border-solid border-primary border-opacity-30;
     @apply px-[27px] py-[8px];
     @apply bg-white;
     @apply max-w-[500px];
