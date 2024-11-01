@@ -9,7 +9,9 @@
             <slot/>
           </div>
           <div class="section-c max-lg:hidden">
-            [Фильры и прочее]
+            <div class="mt-3">
+              [Фильтры и прочее]
+            </div>
           </div>
         </div>
       </div>

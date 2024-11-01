@@ -9,6 +9,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     AuthorizationForm: typeof import('./src/components/AuthorizationForm/AuthorizationForm.vue')['default']
     BlockScraper: typeof import('./src/components/BlockScraper/BlockScraper.vue')['default']
+    Fridge: typeof import('./src/components/Fridge/Fridge.vue')['default']
     Header: typeof import('./src/components/Header/Header.vue')['default']
     NavigationBar: typeof import('./src/components/NavigationBar/NavigationBar.vue')['default']
     NavigationItem: typeof import('./src/components/NavigationItem/NavigationItem.vue')['default']

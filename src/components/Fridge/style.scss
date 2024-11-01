@@ -1,0 +1,27 @@
+.fridge-wrapper {
+  transition: all .2s ease-in;
+  @apply fixed top-0 right-0;
+  @apply z-[1000];
+  @apply w-[100%] h-[100%];
+  @apply bg-dark-gray bg-opacity-20;
+  @apply invisible;
+}
+
+.fridge {
+  transition: all .3s ease-in-out;
+  @apply w-[80%] h-[100%] ml-[-100%];
+  @apply bg-white;
+  @apply drop-shadow-xl;
+  @apply pointer-events-auto;
+  @apply p-1;
+}
+
+.fridge_active {
+  transition: all .3s ease-in-out;
+  @apply ml-0;
+}
+
+:has(.fridge_active) {
+  transition: all .1s ease-in-out;
+  @apply visible;
+}

@@ -21,7 +21,6 @@ const nuxtApp = useNuxtApp()
 const $i = nuxtApp.$i(i18nPrefix)
 
 const router = useRouter()
-console.log(router.getRoutes())
 
 const navigationItems: NavigationItem[] = reactive(
     [
