@@ -1,13 +1,16 @@
 <template>
   <div class=navigation-bar-wrapper>
     <div class=navigation-bar>
-      <div v-if="sm" class="navigation-bar__items">
+      <div v-if="md || sm" class="navigation-bar__items">
         <navigation-item v-for="(navigationItem, index) in mobileNavigationItems" v-model="mobileNavigationItems[index]" class="navigation-bar__item"/>
       </div>
       <div v-else class="navigation-bar__items">
         <navigation-item v-for="(navigationItem, index) in mainNavigationItems" v-model="mainNavigationItems[index]" class="navigation-bar__item"/>
       </div>
     </div>
+    <fridge v-model="fridgeState">
+      [Дополнительное меню]
+    </fridge>
   </div>
 </template>
 
@@ -22,6 +25,8 @@ const nuxtApp = useNuxtApp()
 const $i = nuxtApp.$i(i18nPrefix)
 
 const sm = ref(nuxtApp.$sm)
+const md = ref(nuxtApp.$md)
+const fridgeState = ref(false)
 
 const mainNavigationItems: NavigationItem[] = reactive([
   {
@@ -77,6 +82,12 @@ const mobileNavigationItems: NavigationItem[] = reactive([
     logo: '',
     icon: '/icons/navigation/calendar-2.svg'
   },
+  (md ? {
+    title: 'Геолокация',
+    name: 'geolocation',
+    to: nuxtApp.$generateRoutePathDefault('Geolocation'),
+    icon: '/icons/navigation/geolocation-1.svg'
+  } : undefined),
   {
     title: 'Мероприятия',
     name: 'events',
@@ -93,10 +104,15 @@ const mobileNavigationItems: NavigationItem[] = reactive([
   {
     title: 'Дополнительно меню',
     name: 'additional_menu',
-    to: '/',
-    icon: '/icons/navigation/menu-2.svg'
+    icon: '/icons/navigation/menu-2.svg',
+    callback: openAdditionalMenu
   },
 ])
+
+function openAdditionalMenu() {
+  fridgeState.value = true
+}
+
 </script>
 
 <style lang="scss">

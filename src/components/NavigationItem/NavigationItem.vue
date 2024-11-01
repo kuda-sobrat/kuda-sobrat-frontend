@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link class=navigation-item v-bind="$attrs" :to="model?.to">
+  <nuxt-link class=navigation-item v-bind="$attrs" :to="model?.to" @click="model?.callback ? model.callback() : undefined">
     <div v-if="model?.icon">
       <img :src="`${model?.icon}`" :alt="model.title">
     </div>
