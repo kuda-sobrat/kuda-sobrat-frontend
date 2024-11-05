@@ -1,6 +1,6 @@
 <template>
   <div class="notifications-page">
-    <div class="page-content container">
+    <div class="page-content">
       [ NotificationsPageContent ]
     </div>
   </div>

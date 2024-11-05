@@ -36,9 +36,10 @@
     @apply stroke-dark-gray hover:stroke-coral
   }
 
-  img {
+  svg {
     @include filter-dark-gray;
-    @apply sm:w-[42px] sm:min-w-[42px] md:w-[24px] md:min-w-[24px];
+    @apply max-md:w-[42px] md:w-[24px];
+    @apply max-md:h-[42px] md:h-[24px];
   }
 
   &__title {

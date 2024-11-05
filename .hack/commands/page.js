@@ -13,7 +13,7 @@ function createFile(path, content) {
 const pageContent = (requestParams) => {
     return "<template>\n" +
         "  <div class=\"" + requestParams['computed']['divided'] + "-page\">\n" +
-        "    <div class=\"page-content container\">\n" +
+        "    <div class=\"page-content\">\n" +
         `      [ ${requestParams['computed']['upper_name']}PageContent ]\n` +
         "    </div>\n" +
         "  </div>\n" +

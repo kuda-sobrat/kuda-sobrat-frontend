@@ -1,6 +1,6 @@
 <template>
   <div class="test-page">
-    <div class="page-content container">
+    <div class="page-content">
       [ TestPageContent ]
       {{ data }}
     </div>

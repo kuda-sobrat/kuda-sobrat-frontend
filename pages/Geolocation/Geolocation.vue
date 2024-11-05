@@ -1,6 +1,6 @@
 <template>
   <div class="geolocation-page">
-    <div class="page-content container">
+    <div class="page-content">
       [ GeolocationPageContent ]
     </div>
   </div>

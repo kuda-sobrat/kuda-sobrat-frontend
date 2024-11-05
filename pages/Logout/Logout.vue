@@ -1,6 +1,6 @@
 <template>
   <div class="logout-page">
-    <div class="page-content container">
+    <div class="page-content">
       Выход
     </div>
   </div>

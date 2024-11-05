@@ -1,27 +1,12 @@
 import { defineNuxtConfig } from 'nuxt/config';
 import svgLoader from 'vite-svg-loader'
-import Icons from 'unplugin-icons/vite'
-import IconsResolver from 'unplugin-icons/resolver'
-import Components from 'unplugin-vue-components/vite'
 
 export default defineNuxtConfig({
   vite: {
     plugins: [
-      Components({
-        /* Автоматический импорт компонентов */
-        dts: true, // Генерирует декларации типов (опционально)
-        resolvers: [
-          IconsResolver({
-            prefix: 'Icon', // Префикс для компонентов иконок
-          }),
-        ],
-      }),
-      Icons({
-        autoInstall: true, // Автоматическая установка иконок при необходимости
-      }),
       svgLoader({
         // Опциональные настройки
-        svgo: false, // Отключить оптимизацию SVGO при необходимости
+        // svgo: false, // Отключить оптимизацию SVGO при необходимости
         // defaultImport: 'component', // По умолчанию 'url'. Установите 'component' для импорта как компоненты Vue
       }),
     ],
@@ -35,7 +20,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
   ssr: false,
-  modules: ["@pinia/nuxt", "@nuxtjs/i18n", '@nuxtjs/tailwindcss'],
+  modules: ["@pinia/nuxt", "@nuxtjs/i18n", '@nuxtjs/tailwindcss', "@nuxt/image"],
 
   app: {
     head: {

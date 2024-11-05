@@ -1,34 +1,33 @@
 .profile-link {
   @apply relative;
+  @apply cursor-pointer select-none;
 
   &__menu {
     @apply bg-white;
     @apply px-[8px] py-[4px];
-    @apply min-w-[200px];
+    @apply min-w-[240px];
     @apply drop-shadow-sm;
     @apply rounded border-[2px] border-solid border-primary border-opacity-30;
     @apply hidden;
   }
 
   &__menu-wrapper {
-    @apply absolute top-[100%] right-0;
+    @apply absolute top-[120%] right-[-14px];
 
   }
 
-  &:hover {
-    .profile-link__menu {
-      @apply block;
+  &__before-icon {
+    @apply absolute left-[20px] top-[4px];
+
+    svg {
+      width: 14px !important;
+      height: 14px !important;
     }
   }
+}
 
-  .icon {
-    @apply text-dark-gray hover:text-coral;
-  }
-
-  &__menu-item:hover {
-
-    * {
-      @apply text-coral stroke-coral;
-    }
+.profile-link_active {
+  .profile-link__menu {
+    @apply block;
   }
 }

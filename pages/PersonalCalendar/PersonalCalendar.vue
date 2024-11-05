@@ -1,6 +1,6 @@
 <template>
   <div class="personal-calendar-page">
-    <div class="page-content container">
+    <div class="page-content">
       [ PersonalCalendarPageContent ]
     </div>
   </div>

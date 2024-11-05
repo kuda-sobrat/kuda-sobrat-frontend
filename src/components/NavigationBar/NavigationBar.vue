@@ -2,10 +2,10 @@
   <div class=navigation-bar-wrapper>
     <div class=navigation-bar>
       <div v-if="md || sm" class="navigation-bar__items">
-        <navigation-item v-for="(navigationItem, index) in mobileNavigationItems" v-model="mobileNavigationItems[index]" class="navigation-bar__item"/>
+        <navigation-item v-for="(_, index) in mobileNavigationItems" v-model="mobileNavigationItems[index]" :key="index" class="navigation-bar__item"/>
       </div>
       <div v-else class="navigation-bar__items">
-        <navigation-item v-for="(navigationItem, index) in mainNavigationItems" v-model="mainNavigationItems[index]" class="navigation-bar__item"/>
+        <navigation-item v-for="(_, index) in mainNavigationItems" v-model="mainNavigationItems[index]" :key="index" class="navigation-bar__item"/>
       </div>
     </div>
     <fridge v-model="fridgeState">
@@ -16,7 +16,9 @@
 
 <script setup lang='ts'>
 import { useDefaultState } from './composables/useDefault'
-import type {NavigationItem} from "~/common/types/common";
+import NavigationItem from "~/src/components/NavigationItem/NavigationItem.vue";
+import type {NavigationItem as NavigationItemType} from "~/common/types/common";
+import Fridge from "~/src/components/Fridge/Fridge.vue";
 const ctx = useDefaultState()
 
 // i18
@@ -28,83 +30,83 @@ const sm = ref(nuxtApp.$sm)
 const md = ref(nuxtApp.$md)
 const fridgeState = ref(false)
 
-const mainNavigationItems: NavigationItem[] = reactive([
+const mainNavigationItems: NavigationItemType[] = reactive([
   {
     title: 'Профиль',
     name: 'profile',
     to: nuxtApp.$generateRoutePathDefault('Profile'),
-    icon: '/icons/navigation/profile-1.svg'
+    icon: '/navigation/profile-1.svg'
   },
   {
     title: 'Мероприятия',
     name: 'events',
     to: nuxtApp.$generateRoutePathDefault('Events'),
-    icon: '/icons/navigation/events-2.svg'
+    icon: '/navigation/events-2.svg'
   },
   {
     title: 'Личный календарь',
     name: 'personal-calendar',
     to: nuxtApp.$generateRoutePathDefault('PersonalCalendar'),
-    icon: '/icons/navigation/calendar-2.svg'
+    icon: '/navigation/calendar-2.svg'
   },
   {
     title: 'Уведомления',
     name: 'notifications',
     to: nuxtApp.$generateRoutePathDefault('Notifications'),
-    icon: '/icons/navigation/notifications-5.svg'
+    icon: '/navigation/notifications-5.svg'
   },
   {
     title: 'Геолокация',
     name: 'geolocation',
     to: nuxtApp.$generateRoutePathDefault('Geolocation'),
-    icon: '/icons/navigation/geolocation-1.svg'
+    icon: '/navigation/geolocation-1.svg'
   },
   {
     title: 'Настройки',
     name: 'settings',
     to: nuxtApp.$generateRoutePathDefault('Settings'),
-    icon: '/icons/navigation/settings-1.svg'
+    icon: '/navigation/settings-1.svg'
   },
 ])
 
-const mobileNavigationItems: NavigationItem[] = reactive([
+const mobileNavigationItems: NavigationItemType[] = reactive([
   {
     title: 'Профиль',
     name: 'profile',
     to: nuxtApp.$generateRoutePathDefault('Profile'),
     logo: '',
-    icon: '/icons/navigation/profile-1.svg'
+    icon: '/navigation/profile-1.svg'
   },
   {
     title: 'Личный календарь',
     name: 'personal_calendar',
     to: nuxtApp.$generateRoutePathDefault('PersonalCalendar'),
     logo: '',
-    icon: '/icons/navigation/calendar-2.svg'
+    icon: '/navigation/calendar-2.svg'
   },
   (md ? {
     title: 'Геолокация',
     name: 'geolocation',
     to: nuxtApp.$generateRoutePathDefault('Geolocation'),
-    icon: '/icons/navigation/geolocation-1.svg'
+    icon: '/navigation/geolocation-1.svg'
   } : undefined),
   {
     title: 'Мероприятия',
     name: 'events',
     to: nuxtApp.$generateRoutePathDefault('Events'),
     logo: '',
-    icon: '/icons/navigation/events-3.svg'
+    icon: '/navigation/events-3.svg'
   },
   {
     title: 'Уведомления',
     name: 'notifications',
     to: nuxtApp.$generateRoutePathDefault('Notifications'),
-    icon: '/icons/navigation/notifications-5.svg'
+    icon: '/navigation/notifications-5.svg'
   },
   {
     title: 'Дополнительно меню',
     name: 'additional_menu',
-    icon: '/icons/navigation/menu-2.svg',
+    icon: '/navigation/menu-2.svg',
     callback: openAdditionalMenu
   },
 ])

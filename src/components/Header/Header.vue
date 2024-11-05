@@ -5,8 +5,9 @@
         <div class="section-a">
           <nuxt-link to="/" class="header__title">Куда, собрат?</nuxt-link>
         </div>
-        <div class="section-main max-md:hidden">
+        <div class="section-main max-md:hidden flex flex-row items-center gap-2 justify-between">
           <search-bar class="flex-1"/>
+          <profile-link v-if="useAuthStore().token && lg"/>
         </div>
         <div class="section-c max-lg:hidden">
           <div class="flex flex-row justify-between w-full">
@@ -16,7 +17,7 @@
             </div>
             <nuxt-link to="/auth" v-else class="flex gap-1 items-center hover:transition-all hover:text-coral">
               <span class="text-[14px]">Войти</span>
-              <img src="/icons/common/login-3.svg" class="cursor-pointer" alt="Выход"/>
+              <component :is="getIconComponent('/navigation/login-3.svg')" class="cursor-pointer" alt="Выход"/>
             </nuxt-link>
           </div>
         </div>
@@ -29,12 +30,15 @@
 import { useDefaultState } from './composables/useDefault'
 import SearchBar from "~/src/components/SearchBar/SearchBar.vue";
 import {useAuthStore} from "~/stores/auth";
+import ProfileLink from "~/src/components/ProfileLink/ProfileLink.vue";
+import {getIconComponent} from "~/common/composables/useIcons";
 // i18
 const i18nPrefix = "components.Header"
 const nuxtApp = useNuxtApp()
 const $i = nuxtApp.$i(i18nPrefix)
 
 const ctx = useDefaultState()
+const lg = ref(nuxtApp.$lg)
 
 const router = useRouter()
 

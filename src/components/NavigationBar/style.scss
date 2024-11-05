@@ -34,13 +34,19 @@
     @apply flex items-center justify-items-center;
     @apply md:py-1.5 md:pr-3 md:pl-3;
     @apply md:hover:text-amber-dark;
+    @apply text-nowrap;
     // Мобилки
     @apply max-md:p-1;
     @apply max-md:rounded-[16px];
 
-    img {
-      @include filter-dark-gray;
-      @apply sm:w-[42px] sm:min-w-[42px] md:w-[24px] md:min-w-[24px];
+    svg {
+      & > * {
+        @apply stroke-dark-gray;
+      }
+
+      //@include filter-dark-gray;
+      @apply max-md:w-[42px] max-md:min-w-[42px] md:w-[24px] md:min-w-[24px];
+      @apply max-md:h-[42px] max-md:min-h-[42px] md:h-[24px] md:min-h-[24px];
     }
 
     & > .navigation-item__title {
@@ -49,9 +55,6 @@
     }
 
     &:active {
-      path {
-        fill: white
-      }
       @apply max-md:bg-coral;
     }
 
@@ -64,7 +67,12 @@
     }
 
     &:hover {
-      //@apply md:pl-3.5;
+      svg {
+        & > * {
+          @apply stroke-amber-dark;
+        }
+      }
+
       &:before {
         @apply bg-amber;
         @apply rounded-l-full;

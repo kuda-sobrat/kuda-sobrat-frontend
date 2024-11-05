@@ -21,18 +21,5 @@
 
 <script setup lang="ts">
 import Header from "~/src/components/Header/Header.vue";
+import NavigationBar from "~/src/components/NavigationBar/NavigationBar.vue";
 </script>
-
-<style lang="scss">
-
-.max-md {
-  div {
-    @apply bg-red-500;
-  }
-}
-
-section {
-  @apply bg-red-200;
-}
-
-</style>

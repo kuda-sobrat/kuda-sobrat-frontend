@@ -1,6 +1,6 @@
 <template>
   <div class="profile-page">
-    <div class="page-content container">
+    <div class="page-content">
       [ ProfilePageContent ]
     </div>
   </div>
