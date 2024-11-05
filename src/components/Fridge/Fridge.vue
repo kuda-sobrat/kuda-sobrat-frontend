@@ -1,5 +1,5 @@
 <template>
-  <div class=fridge-wrapper @click="model = false">
+  <div class=fridge-wrapper :class="{'visible': model}" @click="model = false">
     <div class=fridge :class="{'fridge_active' : model}" @click.stop="">
       <slot/>
     </div>
