@@ -5,7 +5,7 @@
   @apply bg-primary text-white rounded;
   @apply text-[16px] font-[500] align-middle;
 
-  &*{
+  & *{
     transition: .1s ease-in-out all;
   }
 
