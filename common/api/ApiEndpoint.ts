@@ -1,6 +1,7 @@
 import { useNuxtApp } from '#app';
 import {useAuthStore} from "~/stores/auth";
 import type {AxiosInstance} from "axios";
+import {useLoader} from "~/common/composables/useLoader";
 
 export enum ApiMethods {
     GET = "get",
@@ -22,7 +23,7 @@ export interface ApiAfterCall<Response> {
 export class ApiEndpoint<Request, Response> implements ApiAfterCall<Response> {
     protected method: ApiMethods = ApiMethods.GET
     protected url: string = 'undefined'
-    public isLoading: Ref<boolean> = ref(false)
+    public loader = useLoader()
     public response: Ref<Response | undefined> = ref()
     protected axios?: AxiosInstance = undefined
 
@@ -36,18 +37,18 @@ export class ApiEndpoint<Request, Response> implements ApiAfterCall<Response> {
     }
 
     public async call(request?: Request): Promise<Response> {
-        this.isLoading.value = true
+        this.loader.value.isLoading = true
         const response: Promise<ResponseOriginal<Response>> = this[this.method](request)
         this.handleResponse(await response)
         this.response.value = (await response).data
-        this.isLoading.value = false
+        this.loader.value.isLoading = false
         this.afterCall(this.response.value)
         return this.response.value
     }
 
     protected async get(params?: Request): Promise<ResponseOriginal<Response>> {
         try {
-            const response = await this.axios!.get(this.url)
+            const response = await this.axios!.get(this.url, params)
             return response.data
         } catch (error) {
             throw this.handleError(error)
@@ -74,7 +75,7 @@ export class ApiEndpoint<Request, Response> implements ApiAfterCall<Response> {
 
     protected async delete(params?: Request): Promise<ResponseOriginal<Response>> {
         try {
-            const response = await this.axios!.delete(this.url)
+            const response = await this.axios!.delete(this.url, params)
             return response.data
         } catch (error) {
             this.handleError(error)
@@ -82,7 +83,7 @@ export class ApiEndpoint<Request, Response> implements ApiAfterCall<Response> {
     }
 
     protected handleError(error: any): never {
-        this.isLoading.value = false
+        this.loader.value.isLoading = false
         // Обработка ошибок
         if (error.response) {
             // Сервер вернул ответ с кодом ошибки

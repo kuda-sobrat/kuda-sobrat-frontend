@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="relative">
     <Header/>
     <div class="default-layout min-h-[100vh]">
       <div class="container">

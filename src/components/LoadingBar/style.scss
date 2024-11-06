@@ -1,0 +1,21 @@
+.loading-bar {
+  transition: width .5s ease-out;
+  @apply bg-primary;
+  @apply w-[0%] h-[5px];
+  &__wrapper {
+    transition: opacity .1s linear;
+    @apply opacity-0;
+    @apply fixed bottom-0;
+    @apply bg-light-gray-secondary drop-shadow-xl;
+    @apply w-[100%] h-[5px];
+  }
+}
+
+.loading-bar_active {
+  transition: opacity .5s linear;
+  @apply opacity-100;
+
+  .loading-bar {
+    transition: width .2s ease-in-out;
+  }
+}

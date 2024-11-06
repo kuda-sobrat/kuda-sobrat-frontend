@@ -5,10 +5,14 @@
   &__menu {
     @apply bg-white;
     @apply px-[8px] py-[4px];
-    @apply min-w-[240px];
+    @apply min-w-[240px] w-[100%];
     @apply drop-shadow-sm;
     @apply rounded border-[2px] border-solid border-primary border-opacity-30;
     @apply hidden;
+  }
+
+  &__menu-item {
+    @apply w-[100%]
   }
 
   &__menu-wrapper {

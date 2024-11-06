@@ -1,6 +1,6 @@
 <template>
   <div class="authorization-page">
-    <div class="page-content">
+    <div class="page-content container">
       <div class="authorization-page__form">
         <div v-if="activeBlock === 0" class="authorization-page__title">Куда, собрат?</div>
         <authorization-form v-model:active-block="activeBlock"/>
