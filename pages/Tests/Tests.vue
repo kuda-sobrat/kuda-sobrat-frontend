@@ -1,6 +1,6 @@
 <template>
   <div class="tests-page">
-    <div class="page-content container">
+    <div class="page-content">
       [ TestsPageContent ]
     </div>
   </div>

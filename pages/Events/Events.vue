@@ -1,6 +1,6 @@
 <template>
   <div class="events-page">
-    <div class="page-content container">
+    <div class="page-content">
       [ EventsPageContent ]
     </div>
   </div>

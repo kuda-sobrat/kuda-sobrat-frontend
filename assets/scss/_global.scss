@@ -173,9 +173,9 @@ h1 {
 }
 
 .tile {
-  @apply bg-white;
-  @apply rounded;
-  @apply drop-shadow-sm;
+  @apply mr-1 py-2 px-3;
+  @apply rounded-xl drop-shadow-sm;
+  @apply bg-white border-r-[2px] border-solid border-primary border-opacity-15;
 }
 
 .line {

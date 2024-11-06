@@ -1,9 +1,5 @@
 <template>
-  <div class="default-layout page-content min-h-[90vh]">
+  <div class="default-layout page-content min-h-[100vh]">
     <slot/>
   </div>
-  <Footer/>
 </template>
-
-<script setup lang="ts">
-</script>

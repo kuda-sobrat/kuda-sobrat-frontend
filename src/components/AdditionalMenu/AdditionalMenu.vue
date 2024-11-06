@@ -1,8 +1,6 @@
 <template>
-  <div class=fridge-wrapper :class="{'visible': model}" @click="model = false">
-    <div class=fridge :class="{'fridge_active' : model}" @click.stop="">
-      <slot/>
-    </div>
+  <div class=additional-menu>
+    [ AdditionalMenu ]
   </div>
 </template>
 
@@ -11,13 +9,9 @@ import { useDefaultState } from './composables/useDefault'
 const ctx = useDefaultState()
 
 // i18
-const i18nPrefix = "components.Fridge"
+const i18nPrefix = "components.AdditionalMenu"
 const nuxtApp = useNuxtApp()
 const $i = nuxtApp.$i(i18nPrefix)
-
-const model = defineModel<boolean>({
-  default: false,
-})
 </script>
 
 <style lang="scss">

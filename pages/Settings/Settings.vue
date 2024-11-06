@@ -1,6 +1,6 @@
 <template>
   <div class="settings-page">
-    <div class="page-content container">
+    <div class="page-content">
       [ SettingsPageContent ]
     </div>
   </div>
