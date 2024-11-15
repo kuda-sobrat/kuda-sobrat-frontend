@@ -4,11 +4,7 @@ import svgLoader from 'vite-svg-loader'
 export default defineNuxtConfig({
   vite: {
     plugins: [
-      svgLoader({
-        // Опциональные настройки
-        // svgo: false, // Отключить оптимизацию SVGO при необходимости
-        // defaultImport: 'component', // По умолчанию 'url'. Установите 'component' для импорта как компоненты Vue
-      }),
+      svgLoader(),
     ],
     vue: {
       script: {
