@@ -45,8 +45,8 @@
       }
 
       //@include filter-dark-gray;
-      @apply max-md:w-[42px] max-md:min-w-[42px] md:w-[24px] md:min-w-[24px];
-      @apply max-md:h-[42px] max-md:min-h-[42px] md:h-[24px] md:min-h-[24px];
+      @apply max-md:w-[42px] max-md:min-w-[42px] md:w-[20px] md:min-w-[20px];
+      @apply max-md:h-[42px] max-md:min-h-[42px] md:h-[20px] md:min-h-[20px];
     }
 
     & > .navigation-item__title {
