@@ -23,7 +23,7 @@ const ctx = useDefaultState()
 // i18
 const i18nPrefix = "components.RegistrationForm"
 const nuxtApp = useNuxtApp()
-const $i = nuxtApp.$i(i18nPrefix)
+// const $i = nuxtApp.$i(i18nPrefix)
 
 const formData = reactive<FormData>({
   v$: {},

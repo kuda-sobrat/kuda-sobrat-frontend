@@ -18,6 +18,5 @@ declare module 'vue' {
     SearchInput: typeof import('./src/components/SearchInput/SearchInput.vue')['default']
     VButton: typeof import('./src/components/VButton/VButton.vue')['default']
     VForm: typeof import('./src/components/VForm/VForm.vue')['default']
-    VInput: typeof import('./src/components/VInput/VInput.vue')['default']
   }
 }

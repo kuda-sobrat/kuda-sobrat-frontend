@@ -12,7 +12,7 @@ const ctx = useDefaultState()
 // i18
 const i18nPrefix = "components.SearchBar"
 const nuxtApp = useNuxtApp()
-const $i = nuxtApp.$i(i18nPrefix)
+// const $i = nuxtApp.$i(i18nPrefix)
 </script>
 
 <style lang="scss">

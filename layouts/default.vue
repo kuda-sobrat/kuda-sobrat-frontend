@@ -1,7 +1,7 @@
 <template>
   <div class="relative">
     <Header/>
-    <div class="default-layout min-h-[100vh]">
+    <div class="default-layout min-h-[100vh] w-[100%]">
       <div class="container">
         <div class="sections max-md:flex max-md:flex-col items-start justify-items-center">
           <navigation-bar/>

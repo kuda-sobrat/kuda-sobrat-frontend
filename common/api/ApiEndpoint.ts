@@ -1,4 +1,3 @@
-import { useNuxtApp } from '#app';
 import {useAuthStore} from "~/stores/auth";
 import type {AxiosInstance} from "axios";
 import {useLoader} from "~/common/composables/useLoader";
@@ -47,8 +46,14 @@ export class ApiEndpoint<Request, Response> implements ApiAfterCall<Response> {
     }
 
     protected async get(params?: Request): Promise<ResponseOriginal<Response>> {
+        const userStore = useAuthStore()
         try {
-            const response = await this.axios!.get(this.url, params)
+            const response = await this.axios!.get(this.url, {
+                headers: {
+                    'Authorization': userStore.token ? `Bearer ${userStore.token}` : undefined
+                },
+                ...params
+            })
             return response.data
         } catch (error) {
             throw this.handleError(error)

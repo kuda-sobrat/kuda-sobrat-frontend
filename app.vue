@@ -1,6 +1,6 @@
 <template>
   <nuxt-layout>
-    <nuxt-page/>
+    <nuxt-page class="w-[100%]"/>
   </nuxt-layout>
   <loading-bar/>
 </template>

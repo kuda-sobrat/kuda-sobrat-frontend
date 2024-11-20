@@ -24,7 +24,7 @@ import AuthorizationForm from "~/src/modules/AuthorizationForm/AuthorizationForm
 // i18
 const i18nPrefix = "pages.Authorization"
 const nuxtApp = useNuxtApp()
-const $i = nuxtApp.$i(i18nPrefix)
+// const $i = nuxtApp.$i(i18nPrefix)
 
 const activeBlock = ref(0)
 

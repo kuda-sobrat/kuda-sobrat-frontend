@@ -12,7 +12,7 @@ const ctx = useDefaultState()
 // i18
 const i18nPrefix = "components.VButton"
 const nuxtApp = useNuxtApp()
-const $i = nuxtApp.$i(i18nPrefix)
+// const $i = nuxtApp.$i(i18nPrefix)
 
 const props = defineProps()
 

@@ -2,7 +2,9 @@
   <nuxt-link class=navigation-item v-bind="$attrs" :to="model?.to" @click="model?.callback ? model.callback() : undefined">
     <div v-if="model?.icon">
 <!--      <img :src="`${model?.icon}`" :alt="model.title">-->
-      <component :is="getIconComponent(`${model?.icon}`)" :alt="model.title"/>
+      <lazy-client-only>
+        <component :is="getIconComponent(`${model?.icon}`)" :alt="model.title"/>
+      </lazy-client-only>
     </div>
 <!--    <div v-else-if="model?.logo">-->
 <!--      <Icon :icon="model.logo" class="icon"/>-->
@@ -20,7 +22,7 @@ const ctx = useDefaultState()
 // i18
 const i18nPrefix = "components.NavigationItem"
 const nuxtApp = useNuxtApp()
-const $i = nuxtApp.$i(i18nPrefix)
+// const $i = nuxtApp.$i(i18nPrefix)
 
 const model = defineModel<NavigationItem>()
 </script>

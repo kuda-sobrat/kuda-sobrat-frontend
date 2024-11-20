@@ -76,14 +76,16 @@ function generateRoutePathDefault(pageName: string): any
 }
 
 export default defineNuxtPlugin((nuxtApp) => {
-    return {
-        provide: {
-            getPageName: getPageName,
-            i: i,
-            generateRouteName: generateRouteName,
-            generateRouteNameDefault: generateRouteNameDefault,
-            generateRoutePathDefault: generateRoutePathDefault,
-            ...generateScreenMethods(nuxtApp),
+    if (typeof window !== 'undefined') {
+        return {
+            provide: {
+                getPageName: getPageName,
+                i: i,
+                generateRouteName: generateRouteName,
+                generateRouteNameDefault: generateRouteNameDefault,
+                generateRoutePathDefault: generateRoutePathDefault,
+                ...generateScreenMethods(nuxtApp),
+            }
         }
     }
 })

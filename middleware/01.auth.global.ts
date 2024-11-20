@@ -7,7 +7,7 @@ export default defineNuxtRouteMiddleware(async (to) => {
     userStore.init()
 
     if (to.fullPath === '/logout') {
-        userStore.reset()
+        await userStore.reset()
     }
 
     if (to.fullPath === '/auth' && userStore.token && userStore.user) {

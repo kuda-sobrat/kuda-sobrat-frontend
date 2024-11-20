@@ -3,15 +3,19 @@
     <label v-if="label" class="v-input-label">
       <span>{{ label }}</span>
     </label>
-    <div class="relative">
+    <div class="relative flex">
       <input
           class="v-input"
-          :class="{'v-input_error': isValid !== undefined && !isValid}"
+          :class="{'v-input_error': isValid !== undefined && !isValid, 'v-input_checkbox': $attrs.type === 'checkbox'}"
           :style="{paddingLeft: $slots['inner-left'] ? '26px' : undefined, paddingRight: $slots['inner-right'] ? '34px' : undefined}"
           v-model="model"
           v-bind="$attrs"
           @change="isInit = true"
       >
+      <div v-if="$attrs.type === 'checkbox'" class="v-input__checkmark">
+        <slot name="checkbox"></slot>
+        <component v-if="!$slots['checkbox']" :is="getIconComponent('/ui/success.svg')" alt="Чекбокс"/>
+      </div>
       <span v-if="$slots['inner-left']" class="v-input__inner v-input__inner_left">
         <slot name="inner-left"/>
       </span>
@@ -28,12 +32,13 @@
 <script setup lang='ts'>
 import { useDefaultState } from './composables/useDefault'
 import type {Validation, ValidationArgs} from "@vuelidate/core";
+import {getIconComponent} from "~/common/composables/useIcons";
 const ctx = useDefaultState()
 
 // i18
 const i18nPrefix = "components.VInput"
 const nuxtApp = useNuxtApp()
-const $i = nuxtApp.$i(i18nPrefix)
+// const $i = nuxtApp.$i(i18nPrefix)
 
 const model = defineModel()
 const isInit = ref(false)

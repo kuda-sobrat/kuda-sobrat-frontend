@@ -15,7 +15,7 @@ import {defineI18nRoute} from "#i18n";
 // i18
 const i18nPrefix = "pages.Home"
 const nuxtApp = useNuxtApp()
-const $i = nuxtApp.$i(i18nPrefix)
+// const $i = nuxtApp.$i(i18nPrefix)
 
 defineI18nRoute({
   paths: {

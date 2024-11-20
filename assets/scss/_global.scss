@@ -102,6 +102,10 @@ input {
   // transition: all linear .07s;
 }
 
+body, #__nuxt {
+  @apply w-[100%];
+}
+
 html {
   scroll-behavior: smooth;
 }

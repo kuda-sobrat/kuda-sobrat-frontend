@@ -22,7 +22,7 @@ const ctx = useDefaultState()
 // i18
 const i18nPrefix = "components.SearchInput"
 const nuxtApp = useNuxtApp()
-const $i = nuxtApp.$i(i18nPrefix)
+// const $i = nuxtApp.$i(i18nPrefix)
 
 const model = defineModel()
 </script>

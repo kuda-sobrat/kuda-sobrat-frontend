@@ -2,10 +2,6 @@ import { defineNuxtConfig } from 'nuxt/config';
 import svgLoader from 'vite-svg-loader'
 
 export default defineNuxtConfig({
-  server: {
-    host: '0.0.0.0', // Слушать на всех интерфейсах
-    port: 3000
-  },
   vite: {
     server: {
       watch: {
@@ -26,7 +22,7 @@ export default defineNuxtConfig({
     }
   },
   compatibilityDate: '2024-04-03',
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   ssr: false,
   modules: ["@pinia/nuxt", "@nuxtjs/i18n", '@nuxtjs/tailwindcss', "@nuxt/image"],
 
@@ -35,13 +31,6 @@ export default defineNuxtConfig({
       meta: [
         {name: "robots", content: "noindex"}
       ],
-      script: [
-        {
-          src: "https://www.google.com/recaptcha/api.js?render=explicit",
-          // defer: true,
-          async: true
-        }
-      ]
     }
   },
   runtimeConfig: {

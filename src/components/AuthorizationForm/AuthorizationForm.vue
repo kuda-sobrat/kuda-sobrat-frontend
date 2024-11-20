@@ -20,7 +20,7 @@ const ctx = useDefaultState()
 // i18
 const i18nPrefix = "components.AuthorizationForm"
 const nuxtApp = useNuxtApp()
-const $i = nuxtApp.$i(i18nPrefix)
+// const $i = nuxtApp.$i(i18nPrefix)
 
 const v$ = ref()
 

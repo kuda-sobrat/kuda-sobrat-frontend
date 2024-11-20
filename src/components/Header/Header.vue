@@ -35,7 +35,7 @@ import {getIconComponent} from "~/common/composables/useIcons";
 // i18
 const i18nPrefix = "components.Header"
 const nuxtApp = useNuxtApp()
-const $i = nuxtApp.$i(i18nPrefix)
+// const $i = nuxtApp.$i(i18nPrefix)
 
 const ctx = useDefaultState()
 const lg = ref(nuxtApp.$lg)
