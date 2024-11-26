@@ -165,19 +165,6 @@ onMounted(() => {
         cascadeClose(item.value!.children)
       }
     })
-
-    // watch(() => item.value!.state!.selected, (value) => {
-    //   if (value !== undefined) {
-    //     item.value!.state!.childrenVisible = value
-    //     item.value!.state!.selectedFull = value
-    //     for (const child of item.value!.children) {
-    //       child.state!.selected = value
-    //       if (!child.state!.selectedFull) {
-    //         item.value!.state!.selectedFull = !value
-    //       }
-    //     }
-    //   }
-    // }, {immediate: true})
   }
 })
 </script>

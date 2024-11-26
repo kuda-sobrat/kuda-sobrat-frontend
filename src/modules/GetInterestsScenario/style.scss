@@ -1,0 +1,50 @@
+.scenario {
+  &__grid {
+    @apply grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-2 max-sm:grid-cols-1 gap-1;
+    @apply overflow-y-scroll overflow-x-hidden max-h-[70vh];
+    @apply px-1.5 py-3;
+  }
+
+  &__select-card {
+    @apply cursor-pointer;
+    @apply md:min-h-[13ch];
+    @apply rounded-lg;
+    @apply p-1.5;
+    @apply flex flex-col items-center justify-center;
+    @apply bg-white drop-shadow-sm;
+    @apply text-center;
+    @apply overflow-auto;
+    @apply border border-solid border-primary border-opacity-50;
+    transition: all .1s;
+
+    img {
+      @apply max-h-[calc(100%-3ch)];
+
+      @apply max-sm:max-h-[32px] max-sm:mr-auto;
+    }
+
+    div {
+      transition: all .2s;
+      @apply flex flex-col justify-center items-center;
+      @apply h-[6ch] w-full;
+      @apply overflow-hidden;
+      @apply bg-primary bg-opacity-60;
+      @apply text-white font-[600];
+      @apply max-sm:h-full;
+    }
+
+    &:hover {
+      transition: all .2s;
+      @apply drop-shadow-xl;
+      @apply sm:transform sm:scale-105;
+      @apply z-[1];
+      div {
+        @apply sm:h-full;
+        @apply bg-opacity-70;
+        @apply sm:text-[21px] sm:font-[700];
+        @apply drop-shadow;
+      }
+    }
+    //@apply max-lg:flex-[0_1_calc(30%-20px)] lg:flex-[0_1_calc(20%-20px)];
+  }
+}

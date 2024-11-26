@@ -1,8 +1,18 @@
 <template>
   <div class="test-page">
     <div class="page-content">
-      {{ model.map(item => item.attributes.id) }}
-      <cascade-list v-model="model" v-model:data="interests" :appearance-time="30"/>
+      1
+      <modal v-model="modalState">
+        <template #header>
+          Header
+          Header
+          Header
+          Header
+          Header
+        </template>
+        HelloHelloHelloHello HelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHello
+      </modal>
+<!--      <cascade-list v-model="model" v-model:data="interests" :appearance-time="30"/>-->
     </div>
   </div>
 </template>
@@ -12,6 +22,7 @@ import {defineI18nRoute} from "#i18n";
 import {useStaticStore} from "~/stores/static.ts";
 
 import CascadeList from "~/src/components/CascadeList/CascadeList.vue";
+import Modal from "~/src/components/Modal/Modal.vue";
 
 // i18
 const i18nPrefix = "pages.Test"
@@ -20,6 +31,7 @@ const nuxtApp = useNuxtApp()
 const staticStore = useStaticStore()
 const interests = ref()
 const model = ref([])
+const modalState = ref(true)
 
 defineI18nRoute({
   paths: {
@@ -33,9 +45,7 @@ definePageMeta({
 })
 
 onMounted(async () => {
-  // {key: 'interests', apiEndpoint: new GetInterestsEndpoint()}
-  interests.value = (await staticStore.get('interests')).value
-  // interests.value = staticStore.getValue('interests')
+  // interests.value = (await staticStore.get('interests')).value
 })
 
 </script>

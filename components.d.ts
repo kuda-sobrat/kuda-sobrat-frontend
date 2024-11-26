@@ -9,7 +9,6 @@ declare module 'vue' {
   export interface GlobalComponents {
     AdditionalMenu: typeof import('./src/components/AdditionalMenu/AdditionalMenu.vue')['default']
     AuthorizationForm: typeof import('./src/components/AuthorizationForm/AuthorizationForm.vue')['default']
-    BlockScraper: typeof import('./src/components/BlockScraper/BlockScraper.vue')['default']
     Header: typeof import('./src/components/Header/Header.vue')['default']
     RegistrationForm: typeof import('./src/components/RegistrationForm/RegistrationForm.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

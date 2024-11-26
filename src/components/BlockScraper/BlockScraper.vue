@@ -47,6 +47,7 @@ function toNext() {
 
 function render() {
   let index = 0
+  console.log(mainRef.value?.children!)
   for(const item of mainRef.value?.children!) {
     const child: HTMLElement = item as HTMLElement
     // child.style.display = 'none'
