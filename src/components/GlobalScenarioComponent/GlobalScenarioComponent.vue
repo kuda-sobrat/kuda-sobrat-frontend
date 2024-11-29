@@ -32,10 +32,12 @@ watch(
 
 // Функция для динамического импорта компонентов сценариев
 async function getComponentForScenario(scenario: string) {
+  console.log('scenario', scenario)
   try {
     switch (scenario) {
       case 'interests-quiz':
-        return (await import('~/src/modules/GetInterestsScenario/GetInterestsScenario.vue')).default
+        console.log('nice')
+        return (await import('~/src/modules/InterestsQuiz/InterestsQuiz.vue')).default
       default:
         return null;
     }

@@ -15,7 +15,6 @@ declare module 'vue' {
     RouterView: typeof import('vue-router')['RouterView']
     SearchBar: typeof import('./src/components/SearchBar/SearchBar.vue')['default']
     SearchInput: typeof import('./src/components/SearchInput/SearchInput.vue')['default']
-    VButton: typeof import('./src/components/VButton/VButton.vue')['default']
     VForm: typeof import('./src/components/VForm/VForm.vue')['default']
   }
 }

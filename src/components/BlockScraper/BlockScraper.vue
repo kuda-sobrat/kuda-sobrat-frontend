@@ -1,6 +1,6 @@
 <template>
   <div class=block-scraper>
-    <div ref="mainRef">
+    <div class="block-scraper__body contents" ref="mainRef">
       <slot/>
     </div>
     <v-button v-if="props.previous" @click="toPrevious()">
@@ -26,6 +26,9 @@ const nuxtApp = useNuxtApp()
 const model = defineModel<number>({
   default: 0
 })
+const count = defineModel<number>('count', {
+  default: 0
+})
 const mainRef = ref<HTMLElement>()
 const childRefs = ref([])
 
@@ -47,7 +50,6 @@ function toNext() {
 
 function render() {
   let index = 0
-  console.log(mainRef.value?.children!)
   for(const item of mainRef.value?.children!) {
     const child: HTMLElement = item as HTMLElement
     // child.style.display = 'none'
@@ -67,6 +69,7 @@ onUpdated(() => {
 })
 
 onMounted(() => {
+  count.value = mainRef.value?.children!.length ?? 0
   watch(model, () => {
     render()
   }, {immediate: true})

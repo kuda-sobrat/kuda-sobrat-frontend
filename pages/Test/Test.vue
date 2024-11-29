@@ -1,18 +1,11 @@
 <template>
   <div class="test-page">
     <div class="page-content">
-      1
-      <modal v-model="modalState">
-        <template #header>
-          Header
-          Header
-          Header
-          Header
-          Header
-        </template>
-        HelloHelloHelloHello HelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHello
-      </modal>
-<!--      <cascade-list v-model="model" v-model:data="interests" :appearance-time="30"/>-->
+      <div class="p-2 flex flex-col gap-2">
+        <div class="h-[20vh]">
+          <interests-quiz/>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -21,8 +14,7 @@
 import {defineI18nRoute} from "#i18n";
 import {useStaticStore} from "~/stores/static.ts";
 
-import CascadeList from "~/src/components/CascadeList/CascadeList.vue";
-import Modal from "~/src/components/Modal/Modal.vue";
+import InterestsQuiz from "~/src/modules/InterestsQuiz/InterestsQuiz.vue";
 
 // i18
 const i18nPrefix = "pages.Test"
@@ -30,8 +22,6 @@ const nuxtApp = useNuxtApp()
 
 const staticStore = useStaticStore()
 const interests = ref()
-const model = ref([])
-const modalState = ref(true)
 
 defineI18nRoute({
   paths: {
@@ -45,7 +35,7 @@ definePageMeta({
 })
 
 onMounted(async () => {
-  // interests.value = (await staticStore.get('interests')).value
+  interests.value = (await staticStore.get('interests')).value
 })
 
 </script>

@@ -2,18 +2,20 @@
   <div v-if="state" class=modal__wrapper>
     <div class="container">
       <div class="modal" :class="[`modal_${props.size}`]">
-        <div class="modal__header">
-          <component class="modal__close" :is="getIconComponent('/ui/close.svg')" alt="Выход" @click="state = !state"/>
-          <div class="modal__headnote">
-            <slot name="headnote"/>
-          </div>
+        <div class="modal__close_mobile-wrapper" @click="escState ? state = !state : undefined">
+          <div class="modal__close modal__close_mobile" :class="{'modal__close_disabled': !escState}"/>
         </div>
-        <div class="modal__content">
-          <slot/>
-        </div>
-        <div class="modal__footnote">
-          <slot name="footnote"/>
-        </div>
+        <component v-if="escState" class="modal__close" :is="getIconComponent('/ui/close.svg')" alt="Выход" @click="state = !state"/>
+        <suspense>
+          <template #default>
+            <slot/>
+          </template>
+          <template #fallback>
+            <div>
+              Загрузка компонента...
+            </div>
+          </template>
+        </suspense>
       </div>
     </div>
   </div>
@@ -22,6 +24,7 @@
 <script setup lang='ts'>
 import { useDefaultState } from './composables/useDefault'
 import {getIconComponent} from "~/common/composables/useIcons";
+import AsyncLoader from "~/src/components/AsyncLoader/AsyncLoader.vue";
 const ctx = useDefaultState()
 
 // i18
@@ -36,8 +39,10 @@ const state = defineModel()
 const props = withDefaults(
     defineProps<{
       size?: ModalSize
+      escState?: boolean
     }>(),{
       size: 'limit',
+      escState: true,
     }
 )
 </script>

@@ -1,0 +1,20 @@
+.interests-quiz-module {
+  //height: inherit;
+  .question__grid {
+    @apply auto-rows-fr;
+    @apply sm:grid lg:grid-cols-5 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-none;
+  }
+
+  .question-card {
+    @apply p-2;
+    @apply rounded-2xl;
+    @apply border border-dashed border-gray-400;
+    @apply h-full;
+  }
+
+  .flex:has(.v-input_active)>*>.question-card {
+    @apply bg-red-200;
+    //@apply shadow-inner;
+
+  }
+}

@@ -238,3 +238,19 @@ h1 {
 .filter-dark-gray {
   @include filter-dark-gray
 }
+
+.overflowing {
+  @apply relative;
+  @apply rounded;
+}
+
+.overflowing:after {
+  //content: 'a';
+  ////@apply mt-auto;
+  //@apply sticky bottom-0 left-0 w-full h-[20px];
+  ////bottom: 0;
+  ////left: 0;
+  ////right: 0;
+  ////height: 30px;
+  //background: linear-gradient(to bottom, transparent, white);
+}

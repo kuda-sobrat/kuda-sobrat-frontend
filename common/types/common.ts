@@ -7,6 +7,16 @@ export type NavigationItem = {
     callback?: Function
 }
 
+export type Interest = {
+    attributes: {
+        id: number,
+        name: string,
+        description: string,
+        is_paid: boolean,
+    },
+    children?: Interest[]
+}
+
 export type CascadeItem = {
     state?: CascadeItemState
     attributes: {

@@ -1,14 +1,11 @@
 import { defineNuxtConfig } from 'nuxt/config';
 import svgLoader from 'vite-svg-loader'
-
 export default defineNuxtConfig({
   vite: {
     server: {
-      watch: {
-        usePolling: true
-      },
       hmr: {
-        host: 'localhost'
+        host: 'localhost',
+        port: 3000
       }
     },
     plugins: [
