@@ -1,7 +1,11 @@
 <template>
   <div class=progress-indicator>
-<!--    {'progress-indicator__dot_active': n === active}-->
-    <div v-for="n in count" class="progress-indicator__dot" :class="{'progress-indicator__dot_active': (n - 1) === active}" :key="n" @click="interactive ? active = n - 1 : null"/>
+    <div v-for="(state, index) in structure" :class="{
+      'progress-indicator_active': Array.isArray(structure[index]) ? isActive(structure[index]) : structure[index].state,
+      'progress-indicator__dot': !Array.isArray(structure[index]),
+      'progress-indicator__block': Array.isArray(structure[index])
+    }" @click="interactive ? active = (Array.isArray(structure[index]) ? structure[index][0].index : structure[index].index) : null"
+    />
   </div>
 </template>
 
@@ -19,9 +23,20 @@ const count = defineModel<number>('count')
 
 const props = withDefaults(defineProps<{
   interactive?: boolean
+  structure?: any
 }>(), {
-  interactive: true
+  interactive: true,
+  structure: true
 })
+
+function isActive(items: { state: boolean, index: number }[]) {
+  for (const key in items) {
+    if (Array.isArray(items[key]) ? isActive(items[key]) : items[key].state) {
+      return true
+    }
+  }
+  return false
+}
 </script>
 
 <style lang="scss">

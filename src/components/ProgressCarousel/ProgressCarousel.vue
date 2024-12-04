@@ -1,10 +1,10 @@
 <template>
   <div class=progress-carousel>
-    <block-scraper class="h-[80%] flex-1 overflow-y-auto overflow-x-hidden" :class="[$attrs.class]" v-model="active" v-model:count="count">
+    <block-scraper class="h-[80%] flex-1 overflow-y-auto overflow-x-hidden" :class="[$attrs.class]" v-model="active" v-model:count="count" v-model:structure="structure">
       <slot/>
     </block-scraper>
     <div>
-      <progress-indicator v-model="active" :count="count"/>
+      <progress-indicator v-model="active" :count="count" :structure="structure"/>
       <block-scraper v-if="props.type === 'scraper'" v-model="active">
         <slot name="footnote"/>
       </block-scraper>
@@ -16,7 +16,6 @@
 <script setup lang='ts'>
 import { useDefaultState } from './composables/useDefault'
 import BlockScraper from "~/src/components/BlockScraper/BlockScraper.vue";
-import VButton from "~/src/components/VButton/VButton.vue";
 import ProgressIndicator from "~/src/components/ProgressIndicator/ProgressIndicator.vue";
 const ctx = useDefaultState()
 
@@ -27,6 +26,7 @@ const nuxtApp = useNuxtApp()
 
 const active = defineModel<number>()
 const count = ref<number>(0)
+const structure = ref<any>([])
 
 const props = defineProps<{
   type: 'scraper'

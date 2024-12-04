@@ -1,19 +1,17 @@
 <template>
-  <div class="interests-quiz-module h-full">
-    <modal :model-value="true" esc-target="#hello" :esc-state="active!==0">
+  <component :is="props.view === 'modal' ? Modal : 'div'" v-model="model">
+    <div class="interests-quiz-module h-full contents">
       <progress-carousel v-model="active" type="scraper" class="max-sm:overflow-y-hidden">
         <template #default>
           <div class="contents">
             <div class="text-[24px] font-semibold md:mb-2 w-full sticky top-0 z-[1000] bg-white pb-2">
               Привет!
             </div>
-            <question v-if="interests" :answers="ctx.questions[0].answers" v-model="ctx.questions[0].state" class="question__grid">
+            <question v-if="interests" :answers="ctx.questions[0].answers" v-model="ctx.questions[0].stateTmp" class="question__grid">
               <template #title>
-                Укажи свои интересы, проверь в списке:
+                Отметь все чем горишь. Осторожно: пламя берется с искрой.
               </template>
               <template #description>
-                Отметь все чем горишь. Осторожно: с искры начинается пламя.
-                <br/>
                 Более детально увлечения можно настроить дальше
               </template>
               <template #answer="{item, index}">
@@ -23,38 +21,59 @@
               </template>
             </question>
           </div>
-          <block2/>
-          <block3/>
+          <div class="block">
+            <div class="contents" v-for="(item, key) in ctx.questions[1]" :key="key">
+              <div class="text-[24px] font-semibold md:mb-2 w-full sticky top-0 z-[1000] bg-white pb-2">
+                Выбери свои интересы:
+              </div>
+              <!--TODO: ctx.questions[1] может обновляться-->
+              <question v-if="ctx.questions[1][key]" :answers="ctx.questions[1][key].answers" v-model="ctx.questions[1][key].stateTmp">
+                <template #title>
+                  Выбери подкатегории или пропусти этот шаг
+                </template>
+                <template #answer="{item, index}">
+                  <div class="question-card">
+                    {{ item.text }}
+                  </div>
+                </template>
+              </question>
+            </div>
+          </div>
+          <div class="contents">
+            <div class="text-[24px] font-semibold md:mb-2 w-full sticky top-0 z-[1000] bg-white pb-2">
+              Вот и все!
+            </div>
+            <div>
+              Теперь мы знаем о твоих предпочтениях и подготовили для тебя самые интересные мероприятия. Приятного времени!
+            </div>
+          </div>
         </template>
         <template #footnote>
           <div class="flex flex-row flex-wrap gap-1">
-            <v-button @click="active++; submitInterests(ctx.questions[0].state)">
-              Далее
+            <v-button :state="ctx.questions[0].state.length > 0">
+              Оставить
             </v-button>
-            <v-button>
-              Вернуться
+            <v-button :state="ctx.questions[0].state.length > 0" @click="submitInterests(ctx.questions[0].state)">
+              Продолжить
             </v-button>
           </div>
-          <div class="flex flex-row flex-wrap gap-1">
-            <v-button @click="active++">
-              Далее
-            </v-button>
+          <div v-for="(item, key) in ctx.questions[1]" class="flex flex-row flex-wrap gap-1" :key="key">
             <v-button @click="active--">
               Вернуться
             </v-button>
+            <v-button @click="onQuestions1Continue(key)">
+              Продолжить
+            </v-button>
           </div>
           <div class="flex flex-row flex-wrap gap-1">
-            <v-button>
-              Далее
-            </v-button>
-            <v-button @click="active--">
-              Вернуться
+            <v-button @click="model = false; emit('ended')">
+              Закончить
             </v-button>
           </div>
         </template>
       </progress-carousel>
-    </modal>
-  </div>
+    </div>
+  </component>
 </template>
 
 <script setup lang='ts'>
@@ -78,9 +97,23 @@ const active = defineModel('active', {
   default: 0
 })
 
+const model = defineModel<boolean>({
+  default: true
+})
+
+const props = defineProps<{
+  view?: 'modal'
+}>()
+
+const emit = defineEmits<{
+  ended: []
+}>()
+
 const interests = ref<CascadeItem[] | undefined>()
 
-const answers1 = ref<any>([])
+watch(() => ctx.value.questions[0].stateTmp, (value) => {
+  ctx.value.questions[0].state = value.filter(item => item)
+})
 
 await (async (): Promise<void> => {
   interests.value = (await useStaticStore().get('interests'))!.value
@@ -89,27 +122,68 @@ await (async (): Promise<void> => {
       text: interests.value[index].attributes.name,
       value: interests.value[index]
     }
-    // answers1.value.push()
   }
 })()
 
-function getAnswers() {
-  return [
-    {text: 'Ответ 1', value: '1'},
-    {text: 'Ответ 2', value: '2'},
-    {text: 'Ответ 3', value: '3'},
-    {text: 'Ответ 4', value: '4'},
-    // {text: 'Ответ 5', value: '5'},
-    // {text: 'Ответ 6', value: '5'},
-    // {text: 'Ответ 7', value: '5'},
-    // {text: 'Ответ 8', value: '5'},
-    // {text: 'Ответ 9', value: '5'},
-    // {text: 'Ответ 10', value: '5'},
-    // {text: 'Ответ 11', value: '5'},
-    // {text: 'Ответ 12', value: '5'},
-    // {text: 'Ответ 13', value: '5'},
-  ]
+function submitInterests(interests: CascadeItem[]) {
+  console.log(interests)
+  let childs: CascadeItem[] = []
+
+  interests.forEach(item => {
+    item.children.forEach(child => {
+      childs.push(child)
+    })
+  })
+
+  const batchSize = 8
+// TODO: При сбросе повторном сбросе вопросов state не определяется
+  ctx.value.questions[1] = []
+  for (let i = 0; i < childs.length; i += batchSize) {
+    const batch = childs.slice(i, i + batchSize)
+    ctx.value.questions[1].push({
+      state: [],
+      answers: batch.map(item => {
+        return {
+          text: item.attributes.name,
+          value: item
+        }
+      })
+    })
+  }
+
+  active.value++
 }
+
+watch(model, () => {
+  console.log(model.value)
+  if (!model.value) {
+    emit('ended')
+  }
+})
+
+function submitQuestions1()
+{
+  let submitInterests: CascadeItem[] = []
+  console.log(ctx.value.questions[1])
+  for (const index in ctx.value.questions[1]) {
+    ctx.value.questions[1][index].state = ctx.value.questions[1][index].stateTmp?.filter(item => item)
+    ctx.value.questions[1][index].state?.map((item: CascadeItem) => {
+      submitInterests.push(item)
+    })
+  }
+  console.log(submitInterests)
+}
+
+function onQuestions1Continue(index: number)
+{
+  if (index + 1 >= ctx.value.questions[1].length) {
+    active.value++
+    submitQuestions1()
+  } else {
+    active.value++
+  }
+}
+
 </script>
 
 <style lang="scss">

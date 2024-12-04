@@ -1,12 +1,10 @@
-export const useDefaultState = () => useState('interests-quiz', () => ({
+export const useDefaultState = () => useState('interests-quiz', (): {questions: any[]} => ({
     questions: [
         {
             state: [],
+            stateTmp: [],
             answers: []
         },
-        {
-            state: [],
-            answers: []
-        }
+        [],
     ]
 }))

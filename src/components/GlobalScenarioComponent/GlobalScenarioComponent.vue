@@ -1,6 +1,6 @@
 <template>
   <div class=global-scenario-component>
-    <component :is="currentComponent" v-if="currentComponent"></component>
+    <component v-if="currentComponent" :is="currentComponent" v-bind="componentProps" @ended="onScenarioEnded()"/>
   </div>
 </template>
 
@@ -15,6 +15,7 @@ const $i = nuxtApp.$i(i18nPrefix)
 
 const route = useRoute();
 const currentComponent = ref(null);
+const componentProps = ref();
 
 watch(
     () => route.fullPath,
@@ -36,7 +37,9 @@ async function getComponentForScenario(scenario: string) {
   try {
     switch (scenario) {
       case 'interests-quiz':
-        console.log('nice')
+        componentProps.value = {
+          view: 'modal'
+        }
         return (await import('~/src/modules/InterestsQuiz/InterestsQuiz.vue')).default
       default:
         return null;
@@ -45,6 +48,12 @@ async function getComponentForScenario(scenario: string) {
     console.error('Ошибка при загрузке сценария:', error);
     return null;
   }
+}
+
+function onScenarioEnded() {
+  const query = { ...useRouter().currentRoute.value.query }
+  delete query['scenario']
+  useRouter().push({ query })
 }
 </script>
 

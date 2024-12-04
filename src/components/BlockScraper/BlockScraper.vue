@@ -14,7 +14,7 @@
 
 <script setup lang='ts'>
 import { useDefaultState } from './composables/useDefault'
-import {onMounted} from "~/.nuxt/imports";
+import {nextTick, onMounted} from "~/.nuxt/imports";
 import VButton from "~/src/components/VButton/VButton.vue";
 const ctx = useDefaultState()
 
@@ -29,8 +29,12 @@ const model = defineModel<number>({
 const count = defineModel<number>('count', {
   default: 0
 })
+const structure = defineModel<any[]>('structure', {
+  default: []
+})
 const mainRef = ref<HTMLElement>()
 const childRefs = ref([])
+const isInit = ref(false)
 
 const props = withDefaults(defineProps<{
   next?: boolean
@@ -48,31 +52,48 @@ function toNext() {
   model.value++
 }
 
-function render() {
+async function render() {
   let index = 0
-  for(const item of mainRef.value?.children!) {
-    const child: HTMLElement = item as HTMLElement
-    // child.style.display = 'none'
-    child.classList.remove('block-scraper__item_disabled')
-    child.classList.add('block-scraper__item')
-    if (index == model.value) {
-      child.classList.add('block-scraper__item_active')
-    } else {
-      child.classList.add('block-scraper__item_disabled')
+  async function checkBlocks(children: HTMLCollection): Promise<any> {
+    let structure = []
+    for(const item of children) {
+      const child: HTMLElement = item as HTMLElement
+      // child.style.display = 'none'
+      if (item.classList.contains('block')) {
+        structure.push(await checkBlocks(item.children, true))
+      } else {
+        child.classList.remove('block-scraper__item_disabled')
+        child.classList.add('block-scraper__item')
+        if (index == model.value) {
+          structure.push({
+            state: true,
+            index: index
+          })
+          child.classList.add('block-scraper__item_active')
+        } else {
+          structure.push({
+            state: false,
+            index: index
+          })
+          child.classList.add('block-scraper__item_disabled')
+        }
+        index++
+      }
     }
-    index++
+    return structure
   }
+  structure.value = await checkBlocks(mainRef.value?.children!)
+
+  count.value = index
 }
 
-onUpdated(() => {
-  render()
-})
-
 onMounted(() => {
-  count.value = mainRef.value?.children!.length ?? 0
-  watch(model, () => {
-    render()
+  watch(model, async () => {
+    await nextTick(() => {
+      render()
+    })
   }, {immediate: true})
+  isInit.value = true
 })
 
 </script>

@@ -2,8 +2,8 @@
   <div class="test-page">
     <div class="page-content">
       <div class="p-2 flex flex-col gap-2">
-        <div class="h-[20vh]">
-          <interests-quiz/>
+        <div class="h-[50vh]">
+          <interests-quiz view="modal"/>
         </div>
       </div>
     </div>
@@ -22,6 +22,9 @@ const nuxtApp = useNuxtApp()
 
 const staticStore = useStaticStore()
 const interests = ref()
+
+const state = ref(true)
+const active = ref()
 
 defineI18nRoute({
   paths: {

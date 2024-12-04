@@ -12,9 +12,27 @@
     @apply border border-solid border-primary border-opacity-15;
   }
 
-  &__dot_active {
-    transition: width .2s ease-in-out;
-    @apply bg-opacity-100;
-    @apply w-6;
+  &__block {
+    transition: all .7s ease-in-out, width .2s ease-in-out;
+    @apply cursor-pointer;
+    @apply h-3 w-6;
+    @apply shadow-inner;
+    @apply rounded;
+    @apply bg-primary bg-opacity-20;
+    @apply border border-solid border-primary border-opacity-15;
+  }
+
+  &_active {
+    &.progress-indicator__dot {
+      transition: width .2s ease-in-out;
+      @apply bg-opacity-100;
+      @apply w-4;
+    }
+
+    &.progress-indicator__block {
+      transition: width .2s ease-in-out;
+      @apply bg-opacity-100;
+      @apply w-8;
+    }
   }
 }

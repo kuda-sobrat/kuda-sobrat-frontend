@@ -59,14 +59,7 @@ const props = defineProps<{
 // const element = document.querySelector('.question__answers');
 
 function updateOverflow(element: Element) {
-  console.log(element?.classList)
-  if (element?.scrollHeight > element?.clientHeight) {
-    overflow.value = true
-    // element!.classList.add('overflowing')
-  } else {
-    overflow.value = false
-    // element!.classList.remove('overflowing')
-  }
+  overflow.value = element?.scrollHeight > element?.clientHeight;
 }
 
 onMounted(() => {

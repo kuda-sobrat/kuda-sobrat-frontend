@@ -1,10 +1,11 @@
 .v-button {
   transition: .1s ease-in-out all;
-  @apply h-[36px];
+  @apply h-[36px] sm:h-[40px] md:h-[44px];
   @apply py-[4px] px-[8px];
-  @apply bg-primary text-white rounded;
+  @apply bg-primary text-white rounded-lg;
   @apply text-[16px] font-[500] align-middle;
   @apply cursor-pointer;
+  @apply border-2 border-solid border-primary;
 
   & *{
     transition: .1s ease-in-out all;
@@ -21,4 +22,11 @@
   &:disabled {
     @apply bg-light-gray-secondary;
   }
+}
+
+.v-button_disabled {
+  @apply transition-all;
+  @apply bg-opacity-50;
+  @apply border-2 border-dashed border-white border-opacity-30;
+  @apply pointer-events-none;
 }
