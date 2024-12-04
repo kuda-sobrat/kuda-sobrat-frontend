@@ -143,7 +143,12 @@ a {
 }
 
 .default-layout {
+  @apply overflow-auto;
   @apply bg-light-gray;
+}
+
+html {
+  @include scrollbar-none;
 }
 
 h1 {
@@ -189,6 +194,7 @@ h1 {
 }
 
 .container {
+  @apply max-md:px-2;
   @apply max-h-screen h-[100%];
 }
 

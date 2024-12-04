@@ -1,14 +1,17 @@
 @import "assets/scss/mixins";
 
 .navigation-bar-wrapper {
-  @include section-a_width;
-  @apply overflow-hidden;
-  @apply md:mt-2.5 md:pl-[4px];
+  //@include section-a_width;
+  @apply contents;
 }
 
 .navigation-bar {
+  @apply z-10;
+  @apply md:mt-2.5 md:pl-[4px];
   @apply md:mr-1 md:py-2;
   @apply md:rounded-xl md:drop-shadow-sm;
+  @apply w-[42ch];
+  @apply overflow-hidden;
 
   @apply bg-white md:border-r-[2px] md:border-solid md:border-primary md:border-opacity-15;
   // Стили для мобилок

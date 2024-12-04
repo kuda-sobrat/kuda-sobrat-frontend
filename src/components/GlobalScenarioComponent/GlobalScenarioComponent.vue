@@ -1,7 +1,5 @@
 <template>
-  <div class=global-scenario-component>
-    <component v-if="currentComponent" :is="currentComponent" v-bind="componentProps" @ended="onScenarioEnded()"/>
-  </div>
+  <component v-if="currentComponent" class=global-scenario-component :is="currentComponent" v-bind="componentProps" @ended="onScenarioEnded()"/>
 </template>
 
 <script setup lang='ts'>

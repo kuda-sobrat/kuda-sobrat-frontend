@@ -3,16 +3,11 @@
     <Header/>
     <div class="default-layout min-h-[100vh] w-[100%]">
       <div class="container">
-        <div class="sections max-md:flex max-md:flex-col items-start justify-items-center">
-          <navigation-bar/>
-          <div class="section-main page-content">
+        <div class="flex md:flex-row items-start justify-items-center">
+          <navigation-bar class="max-lg:min-w-[33vw] lg:min-w-[300px]"></navigation-bar>
+          <main class="main-content w-full">
             <slot/>
-          </div>
-          <div class="section-c max-lg:hidden">
-            <div class="mt-3">
-              [Фильтры и прочее]
-            </div>
-          </div>
+          </main>
         </div>
       </div>
     </div>
