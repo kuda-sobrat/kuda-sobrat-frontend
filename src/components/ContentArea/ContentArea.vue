@@ -1,10 +1,8 @@
 <template>
   <div class=content-area>
-    <div class="content-area__main">
-      <div class="container">
-        <div class="flex flex-col gap-2">
-          <slot/>
-        </div>
+    <div class="container">
+      <div class="content-area__main">
+        <slot/>
       </div>
     </div>
     <div class="content-area__addition">

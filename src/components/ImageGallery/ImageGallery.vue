@@ -1,6 +1,6 @@
 <template>
   <div class=image-gallery>
-    [ ImageGallery ]
+    <img :src="model[0].url" class="object-cover h-full" alt="Первое изображение"/>
   </div>
 </template>
 
@@ -12,6 +12,8 @@ const ctx = useDefaultState()
 const i18nPrefix = "components.ImageGallery"
 const nuxtApp = useNuxtApp()
 const $i = nuxtApp.$i(i18nPrefix)
+
+const model = defineModel()
 </script>
 
 <style lang="scss">

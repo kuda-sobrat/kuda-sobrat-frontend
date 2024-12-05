@@ -12,11 +12,13 @@
 
   &__main {
     @apply flex-grow-[2];
+    @apply flex flex-col gap-2;
+    @apply snap-mandatory;
   }
 
   &__addition {
     @apply flex-grow;
     @apply min-w-[33%];
-    @apply max-sm:sticky max-sm:top-0 z-[1000];
+    //@apply max-sm:sticky max-sm:top-0 z-[1000];
   }
 }
