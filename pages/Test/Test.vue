@@ -3,6 +3,7 @@
     <div class="page-content">
       <div class="p-2 flex flex-col gap-2">
         <div class="container">
+          <feed/>
         </div>
       </div>
     </div>
@@ -12,6 +13,7 @@
 <script setup="ts">
 import {defineI18nRoute} from "#i18n";
 import {useStaticStore} from "~/stores/static.ts";
+import Feed from "~/src/components/Feed/Feed.vue";
 
 // i18
 const i18nPrefix = "pages.Test"

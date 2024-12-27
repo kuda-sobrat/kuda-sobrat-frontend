@@ -13,11 +13,11 @@
             {{ model?.description }}
           </span>
           <div class="event-post__location">
-            {{ model?.location }}
+            {{ model?.location_name }}
           </div>
         </div>
 
-        <div class="event-post__footnote" :class="{'event-post__footnote_row': photoAttachments.length <= 0}">
+        <div class="event-post__footnote" :class="{'event-post__footnote_row': photoAttachments?.length <= 0}">
           <div class="event-post__datetime">
             <div class="text-[18px]">
               {{ formatTimeIntl(startDate) }}
@@ -37,14 +37,14 @@
                          @mouseleave="isStarHover = false"
               />
               <div>
-                123
+                {{ model.attendees }}
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div v-if="photoAttachments.length > 0" class="event-post__attachment">
-        <div v-if="photoAttachments.length > 0" class="event-post__gallery">
+      <div v-if="photoAttachments?.length > 0" class="event-post__attachment">
+        <div v-if="photoAttachments?.length > 0" class="event-post__gallery">
           <image-gallery v-model="photoAttachments" class="event-post__gallery"/>
         </div>
       </div>

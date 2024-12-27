@@ -24,6 +24,7 @@ export class ApiEndpoint<Request, Response> implements ApiAfterCall<Response> {
     protected url: string = 'undefined'
     public loader = useLoader()
     public response: Ref<Response | undefined> = ref()
+    public responseOriginal: Ref<ResponseOriginal<Response>> = ref()
     protected axios?: AxiosInstance = undefined
 
     constructor() {
@@ -39,7 +40,8 @@ export class ApiEndpoint<Request, Response> implements ApiAfterCall<Response> {
         this.loader.value.isLoading = true
         const response: Promise<ResponseOriginal<Response>> = this[this.method](request)
         this.handleResponse(await response)
-        this.response.value = (await response).data
+        this.responseOriginal.value = (await response)
+        this.response.value = this.responseOriginal.value.data
         this.loader.value.isLoading = false
         this.afterCall(this.response.value)
         return this.response.value
@@ -52,7 +54,7 @@ export class ApiEndpoint<Request, Response> implements ApiAfterCall<Response> {
                 headers: {
                     'Authorization': userStore.token ? `Bearer ${userStore.token}` : undefined
                 },
-                ...params
+                params
             })
             return response.data
         } catch (error) {

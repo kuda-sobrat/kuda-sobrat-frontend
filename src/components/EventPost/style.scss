@@ -36,6 +36,7 @@
   }
 
   &__location {
+    @apply py-1;
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -64,7 +65,7 @@
     @apply min-w-[16px] min-h-[16px] w-[16px] h-[16px];
     @apply rounded-full;
     outline-offset: -1px;
-    @apply outline outline-[9px] outline-white;
+    @apply outline outline-[9nppx] outline-white;
   }
 
   &__favorite {

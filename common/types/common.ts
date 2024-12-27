@@ -78,6 +78,9 @@ export type EventPost = {
     tags?: string[]
     name: string
     description: string
+    views: number
+    shares: number
+    attendees: number
     start_datetime: string
     end_datetime: string
     location: string
@@ -86,4 +89,13 @@ export type EventPost = {
     updated_at: string
     context_posts: ContextPost[]
     attachments: EventPostAttachment[]
+    location_name: string
+    formatted_address?: string
+    popularity_score: number
+    is_archived: number
+    archived_at?: string
+    marked_for_deletion_at?: string
+    deleted_at?: string
+    is_interest_matched: 1
+    ranking_score: number
 }

@@ -1,9 +1,15 @@
 <template>
   <div class=events-feed-module>
     <content-area>
-      <event-post v-for="(item, key) in eventPosts" :key="key" v-model="eventPosts[key]">
-
-      </event-post>
+      <div style="all: inherit">
+        <event-chunk v-model="firstChunk" v-model:total="total" :per-page="perPage" v-model:is-loaded="chunkStates[0]"/>
+        <event-chunk v-if="total" v-for="i in currentPages - 1" :chunk-id="i + 1" v-model:is-loaded="chunkStates[i]"/>
+        <div class="relative">
+          <intersection-observer-trigger v-if="canLoadMore && !isEnded" class="absolute bottom-[200vh] h-[10px] bg-red-200" @trigger="onIntersectionTrigger"/>
+          Конец ленты
+          <intersection-observer-trigger v-if="canLoadMore && !isEnded" class="absolute bottom-[10vh] h-[10px] bg-red-200" @trigger="onIntersectionTrigger"/>
+        </div>
+      </div>
       <template #addition>
         <div class="tile">
           [Фильтры и прочее]
@@ -15,10 +21,10 @@
 
 <script setup lang='ts'>
 import { useDefaultState } from './composables/useDefault'
-import EventPost from "~/src/components/EventPost/EventPost.vue";
 import type {EventPost as EventPostType} from "~/common/types/common.ts";
 import ContentArea from "~/src/components/ContentArea/ContentArea.vue";
-import GetEventsEndpoint from "~/common/api/endpoints/v1/event/GetEventsEndpoint";
+import EventChunk from "~/src/components/EventChunk/EventChunk.vue";
+import IntersectionObserverTrigger from "~/src/components/IntersectionObserverTrigger/IntersectionObserverTrigger.vue";
 const ctx = useDefaultState()
 
 // i18
@@ -26,11 +32,43 @@ const i18nPrefix = "modules.EventsFeed"
 const nuxtApp = useNuxtApp()
 const $i = nuxtApp.$i(i18nPrefix)
 
-const eventPosts = ref<EventPostType[] | undefined>()
+const firstChunk = ref<EventPostType[] | undefined>()
+const total = ref()
+const perPage = 20
+const chunkStates = reactive([])
+
+const currentPages = computed(() => {
+  return chunkStates.length
+})
+
+const canLoadMore = computed(() => {
+  for (const key in chunkStates) {
+    if (chunkStates[key] === false) {
+      return false
+    }
+  }
+  return true
+})
+
+const isEnded = computed(() => {
+  return !(Math.ceil(total.value / perPage) > currentPages.value)
+})
+
+function onIntersectionTrigger(isIntersecting: boolean)
+{
+  if (isIntersecting) {
+    console.log('currentPages.value', currentPages.value)
+    chunkStates.push(false)
+  }
+  console.log(isIntersecting)
+}
 
 onMounted(async () => {
-  eventPosts.value = await (new GetEventsEndpoint()).call()
-  console.log(eventPosts)
+  if (firstChunk.value) {
+    console.log(firstChunk.value)
+  }
+  // eventPosts.value = await (new GetEventsEndpoint()).call()
+  // console.log(eventPosts)
 })
 </script>
 
