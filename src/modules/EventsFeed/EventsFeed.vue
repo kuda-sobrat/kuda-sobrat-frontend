@@ -6,7 +6,7 @@
         <event-chunk v-if="total" v-for="i in currentPages - 1" :chunk-id="i + 1" v-model:is-loaded="chunkStates[i]"/>
         <div class="relative">
           <intersection-observer-trigger v-if="canLoadMore && !isEnded" class="absolute bottom-[200vh] h-[10px] bg-red-200" @trigger="onIntersectionTrigger"/>
-          Конец ленты
+          <end-of-events-feed/>
           <intersection-observer-trigger v-if="canLoadMore && !isEnded" class="absolute bottom-[10vh] h-[10px] bg-red-200" @trigger="onIntersectionTrigger"/>
         </div>
       </div>
@@ -25,6 +25,7 @@ import type {EventPost as EventPostType} from "~/common/types/common.ts";
 import ContentArea from "~/src/components/ContentArea/ContentArea.vue";
 import EventChunk from "~/src/components/EventChunk/EventChunk.vue";
 import IntersectionObserverTrigger from "~/src/components/IntersectionObserverTrigger/IntersectionObserverTrigger.vue";
+import EndOfEventsFeed from "~/src/components/EndOfEventsFeed/EndOfEventsFeed.vue";
 const ctx = useDefaultState()
 
 // i18
