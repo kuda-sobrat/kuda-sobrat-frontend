@@ -5,6 +5,7 @@ export type NavigationItem = {
     to?: string | Object
     icon: string
     callback?: Function
+    isBlocked?: boolean
 }
 
 export type Interest = {

@@ -1,0 +1,23 @@
+.help-page {
+  //@apply mt-2.5;
+
+  &__content {
+    @apply lg:-mt-3 max-lg:-mt-4;
+    @apply bg-white pt-3 pb-2 px-3;
+    @apply drop-shadow-md;
+    @apply leading-3;
+
+    &>h2, strong {
+      @apply leading-normal;
+      @apply font-semibold;
+    }
+
+    p {
+      @apply leading-5;
+    }
+
+    li {
+      @apply mb-2;
+    }
+  }
+}

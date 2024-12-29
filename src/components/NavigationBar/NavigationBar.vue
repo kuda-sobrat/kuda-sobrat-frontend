@@ -3,12 +3,18 @@
     <client-only>
       <div class=navigation-bar>
         <div v-if="md || sm" class="navigation-bar__items">
-            <navigation-item v-for="(_, index) in mobileNavigationItems" v-model="mobileNavigationItems[index]" :key="index" class="navigation-bar__item"/>
+          <navigation-item v-for="(_, index) in mobileNavigationItems" v-model="mobileNavigationItems[index]" :key="index" class="navigation-bar__item"/>
         </div>
         <div v-else class="navigation-bar__items">
-            <navigation-item v-for="(_, index) in mainNavigationItems" v-model="mainNavigationItems[index]" :key="index" class="navigation-bar__item"/>
+          <navigation-item v-for="(_, index) in mainNavigationItems" v-model="mainNavigationItems[index]" :key="index" class="navigation-bar__item"/>
         </div>
       </div>
+      <nuxt-link to="/help">
+        <div v-if="!(md || sm)" class="navigation-bar__help">
+          <img class="max-h-[12px] inline mr-1" src="/common/помощь.png" alt="помощь"/>
+          <span>поддержать</span>
+        </div>
+      </nuxt-link>
       <fridge v-model="fridgeState">
         [Дополнительное меню]
       </fridge>
@@ -44,37 +50,42 @@ onMounted(() => {
       title: 'Профиль',
       name: 'profile',
       to: nuxtApp.$generateRoutePathDefault('Profile'),
-      icon: '/navigation/profile-1.svg'
+      icon: '/navigation/profile-1.svg',
+      isBlocked: true,
     },
     {
       title: 'Мероприятия',
       name: 'events',
       to: nuxtApp.$generateRoutePathDefault('Events'),
-      icon: '/navigation/events-2.svg'
+      icon: '/navigation/events-2.svg',
     },
     {
       title: 'Личный календарь',
       name: 'personal-calendar',
       to: nuxtApp.$generateRoutePathDefault('PersonalCalendar'),
-      icon: '/navigation/calendar-2.svg'
+      icon: '/navigation/calendar-2.svg',
+      isBlocked: true,
     },
     {
       title: 'Уведомления',
       name: 'notifications',
       to: nuxtApp.$generateRoutePathDefault('Notifications'),
-      icon: '/navigation/notifications-5.svg'
+      icon: '/navigation/notifications-5.svg',
+      isBlocked: true,
     },
     {
       title: 'Геолокация',
       name: 'geolocation',
       to: nuxtApp.$generateRoutePathDefault('Geolocation'),
-      icon: '/navigation/geolocation-1.svg'
+      icon: '/navigation/geolocation-1.svg',
+      isBlocked: true,
     },
     {
       title: 'Настройки',
       name: 'settings',
       to: nuxtApp.$generateRoutePathDefault('Settings'),
-      icon: '/navigation/settings-1.svg'
+      icon: '/navigation/settings-1.svg',
+      isBlocked: true,
     },
   ]
 
@@ -83,19 +94,22 @@ onMounted(() => {
       title: 'Профиль',
       name: 'profile',
       to: nuxtApp.$generateRoutePathDefault('Profile'),
-      icon: '/navigation/profile-1.svg'
+      icon: '/navigation/profile-1.svg',
+      isBlocked: true,
     },
     {
       title: 'Личный календарь',
       name: 'personal_calendar',
       to: nuxtApp.$generateRoutePathDefault('PersonalCalendar'),
-      icon: '/navigation/calendar-2.svg'
+      icon: '/navigation/calendar-2.svg',
+      isBlocked: true,
     },
     (md ? {
       title: 'Геолокация',
       name: 'geolocation',
       to: nuxtApp.$generateRoutePathDefault('Geolocation'),
-      icon: '/navigation/geolocation-1.svg'
+      icon: '/navigation/geolocation-1.svg',
+      isBlocked: true,
     } : undefined),
     {
       title: 'Мероприятия',
@@ -107,13 +121,14 @@ onMounted(() => {
       title: 'Уведомления',
       name: 'notifications',
       to: nuxtApp.$generateRoutePathDefault('Notifications'),
-      icon: '/navigation/notifications-5.svg'
+      icon: '/navigation/notifications-5.svg',
+      isBlocked: true,
     },
     {
       title: 'Дополнительно меню',
       name: 'additional_menu',
       icon: '/navigation/menu-2.svg',
-      callback: openAdditionalMenu
+      callback: openAdditionalMenu,
     },
   ]
 })

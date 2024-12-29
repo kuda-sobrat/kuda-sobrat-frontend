@@ -188,9 +188,7 @@ h1 {
 }
 
 .tile {
-  @apply mr-1 py-2 px-3;
-  @apply rounded-xl drop-shadow-md;
-  @apply bg-white border-r-[2px] border-solid border-primary border-opacity-15;
+  @include tile;
 }
 
 .line {
@@ -231,6 +229,14 @@ h1 {
 
   &:nth-child(n + 4) {
     @apply hidden;
+  }
+}
+
+.blocked {
+  @apply text-light-gray-secondary;
+
+  img {
+    filter: invert(88%) sepia(3%) saturate(20%) hue-rotate(52deg) brightness(81%) contrast(89%);
   }
 }
 

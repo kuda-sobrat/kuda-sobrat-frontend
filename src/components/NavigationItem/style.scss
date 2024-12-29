@@ -3,3 +3,12 @@
 
   @apply inline-flex items-center gap-1;
 }
+
+.navigation-item_blocked {
+  @apply text-light-gray-secondary;
+
+  &__blocked-image {
+    @apply ml-0.5;
+    filter: invert(88%) sepia(3%) saturate(20%) hue-rotate(52deg) brightness(81%) contrast(89%);
+  }
+}

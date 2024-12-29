@@ -15,9 +15,12 @@
             <div v-if="useAuthStore().token" class="flex flex-row gap-2 items-end justify-end mr-8">
               <profile-link/>
             </div>
-            <nuxt-link to="/auth" v-else class="flex gap-1 items-center hover:transition-all hover:text-coral">
+<!--            <nuxt-link to="/auth" v-else class="flex gap-1 items-center hover:transition-all hover:text-coral">-->
+            <nuxt-link to="/" v-else class="flex gap-1 items-center blocked">
               <span class="text-[14px]">Войти</span>
-              <component :is="getIconComponent('/navigation/login-3.svg')" class="cursor-pointer" alt="Выход"/>
+<!--              <component :is="getIconComponent('/navigation/login-3.svg')" class="cursor-pointer" alt="Выход"/>-->
+              <img src="/common/Заблокировано.png" alt="Заблокировано" class="ml-0.5">
+
             </nuxt-link>
           </div>
         </div>

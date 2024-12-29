@@ -11,8 +11,14 @@
         </div>
       </div>
       <template #addition>
-        <div class="tile">
-          [Фильтры и прочее]
+        <div class="events-feed-module__filters tile">
+          <div>
+<!--            <cascade-list v-model:data=""/>-->
+            <div>Пункт 1</div>
+            <div>Пункт 2</div>
+            <div>Пункт 3</div>
+            <div>Пункт 4</div>
+          </div>
         </div>
       </template>
     </content-area>

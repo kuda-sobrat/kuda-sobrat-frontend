@@ -43,3 +43,15 @@
     display: none; /* Chrome, Safari и Opera */
   }
 }
+
+@mixin tile($pre: 0) {
+  @if $pre != 0 {
+    @apply #{$pre}:mr-1 #{$pre}:py-2 #{$pre}:px-3;
+    @apply #{$pre}:rounded-xl #{$pre}:drop-shadow-md;
+    @apply #{$pre}:bg-white #{$pre}:border-r-[2px] #{$pre}:border-solid #{$pre}:border-primary #{$pre}:border-opacity-15;
+  } @else {
+    @apply mr-1 py-2 px-3;
+    @apply rounded-xl drop-shadow-md;
+    @apply bg-white border-r-[2px] border-solid border-primary border-opacity-15;
+  }
+}
