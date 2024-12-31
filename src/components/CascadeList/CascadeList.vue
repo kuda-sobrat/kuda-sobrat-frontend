@@ -1,5 +1,5 @@
 <template>
-  <div v-if="data" class=cascade-list>
+  <div v-if="data" v-bind="$attrs" class=cascade-list>
     <cascade-list-item v-for="(item, index) in data" v-model:item="data[index]"/>
   </div>
 </template>
@@ -32,17 +32,12 @@ function setup(item: {state?: CascadeItemState}) {
     item.state!.visible = true
   }
 
-  if (item.state?.level! <= props.activeLevel - 1) {
-    item.state!.childrenVisible = true
-  } else {
-    item.state!.childrenVisible = false
-  }
+  item.state!.childrenVisible = item.state?.level! <= props.activeLevel - 1;
 }
 
 async function push(item: CascadeItem) {
   if (!model.value!.some(existing => existing.attributes === item.attributes)) {
     model.value.push(item)
-    console.log(model.value)
   }
 }
 

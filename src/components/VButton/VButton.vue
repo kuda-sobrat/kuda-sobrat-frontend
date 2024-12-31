@@ -1,5 +1,5 @@
 <template>
-  <button class=v-button :class="{'v-button_disabled': !state}">
+  <button :class="['v-button', 'v-button_' + props.size, !state ? 'v-button_disabled' : '']">
     <slot/>
   </button>
 </template>
@@ -17,8 +17,10 @@ const nuxtApp = useNuxtApp()
 const props = withDefaults(
     defineProps<{
       state?: boolean
+      size?: 'sm' | 'md'
     }>(), {
-      state: true
+      state: true,
+      size: 'md'
     }
 )
 

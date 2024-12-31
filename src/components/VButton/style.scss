@@ -1,7 +1,5 @@
 .v-button {
   transition: .1s ease-in-out all;
-  @apply h-[36px] sm:h-[40px] md:h-[44px];
-  @apply py-[4px] px-[8px];
   @apply bg-primary text-white rounded-lg;
   @apply text-[16px] font-[500] align-middle;
   @apply cursor-pointer;
@@ -21,6 +19,16 @@
 
   &:disabled {
     @apply bg-light-gray-secondary;
+  }
+
+  &_sm {
+    @apply h-[32px] sm:h-[30px];
+    @apply px-[8px];
+  }
+
+  &_md {
+    @apply h-[36px] sm:h-[40px] md:h-[44px];
+    @apply py-[4px] px-[8px];
   }
 }
 

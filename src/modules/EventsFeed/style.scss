@@ -2,8 +2,22 @@
 
 .events-feed-module {
   @apply w-[100%];
+  @apply relative;
+
+  &__filters-modal {
+    @apply min-h-[4ch];
+  }
+
+  &__modal-close {
+    @apply cursor-pointer;
+    @apply w-[18px] h-[18px];
+    //@apply absolute top-2 right-2;
+    @apply float-right;
+    @apply max-sm:hidden;
+  }
 }
 
 .events-feed-module__filters {
   @include tile;
+  @apply relative;
 }

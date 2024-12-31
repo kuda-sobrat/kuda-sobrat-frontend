@@ -6,7 +6,7 @@ export default defineNuxtRouteMiddleware(async (to) => {
     const userStore = useAuthStore()
     userStore.init()
 
-    const excludedPaths = ['/help'];
+    const excludedPaths = ['/help', '/test'];
 
     if (to.fullPath === '/logout') {
         await userStore.reset()

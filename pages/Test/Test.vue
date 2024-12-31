@@ -2,8 +2,8 @@
   <div class="test-page">
     <div class="page-content">
       <div class="p-2 flex flex-col gap-2">
+        <cascade-list v-model:data="interests"/>
         <div class="container">
-          <end-of-events-feed/>
         </div>
       </div>
     </div>
@@ -13,7 +13,7 @@
 <script setup="ts">
 import {defineI18nRoute} from "#i18n";
 import {useStaticStore} from "~/stores/static.ts";
-import EndOfEventsFeed from "~/src/components/EndOfEventsFeed/EndOfEventsFeed.vue";
+import CascadeList from "~/src/components/CascadeList/CascadeList.vue";
 
 // i18
 const i18nPrefix = "pages.Test"

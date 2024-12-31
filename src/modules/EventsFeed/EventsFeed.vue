@@ -11,15 +11,7 @@
         </div>
       </div>
       <template #addition>
-        <div class="events-feed-module__filters tile">
-          <div>
-<!--            <cascade-list v-model:data=""/>-->
-            <div>Пункт 1</div>
-            <div>Пункт 2</div>
-            <div>Пункт 3</div>
-            <div>Пункт 4</div>
-          </div>
-        </div>
+        <events-filters/>
       </template>
     </content-area>
   </div>
@@ -32,6 +24,8 @@ import ContentArea from "~/src/components/ContentArea/ContentArea.vue";
 import EventChunk from "~/src/components/EventChunk/EventChunk.vue";
 import IntersectionObserverTrigger from "~/src/components/IntersectionObserverTrigger/IntersectionObserverTrigger.vue";
 import EndOfEventsFeed from "~/src/components/EndOfEventsFeed/EndOfEventsFeed.vue";
+import {useStaticStore} from "~/stores/static";
+import EventsFilters from "~/src/components/EventsFilters/EventsFilters.vue";
 const ctx = useDefaultState()
 
 // i18
@@ -43,10 +37,12 @@ const firstChunk = ref<EventPostType[] | undefined>()
 const total = ref()
 const perPage = 20
 const chunkStates = reactive([])
-
+const interests = ref()
+const staticStore = useStaticStore()
 const currentPages = computed(() => {
   return chunkStates.length
 })
+const activeFilterIndex = ref()
 
 const canLoadMore = computed(() => {
   for (const key in chunkStates) {
@@ -69,8 +65,8 @@ function onIntersectionTrigger(isIntersecting: boolean)
   }
   console.log(isIntersecting)
 }
-
 onMounted(async () => {
+  interests.value = (await staticStore.get('interests')).value
   if (firstChunk.value) {
     console.log(firstChunk.value)
   }

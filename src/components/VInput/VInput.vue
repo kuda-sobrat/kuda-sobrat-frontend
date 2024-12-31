@@ -14,9 +14,10 @@
           :type="props.type === 'checkbox-hidden' ? 'checkbox' : props.type"
       >
 
-      <div v-if="props.type === 'checkbox'" class="v-input__checkmark">
-        <slot name="checkbox"></slot>
+      <div v-if="props.type === 'checkbox'" class="v-input__checkmark relative">
+        <slot name="checkbox"/>
         <component v-if="!$slots['checkbox']" :is="getIconComponent('/ui/success.svg')" alt="Чекбокс"/>
+        <slot name="checkbox-addition"/>
       </div>
       <span v-if="$slots['inner-left']" class="v-input__inner v-input__inner_left">
         <slot name="inner-left"/>
@@ -69,7 +70,7 @@ const props = defineProps<{
   validation?: Validation<ValidationArgs<unknown>, {}>
   name?: string,
   type: 'checkbox'|'checkbox-hidden'|'text'|'password',
-  class: string,
+  class?: string,
 }>()
 
 onMounted(() => {
