@@ -2,7 +2,7 @@
   <div class=event-post-modal v-if="model">
     <event-post-related class="event-post-modal__related"/>
     <event-post-content class="event-post-modal__content" :data="model"/>
-    <event-post-gallery class="event-post-modal__gallery"/>
+    <event-post-gallery class="event-post-modal__gallery" :data="photoAttachments"/>
     <event-post-other class="event-post-modal__other" v-model="model"/>
   </div>
 </template>
@@ -20,6 +20,10 @@ const ctx = useDefaultState()
 const i18nPrefix = "components.EventPostModal"
 const nuxtApp = useNuxtApp()
 const $i = nuxtApp.$i(i18nPrefix)
+
+const photoAttachments = computed(() => {
+  return model.value!.attachments?.filter(attachment => attachment.type === 'photo')
+})
 
 const model = defineModel<EventPost>()
 </script>

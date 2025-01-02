@@ -1,11 +1,11 @@
 @import "assets/scss/mixins";
 
 .event-post-modal {
-  @apply h-full;
+  @apply h-full lg:pt-5;
   @apply gap-2;
 
   &__gallery {
-    @apply max-w-[500px] overflow-hidden;
+    @apply max-w-[500px] overflow-hidden rounded-xl;
   }
 
   &__content {

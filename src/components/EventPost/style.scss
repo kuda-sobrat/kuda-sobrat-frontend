@@ -12,8 +12,10 @@
   }
 
   &__body {
+    @apply z-10 rounded-md;
     @apply cursor-pointer;
-    @apply flex sm:flex-[4] flex-col gap-1 justify-between;
+    @apply flex sm:flex-[4] flex-col gap-1 justify-between backdrop-blur-sm;
+    @apply bg-white bg-opacity-85;
   }
 
   &__title {
@@ -48,15 +50,17 @@
     @apply py-1;
   }
 
-  &__attachment {
-    transition: all .15s ease-in-out;
-    @apply flex flex-col sm:flex-[3] gap-1 items-end;
+  .gradient-overlay {
+    background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
   }
 
-  &__gallery {
-    @apply min-h-[240px] w-full;
-    @apply rounded-md;
-    @apply rounded-tr-[40px];
+  &__attachment {
+    transition: all .15s ease-in-out;
+    @apply flex flex-col max-lg:flex-[4] lg:flex-[3] gap-1 items-end;
+    @apply min-h-[240px];
+    @apply rounded-md overflow-hidden rounded-tr-[30px];
+    @apply cursor-pointer;
+    //@apply max-sm:absolute max-sm:top-0 max-sm:left-0 max-sm:max-h-full max-sm:overflow-hidden;
   }
 
   &__interest-point {
@@ -64,6 +68,7 @@
     @apply bg-red-200;
     @apply min-w-[16px] min-h-[16px] w-[16px] h-[16px];
     @apply rounded-full;
+    @apply z-20;
     outline-offset: -1px;
     @apply outline outline-[9nppx] outline-white;
   }

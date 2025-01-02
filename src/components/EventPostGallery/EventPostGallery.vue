@@ -1,19 +1,6 @@
 <template>
   <div class=event-post-gallery>
-    [ EventPostGallery ]
-    <Carousel id="gallery"
-              class="carousel-gallery"
-              :items-to-show="1" :wrap-around="false" v-model="currentSlide">
-      <Slide v-for="(image, index) in images" :key="index">
-        <div class="carousel-gallery__item">
-          <img :src="image.src"
-               :alt="image.alt"/>
-        </div>
-      </Slide>
-      <template #addons>
-        <pagination/>
-      </template>
-    </Carousel>
+    <image-gallery v-if="images" :images="images"/>
 
 <!--    <Carousel-->
 <!--        id="thumbnails"-->
@@ -36,6 +23,8 @@
 
 <script setup lang='ts'>
 import { useDefaultState } from './composables/useDefault'
+import ImageGallery from "~/src/components/ImageGallery/ImageGallery.vue";
+import type {EventPostAttachment} from "~/common/types/common";
 
 const ctx = useDefaultState()
 
@@ -44,17 +33,26 @@ const i18nPrefix = "components.EventPostGallery"
 const nuxtApp = useNuxtApp()
 const $i = nuxtApp.$i(i18nPrefix)
 
-// const props = defineProps<{
-//   images: { src: string, alt?: string }[]
-// }>()
-const images = [
-  {
-    src: 'https://img.goodfon.com/original/2331x1750/1/c7/leopard-vzglyad-lezhit-leopard.jpg', alt: 'string'
-  },
-  {
-    src: 'https://img.goodfon.com/original/2331x1750/1/c7/leopard-vzglyad-lezhit-leopard.jpg', alt: 'string'
-  },
-]
+const props = defineProps<{
+  data: EventPostAttachment[]
+}>()
+
+const images = computed(() => {
+  return props.data.map((item) => {
+    return {
+      url: item.url,
+      alt: item.title
+    }
+  })
+})
+// const images = [
+//   {
+//     src: 'https://img.goodfon.com/original/2331x1750/1/c7/leopard-vzglyad-lezhit-leopard.jpg', alt: 'string'
+//   },
+//   {
+//     src: 'https://img.goodfon.com/original/2331x1750/1/c7/leopard-vzglyad-lezhit-leopard.jpg', alt: 'string'
+//   },
+// ]
 
 const currentSlide = ref(0)
 

@@ -6,13 +6,10 @@
           <h2 class="event-post__title" @click="emit('open', model)">
           {{ model?.name }}
           </h2>
-          <p class="event-post__tags">
-            {{ model?.tags }}
-          </p>
           <span class="event-post__description" @click="emit('open', model)">
             {{ model?.description }}
           </span>
-          <div class="event-post__location">
+          <div class="event-post__location" @click="emit('open', model)">
             {{ model?.location_name }}
           </div>
         </div>
@@ -43,10 +40,10 @@
           </div>
         </div>
       </div>
-      <div v-if="photoAttachments?.length > 0" class="event-post__attachment">
-        <div v-if="photoAttachments?.length > 0" class="event-post__gallery">
-          <image-gallery v-model="photoAttachments" class="event-post__gallery"/>
-        </div>
+      <div v-if="photoAttachments?.length > 0" class="event-post__attachment" @click="emit('open', model)">
+        <img :src="photoAttachments[0].url" class="w-full h-full object-cover" :alt="model?.name"/>
+        <div class="gradient-overlay absolute inset-0"/>
+<!--        <event-post-gallery v-if="photoAttachments?.length > 0" :data="photoAttachments" class="event-post__gallery"/>-->
       </div>
       <div class="event-post__interest-point"/>
     </div>
@@ -62,6 +59,7 @@ import type {EventPost} from "~/common/types/common";
 import {getIconComponent} from "~/common/composables/useIcons";
 import type {ComputedRef} from "vue";
 import {formatDateDayOfWeekIntl, formatTimeIntl} from "~/common/composables/useHelpers";
+import EventPostGallery from "~/src/components/EventPostGallery/EventPostGallery.vue";
 const ctx = useDefaultState()
 
 // i18

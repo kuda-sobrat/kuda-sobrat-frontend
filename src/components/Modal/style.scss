@@ -9,6 +9,7 @@
   word-wrap: break-word;
 
   &__close_mobile {
+    @apply cursor-pointer;
     @apply transition-all;
     content: '';
     @apply bg-primary bg-opacity-70;

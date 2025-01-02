@@ -1,6 +1,17 @@
 <template>
-  <div class=image-gallery>
-    <img :src="model[0].url" class="object-cover h-full" alt="Первое изображение"/>
+  <div class=image-gallery__wrapper>
+    <Carousel id="gallery"
+              class="image-gallery h-full"
+              :mouse-drag="true"
+              :items-to-show="1" :wrap-around="false" v-model="currentSlide">
+      <Slide v-for="(image, index) in images" class="h-full bg-red-200" :key="index">
+        <img class="image-gallery__item" :src="image.url" :alt="image.alt"/>
+      </Slide>
+      <template #addons>
+<!--        <pagination v-if="images?.length > 0"/>-->
+      </template>
+    </Carousel>
+<!--    <img :src="model[0].url" class="object-cover h-full" alt="Первое изображение"/>-->
   </div>
 </template>
 
@@ -13,7 +24,19 @@ const i18nPrefix = "components.ImageGallery"
 const nuxtApp = useNuxtApp()
 const $i = nuxtApp.$i(i18nPrefix)
 
-const model = defineModel()
+const props = defineProps<{
+  images: {
+    url: string,
+    alt: string,
+  }[]
+}>()
+
+const currentSlide = ref(0)
+
+onMounted(() => {
+  console.log(props.images.length)
+})
+
 </script>
 
 <style lang="scss">
