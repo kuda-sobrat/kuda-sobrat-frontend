@@ -1,0 +1,34 @@
+.event-post-content {
+
+  &__title {
+    @apply block;
+    @apply py-2;
+    @apply text-[16.5px] font-semibold text-dark-gray;
+    @apply leading-5;
+  }
+
+  &__tags {
+
+  }
+
+  &__description {
+    @apply leading-5;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+  }
+
+  &__location {
+    @apply py-1;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+
+  &__datetime {
+    @apply leading-4;
+    @apply py-1;
+  }
+}

@@ -1,5 +1,5 @@
 .modal {
-  @apply w-full min-h-[50vh] h-[100%];
+  @apply w-full min-h-[75vh] h-[100%];
   @apply bg-white;
   @apply p-2 max-md:pt-3 max-sm:pr-2;
   @apply overflow-hidden;
@@ -80,9 +80,11 @@
 
 .modal_limit {
   @apply rounded-2xl;
+  @apply h-[90vh];
 }
 
 .modal__wrapper:has(.modal_limit) {
+  @apply flex items-center;
   @apply max-sm:p-1 sm:p-2 md:p-5;
   @apply max-sm:pt-[9vh];
   @apply max-sm:items-end;

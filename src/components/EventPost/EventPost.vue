@@ -3,13 +3,13 @@
     <div class="event-post__content">
       <div class="event-post__body">
         <div>
-          <h2 class="event-post__title">
+          <h2 class="event-post__title" @click="emit('open', model)">
           {{ model?.name }}
           </h2>
           <p class="event-post__tags">
             {{ model?.tags }}
           </p>
-          <span class="event-post__description">
+          <span class="event-post__description" @click="emit('open', model)">
             {{ model?.description }}
           </span>
           <div class="event-post__location">
@@ -76,6 +76,11 @@ const photoAttachments = computed(() => {
 
 const isStarHover = ref(false)
 const starState = ref(false)
+const emit = defineEmits<{
+  open: [
+      post: EventPost
+  ]
+}>()
 
 const startDate: ComputedRef<Date> = computed(() => {
   return new Date(model.value!.start_datetime)

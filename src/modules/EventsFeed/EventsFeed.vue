@@ -2,8 +2,8 @@
   <div class=events-feed-module>
     <content-area>
       <div style="all: inherit">
-        <event-chunk v-model="firstChunk" v-model:total="total" :per-page="perPage" v-model:is-loaded="chunkStates[0]"/>
-        <event-chunk v-if="total" v-for="i in currentPages - 1" :chunk-id="i + 1" v-model:is-loaded="chunkStates[i]"/>
+        <event-chunk v-model="activePost" v-model:data="firstChunk" v-model:total="total" :per-page="perPage" v-model:is-loaded="chunkStates[0]"/>
+        <event-chunk v-model="activePost" v-if="total" v-for="i in currentPages - 1" :chunk-id="i + 1" v-model:is-loaded="chunkStates[i]"/>
         <div class="relative">
           <intersection-observer-trigger v-if="canLoadMore && !isEnded" class="absolute bottom-[200vh] h-[10px] bg-red-200" @trigger="onIntersectionTrigger"/>
           <end-of-events-feed/>
@@ -14,6 +14,9 @@
         <events-filters/>
       </template>
     </content-area>
+    <modal v-model="activePost">
+      <event-post-modal v-model="activePost"/>
+    </modal>
   </div>
 </template>
 
@@ -26,6 +29,8 @@ import IntersectionObserverTrigger from "~/src/components/IntersectionObserverTr
 import EndOfEventsFeed from "~/src/components/EndOfEventsFeed/EndOfEventsFeed.vue";
 import {useStaticStore} from "~/stores/static";
 import EventsFilters from "~/src/components/EventsFilters/EventsFilters.vue";
+import Modal from "~/src/components/Modal/Modal.vue";
+import EventPostModal from "~/src/components/EventPostModal/EventPostModal.vue";
 const ctx = useDefaultState()
 
 // i18
@@ -39,6 +44,7 @@ const perPage = 20
 const chunkStates = reactive([])
 const interests = ref()
 const staticStore = useStaticStore()
+const activePost = ref()
 const currentPages = computed(() => {
   return chunkStates.length
 })

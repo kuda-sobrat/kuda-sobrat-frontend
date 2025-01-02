@@ -1,7 +1,7 @@
 <template>
   <div class=event-chunk style="all: inherit">
 <!-- TODO: Loader -->
-    <event-post v-for="(item, key) in model" :key="key" v-model="model[key]"/>
+    <event-post v-for="(item, key) in modelData" :key="key" v-model="modelData[key]" @open="onOpen"/>
   </div>
 </template>
 
@@ -23,11 +23,16 @@ const props = withDefaults(defineProps<{
 }>(), {
   perPage: 20
 })
-const model = defineModel<EventPostType[] | undefined>()
+const modelData = defineModel<EventPostType[] | undefined>('data')
+const model = defineModel<EventPostType | undefined>()
 const total = defineModel<number>('total')
 const isLoaded = defineModel<boolean>('isLoaded', {
   default: false
 })
+
+function onOpen(post: EventPostType) {
+  model.value = post
+}
 
 onMounted(async () => {
   const request = new GetFeedEndpoint()
@@ -35,7 +40,8 @@ onMounted(async () => {
     cursor: props.chunkId,
     per_page: props.perPage
   }).then((data) => {
-    model.value = data
+    modelData.value = data
+    model.value = data[0]
     isLoaded.value = true
     total.value = request.responseOriginal.value.total
   })

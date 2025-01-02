@@ -56,7 +56,7 @@ onMounted(() => {
     {
       title: 'Мероприятия',
       name: 'events',
-      to: nuxtApp.$generateRoutePathDefault('Events'),
+      to: nuxtApp.$generateRoutePathDefault('Home'),
       icon: '/navigation/events-2.svg',
     },
     {
