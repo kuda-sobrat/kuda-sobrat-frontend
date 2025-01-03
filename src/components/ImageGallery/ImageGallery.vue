@@ -4,14 +4,13 @@
               class="image-gallery h-full"
               :mouse-drag="true"
               :items-to-show="1" :wrap-around="false" v-model="currentSlide">
-      <Slide v-for="(image, index) in images" class="h-full bg-red-200" :key="index">
+      <Slide v-for="(image, index) in images" class="h-full" :key="index">
         <img class="image-gallery__item" :src="image.url" :alt="image.alt"/>
       </Slide>
       <template #addons>
-<!--        <pagination v-if="images?.length > 0"/>-->
+        <pagination v-if="images?.length > 1"/>
       </template>
     </Carousel>
-<!--    <img :src="model[0].url" class="object-cover h-full" alt="Первое изображение"/>-->
   </div>
 </template>
 
