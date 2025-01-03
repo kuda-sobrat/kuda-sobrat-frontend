@@ -27,22 +27,8 @@
           <div>
             <div class="event-post__reactions" @click="onClickStar">
               <div class="event-post-other__participation blocked" :class="{'event-post-other__participation_active': eventParticipationState}">
-<!--                <img src="/common/Заблокировано.png" alt="Заблокировано">-->
-<!--                <span>-->
-<!--                  {{ model.attendees + (eventParticipationState ? 1 : 0) }}-->
-<!--                </span>-->
               </div>
               <event-participation-button v-model="eventParticipationState" @click="submitParticipationState"/>
-<!--              <component class="event-post__favorite"-->
-<!--                         :class="{'event-post__favorite_active': starState}"-->
-<!--                         :is="getIconComponent('/ui/star.svg')"-->
-<!--                         alt="Избранное"-->
-<!--                         @mouseenter="isStarHover = true"-->
-<!--                         @mouseleave="isStarHover = false"-->
-<!--              />-->
-<!--              <div>-->
-<!--                {{ model.attendees }}-->
-<!--              </div>-->
             </div>
           </div>
         </div>

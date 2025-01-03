@@ -7,12 +7,12 @@
       </nuxt-layout>
     </template>
     <template #fallback>
-      Загрузка...
+      <page-loader/>
     </template>
   </suspense>
-<!--  <loading-bar/>-->
 </template>
 
 <script setup lang="ts">
 import GlobalScenarioComponent from "~/src/components/GlobalScenarioComponent/GlobalScenarioComponent.vue";
+import PageLoader from "~/src/components/PageLoader/PageLoader.vue";
 </script>

@@ -5,6 +5,9 @@
         <event-chunk v-model="activePost" v-model:data="firstChunk" :method="functionInstance" :per-page="perPage" v-model:is-loaded="chunkStates[0]"/>
         <event-chunk v-if="feedStore.total" v-model="activePost" :method="functionInstance" v-for="i in currentPages - 1" :chunk-id="i + 1" v-model:is-loaded="chunkStates[i]"/>
         <div class="relative">
+          <div v-if="!isEnded" class="w-full flex items-center justify-center mt-2">
+            <div class="events-feed-module__spinner"/>
+          </div>
           <intersection-observer-trigger v-if="canLoadMore && !isEnded" class="absolute bottom-[200vh] h-[10px] bg-red-200" @trigger="onIntersectionTrigger"/>
           <end-of-events-feed/>
           <intersection-observer-trigger v-if="canLoadMore && !isEnded" class="absolute bottom-[10vh] h-[10px] bg-red-200" @trigger="onIntersectionTrigger"/>

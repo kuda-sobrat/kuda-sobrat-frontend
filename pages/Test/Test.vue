@@ -2,10 +2,7 @@
   <div class="test-page">
     <div class="page-content">
       <div class="p-2 flex flex-col gap-2">
-        <event-participation-button v-model="participationState"/>
-<!--        <cascade-list v-model:data="interests"/>-->
-        <div class="container">
-        </div>
+        hello
       </div>
     </div>
   </div>
@@ -14,8 +11,6 @@
 <script setup="ts">
 import {defineI18nRoute} from "#i18n";
 import {useStaticStore} from "~/stores/static.ts";
-import CascadeList from "~/src/components/CascadeList/CascadeList.vue";
-import EventParticipationButton from "~/src/components/EventParticipationButton/EventParticipationButton.vue";
 
 // i18
 const i18nPrefix = "pages.Test"
