@@ -1,24 +1,20 @@
 <template>
-  <div v-if="data" class=event-post-other>
-    <div class="event-post__datetime">
-      <div class="text-[18px]">
-        {{ formatTimeIntl(new Date(data.start_datetime)) }}
+  <div v-if="model" class=event-post-other>
+    <div class="ml-2 flex flex-row gap-1 relative">
+      <div class="event-post-other__participation blocked" :class="{'event-post-other__participation_active': eventParticipationState}">
+<!--        <img src="/common/Заблокировано.png" alt="Заблокировано">-->
+<!--        <span>-->
+<!--          {{ model.attendees + (eventParticipationState ? 1 : 0) }}-->
+<!--        </span>-->
       </div>
-      <div class="text-[14px]">
-        {{ formatDateDayOfWeekIntl(new Date(data.start_datetime)) }}
-      </div>
+      <event-participation-button v-model="eventParticipationState" @click="submitParticipationState"/>
     </div>
-    <div>
-      <div class="event-post__reactions">
-        <component class="event-post__favorite"
-                   :class="{'event-post__favorite_active': false}"
-                   :is="getIconComponent('/ui/star.svg')"
-                   alt="Избранное"
-        />
-        <div>
-          {{ data.attendees }}
-        </div>
-      </div>
+
+    <div class="active:fill-coral cursor-pointer" @click="onShare">
+      <component class="event-participation-button__image"
+                 :is="getIconComponent('/ui/share.svg')"
+                 alt="Поделиться"
+      />
     </div>
 
 
@@ -28,8 +24,9 @@
 <script setup lang='ts'>
 import { useDefaultState } from './composables/useDefault'
 import {getIconComponent} from "~/common/composables/useIcons";
-import {formatDateDayOfWeekIntl, formatTimeIntl} from "~/common/composables/useHelpers";
 import type {EventPost} from "~/common/types/common";
+import EventParticipationButton from "~/src/components/EventParticipationButton/EventParticipationButton.vue";
+import {copyToClipboard} from "~/common/composables/useHelpers";
 const ctx = useDefaultState()
 
 // i18
@@ -37,7 +34,16 @@ const i18nPrefix = "components.EventPostOther"
 const nuxtApp = useNuxtApp()
 const $i = nuxtApp.$i(i18nPrefix)
 
-const data = defineModel<EventPost>()
+const model = defineModel<EventPost>()
+const eventParticipationState = ref(false)
+
+function submitParticipationState() {
+
+}
+
+function onShare() {
+  copyToClipboard(window.location.origin + '/help')
+}
 </script>
 
 <style lang="scss">

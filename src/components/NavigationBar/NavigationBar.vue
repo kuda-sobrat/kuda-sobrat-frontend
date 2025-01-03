@@ -58,6 +58,7 @@ onMounted(() => {
       name: 'events',
       to: nuxtApp.$generateRoutePathDefault('Home'),
       icon: '/navigation/events-2.svg',
+      // image: '/common/Мероприятия.png'
     },
     {
       title: 'Личный календарь',
@@ -114,8 +115,9 @@ onMounted(() => {
     {
       title: 'Мероприятия',
       name: 'events',
-      to: nuxtApp.$generateRoutePathDefault('Events'),
-      icon: '/navigation/events-3.svg'
+      to: nuxtApp.$generateRoutePathDefault('Home'),
+      // icon: '/navigation/events-3.svg'
+      image: '/common/Мероприятия.png'
     },
     {
       title: 'Уведомления',

@@ -26,16 +26,23 @@
 
           <div>
             <div class="event-post__reactions" @click="onClickStar">
-              <component class="event-post__favorite"
-                         :class="{'event-post__favorite_active': starState}"
-                         :is="getIconComponent('/ui/star.svg')"
-                         alt="Избранное"
-                         @mouseenter="isStarHover = true"
-                         @mouseleave="isStarHover = false"
-              />
-              <div>
-                {{ model.attendees }}
+              <div class="event-post-other__participation blocked" :class="{'event-post-other__participation_active': eventParticipationState}">
+<!--                <img src="/common/Заблокировано.png" alt="Заблокировано">-->
+<!--                <span>-->
+<!--                  {{ model.attendees + (eventParticipationState ? 1 : 0) }}-->
+<!--                </span>-->
               </div>
+              <event-participation-button v-model="eventParticipationState" @click="submitParticipationState"/>
+<!--              <component class="event-post__favorite"-->
+<!--                         :class="{'event-post__favorite_active': starState}"-->
+<!--                         :is="getIconComponent('/ui/star.svg')"-->
+<!--                         alt="Избранное"-->
+<!--                         @mouseenter="isStarHover = true"-->
+<!--                         @mouseleave="isStarHover = false"-->
+<!--              />-->
+<!--              <div>-->
+<!--                {{ model.attendees }}-->
+<!--              </div>-->
             </div>
           </div>
         </div>
@@ -43,7 +50,6 @@
       <div v-if="photoAttachments?.length > 0" class="event-post__attachment" @click="emit('open', model)">
         <img :src="photoAttachments[0].url" class="w-full h-full object-cover" :alt="model?.name"/>
         <div class="gradient-overlay absolute inset-0"/>
-<!--        <event-post-gallery v-if="photoAttachments?.length > 0" :data="photoAttachments" class="event-post__gallery"/>-->
       </div>
       <div class="event-post__interest-point"/>
     </div>
@@ -54,12 +60,10 @@
 
 <script setup lang='ts'>
 import { useDefaultState } from './composables/useDefault'
-import ImageGallery from "~/src/components/ImageGallery/ImageGallery.vue";
 import type {EventPost} from "~/common/types/common";
-import {getIconComponent} from "~/common/composables/useIcons";
 import type {ComputedRef} from "vue";
 import {formatDateDayOfWeekIntl, formatTimeIntl} from "~/common/composables/useHelpers";
-import EventPostGallery from "~/src/components/EventPostGallery/EventPostGallery.vue";
+import EventParticipationButton from "~/src/components/EventParticipationButton/EventParticipationButton.vue";
 const ctx = useDefaultState()
 
 // i18
@@ -74,6 +78,7 @@ const photoAttachments = computed(() => {
 
 const isStarHover = ref(false)
 const starState = ref(false)
+const eventParticipationState = ref(false)
 const emit = defineEmits<{
   open: [
       post: EventPost

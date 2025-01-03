@@ -39,7 +39,8 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      apiBase: '/api'
+      base: '/',
+      apiBase: '/api',
     },
   },
   i18n: {

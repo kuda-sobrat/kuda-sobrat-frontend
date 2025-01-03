@@ -110,7 +110,7 @@
     }
 
     &:active {
-      @apply max-md:bg-coral;
+      @apply max-md:bg-primary max-md:bg-opacity-35;
     }
 
     &:before {

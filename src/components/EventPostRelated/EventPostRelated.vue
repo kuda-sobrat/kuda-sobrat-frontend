@@ -1,6 +1,38 @@
 <template>
   <div class=event-post-related>
-    [ EventPostRelated ]
+    <div class="event-post-related__communities">
+      <div class="event-post-related__title">
+        Связанные сообщества
+      </div>
+      <div class="event-post-related__body">
+<!--        <div>-->
+<!--          [1]-->
+<!--        </div>-->
+<!--        <div>-->
+<!--          [2]-->
+<!--        </div>-->
+<!--        <div>-->
+<!--          [3]-->
+<!--        </div>-->
+      </div>
+    </div>
+
+    <div class="event-post-related__posts">
+      <div class="event-post-related__title">
+        Связанные записи
+      </div>
+      <div class="event-post-related__body">
+<!--        <div>-->
+<!--          [1]-->
+<!--        </div>-->
+<!--        <div>-->
+<!--          [2]-->
+<!--        </div>-->
+<!--        <div>-->
+<!--          [3]-->
+<!--        </div>-->
+      </div>
+    </div>
   </div>
 </template>
 

@@ -1,8 +1,8 @@
 <template>
   <nuxt-link :class="['navigation-item', model?.isBlocked ? 'navigation-item_blocked' : '']" v-bind="$attrs" :to="!model?.isBlocked ? model?.to : ''" @click="model?.callback ? model.callback() : undefined">
-    <div v-if="model?.icon" class="relative flex items-center justify-center">
-<!--      <img :src="`${model?.icon}`" :alt="model.title">-->
-      <lazy-client-only v-if="!model.isBlocked">
+    <div v-if="model?.icon || model?.image" class="relative flex items-center justify-center">
+      <img v-if="model?.image" :src="`${model?.image}`" :alt="model.title">
+      <lazy-client-only v-else v-if="!model.isBlocked">
         <component :is="getIconComponent(`${model?.icon}`)" :alt="model.title"/>
       </lazy-client-only>
       <img v-if="model.isBlocked" class="navigation-item_blocked__blocked-image" src="/common/Заблокировано.png" alt="Заблокировано">

@@ -1,2 +1,14 @@
 .event-post-other {
+  @apply flex flex-row items-center gap-1 justify-between pr-2 lg:pt-2;
+
+  &__participation {
+    transition: color .2s;
+    @apply text-light-gray-secondary font-semibold pointer-events-none mt-0.5;
+    @apply flex flex-row items-center gap-0.5;
+
+    &_active {
+      transition: color .2s;
+      @apply text-coral-dark;
+    }
+  }
 }

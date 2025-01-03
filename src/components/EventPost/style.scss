@@ -99,10 +99,11 @@
   }
 
   &__reactions {
-    @apply flex flex-row items-center;
-    @apply text-dark-gray;
-    @apply cursor-pointer;
-    @apply px-1 py-0.5;
-    @apply bg-gray-100 shadow-inner rounded-md;
+    @apply flex flex-row gap-1 relative;
+    //@apply flex flex-row items-center;
+    //@apply text-dark-gray;
+    //@apply cursor-pointer;
+    //@apply px-1 py-0.5;
+    //@apply bg-gray-100 shadow-inner rounded-md;
   }
 }

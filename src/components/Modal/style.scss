@@ -17,7 +17,7 @@
     @apply absolute left-1/2 top-[5px] transform -translate-x-1/2;
     @apply w-[9ch] h-[6px];
     @apply cursor-pointer;
-    @apply sm:hidden;
+    @apply sm_plus:hidden;
 
     &.modal__close_disabled {
       @apply transition-all;
@@ -46,11 +46,11 @@
   &__headnote {
     @apply relative;
     @apply text-[21px] font-[600];
-    @apply max-sm:mb-1 max-md:mb-1.5 md:mb-2;
+    @apply max-sm_plus:mb-1 max-md:mb-1.5 md:mb-2;
     @apply leading-6;
-    @apply max-sm:line-clamp-3 sm:line-clamp-2;
+    @apply max-sm_plus:line-clamp-3 sm_plus:line-clamp-2;
 
-    @apply md:pt-2 max-md:pt-1.5 max-sm:pt-0;
+    @apply md:pt-2 max-md:pt-1.5 max-sm_plus:pt-0;
   }
 
   &__content {
@@ -63,7 +63,7 @@
     @apply w-[24px] h-[24px];
     //@apply absolute top-2 right-2;
     @apply float-right;
-    @apply max-sm:hidden;
+    @apply max-sm_plus:hidden;
   }
 }
 
@@ -86,9 +86,9 @@
 
 .modal__wrapper:has(.modal_limit) {
   @apply flex items-center;
-  @apply max-sm:p-1 sm:p-2 md:p-5;
-  @apply max-sm:pt-[9vh];
-  @apply max-sm:items-end;
+  @apply max-sm_plus:p-1 sm_plus:p-2 md:p-5;
+  @apply max-sm_plus:pt-[9vh];
+  @apply max-sm_plus:items-end;
 }
 
 .modal__wrapper:has(.modal_active) {

@@ -11,7 +11,8 @@ export default {
     ],
     theme: {
         screens: {
-            sm: "375px",
+            sm: "370px",
+            sm_plus: "440px",
             md: "620px",
             lg: "920px",
             xl: "1110px"

@@ -1,2 +1,22 @@
 .event-post-related {
+  @apply flex max-lg:flex-row max-md:flex-col lg:flex-col gap-2;
+  @apply lg:bg-gray-100 lg:shadow-inner lg:rounded-xl;
+
+  &__title {
+    @apply lg:font-[600];
+    @apply max-lg:hidden;
+    @apply lg:bg-white lg:pt-2 lg:pb-0.5 lg:px-2;
+  }
+
+  &__communities {
+
+  }
+
+  &__posts {
+    @apply max-lg:hidden
+  }
+
+  &__body {
+    @apply flex flex-col max-lg:flex-row max-lg:flex-wrap gap-2;
+  }
 }
