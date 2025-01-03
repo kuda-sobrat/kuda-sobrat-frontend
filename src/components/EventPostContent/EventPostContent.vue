@@ -51,12 +51,12 @@ const props = defineProps<{
   data: EventPost
 }>()
 
-const startDate: ComputedRef<Date> = computed(() => {
-  return new Date(props.data.start_datetime)
+const startDate: ComputedRef<Date | null> = computed(() => {
+  return props.data.start_datetime ? new Date(props.data.start_datetime) : null
 })
 
-const endDate: ComputedRef<Date> = computed(() => {
-  return new Date(props.data.end_datetime)
+const endDate: ComputedRef<Date | null> = computed(() => {
+  return props.data.end_datetime ? new Date(props.data.end_datetime) : null
 })
 </script>
 

@@ -10,11 +10,12 @@
   }
 
   &__text {
+    @apply flex;
     @apply ml-[-109%];
-    @apply text-coral-dark font-semibold;
 
     &_active {
       @apply ml-0;
+      @apply text-coral-dark font-semibold;
     }
   }
 
