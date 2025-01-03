@@ -3,4 +3,28 @@
 .search-input {
   font-size: 14px !important;
   @apply max-w-[400px];
+
+  &__wrapper {
+    @apply relative;
+  }
+
+  &__suggestions {
+    @apply absolute top-[100%] w-full h-auto;
+    @apply mt-2 m-0.5 -ml-2.5;
+    @apply drop-shadow-md;
+    @apply rounded-md;
+    @apply bg-white;
+    @apply flex flex-col gap-0.5;
+    @apply py-1;
+  }
+
+  &__suggestion {
+    @apply px-3 py-1.5;
+    @apply cursor-pointer;
+    @apply leading-5;
+
+    &:hover {
+      @apply bg-gray-100;
+    }
+  }
 }

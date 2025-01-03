@@ -97,3 +97,17 @@ export function fallbackCopyTextToClipboard(text: string) {
     // Удаляем временное текстовое поле
     document.body.removeChild(textArea);
 }
+
+export function debounce(func: Function, wait: number) {
+    let timeout: any;
+
+    return function executedFunction(...args: any[]) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}

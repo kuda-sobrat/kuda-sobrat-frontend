@@ -31,12 +31,13 @@ import {useStaticStore} from "~/stores/static";
 import EventsFilters from "~/src/components/EventsFilters/EventsFilters.vue";
 import Modal from "~/src/components/Modal/Modal.vue";
 import EventPostModal from "~/src/components/EventPostModal/EventPostModal.vue";
+import {useFeedStore} from "~/stores/feed";
 const ctx = useDefaultState()
 
 // i18
 const i18nPrefix = "modules.EventsFeed"
 const nuxtApp = useNuxtApp()
-const $i = nuxtApp.$i(i18nPrefix)
+// const $i = nuxtApp.$i(i18nPrefix)
 
 const firstChunk = ref<EventPostType[] | undefined>()
 const total = ref()
@@ -59,6 +60,7 @@ const canLoadMore = computed(() => {
   return true
 })
 
+const feedStore = useFeedStore()
 const isEnded = computed(() => {
   return !(Math.ceil(total.value / perPage) > currentPages.value)
 })
@@ -71,6 +73,17 @@ function onIntersectionTrigger(isIntersecting: boolean)
   }
   console.log(isIntersecting)
 }
+
+watch(
+    () => [feedStore.searchQuery, feedStore.filters],
+    () => {
+      console.log('nice')
+      const func = feedStore.getFunction()
+      console.log('Изменения отслежены', func())
+    },
+    { deep: true }
+);
+
 onMounted(async () => {
   interests.value = (await staticStore.get('interests')).value
   if (firstChunk.value) {
