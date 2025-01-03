@@ -7,9 +7,9 @@
 
 <script setup lang='ts'>
 import { useDefaultState } from './composables/useDefault'
-import GetFeedEndpoint from "~/common/api/endpoints/v1/event/GetFeed";
 import type {EventPost as EventPostType} from "~/common/types/common.ts";
 import EventPost from "~/src/components/EventPost/EventPost.vue";
+import type {AsyncFunction} from "type-fest/source/async-return-type";
 const ctx = useDefaultState()
 
 // i18
@@ -20,12 +20,12 @@ const $i = nuxtApp.$i(i18nPrefix)
 const props = withDefaults(defineProps<{
   chunkId?: any
   perPage?: number
+  method: AsyncFunction
 }>(), {
-  perPage: 20
+  perPage: 20,
 })
 const modelData = defineModel<EventPostType[] | undefined>('data')
 const model = defineModel<EventPostType | undefined>()
-const total = defineModel<number>('total')
 const isLoaded = defineModel<boolean>('isLoaded', {
   default: false
 })
@@ -35,16 +35,8 @@ function onOpen(post: EventPostType) {
 }
 
 onMounted(async () => {
-  const request = new GetFeedEndpoint()
-  await (request).call({
-    cursor: props.chunkId,
-    per_page: props.perPage
-  }).then((data) => {
-    modelData.value = data
-    model.value = data[0]
-    isLoaded.value = true
-    total.value = request.responseOriginal.value.total
-  })
+  modelData.value = await props.method()
+  isLoaded.value = true
 })
 </script>
 

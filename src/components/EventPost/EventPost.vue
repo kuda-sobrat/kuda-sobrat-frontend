@@ -89,6 +89,10 @@ const startDate: ComputedRef<Date> = computed(() => {
   return new Date(model.value!.start_datetime)
 })
 
+function submitParticipationState() {
+
+}
+
 function onClickStar() {
   starState.value = !starState.value
 }

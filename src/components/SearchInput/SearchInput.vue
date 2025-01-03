@@ -6,8 +6,7 @@
         v-bind="$attrs"
         type="text"
         @input="onInput"
-        @keyup.enter="onSearch"
-        @focusout="suggestionsState = false"
+        @keyup.enter="onSearch(model)"
         @focusin="suggestionsState = true"
     >
       <template #inner-left>
@@ -15,7 +14,7 @@
       </template>
     </v-input>
     <div v-if="suggestions.length > 0 && suggestionsState" class="search-input__suggestions">
-      <div v-for="(suggestion, key) in suggestions" class="search-input__suggestion" :key="key" @click="onSearch(suggestion.name)">
+      <div v-for="(suggestion, key) in suggestions" class="search-input__suggestion" :key="key" @click.stop="onSearch(suggestion.name)">
         {{ suggestion.name }}
       </div>
     </div>
@@ -72,10 +71,9 @@ const wrapperRef = ref(null)
 
 // Функция для обработки кликов по документу
 function onClickOutside(event: MouseEvent) {
-  console.log('hello')
   if (wrapperRef.value && !wrapperRef.value.contains(event.target as Node)) {
-    console.log('hello')
-    suggestionsState.value = false
+    feedStore.searchQuery = model.value ?? ''
+    suggestionsState.value = false;
   }
 }
 

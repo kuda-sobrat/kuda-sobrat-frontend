@@ -2,8 +2,8 @@
   <div class=events-feed-module>
     <content-area>
       <div style="all: inherit">
-        <event-chunk v-model="activePost" v-model:data="firstChunk" v-model:total="total" :per-page="perPage" v-model:is-loaded="chunkStates[0]"/>
-        <event-chunk v-model="activePost" v-if="total" v-for="i in currentPages - 1" :chunk-id="i + 1" v-model:is-loaded="chunkStates[i]"/>
+        <event-chunk v-model="activePost" v-model:data="firstChunk" :method="functionInstance" :per-page="perPage" v-model:is-loaded="chunkStates[0]"/>
+        <event-chunk v-if="feedStore.total" v-model="activePost" :method="functionInstance" v-for="i in currentPages - 1" :chunk-id="i + 1" v-model:is-loaded="chunkStates[i]"/>
         <div class="relative">
           <intersection-observer-trigger v-if="canLoadMore && !isEnded" class="absolute bottom-[200vh] h-[10px] bg-red-200" @trigger="onIntersectionTrigger"/>
           <end-of-events-feed/>
@@ -40,7 +40,6 @@ const nuxtApp = useNuxtApp()
 // const $i = nuxtApp.$i(i18nPrefix)
 
 const firstChunk = ref<EventPostType[] | undefined>()
-const total = ref()
 const perPage = 20
 const chunkStates = reactive([])
 const interests = ref()
@@ -49,7 +48,14 @@ const activePost = ref()
 const currentPages = computed(() => {
   return chunkStates.length
 })
+const feedStore = useFeedStore()
+const feedState = ref(true)
 const activeFilterIndex = ref()
+const functionInstance = ref(feedStore.getFunction())
+
+const isEnded = computed(() => {
+  return !(Math.ceil(feedStore.total / perPage) > currentPages.value)
+})
 
 const canLoadMore = computed(() => {
   for (const key in chunkStates) {
@@ -60,37 +66,26 @@ const canLoadMore = computed(() => {
   return true
 })
 
-const feedStore = useFeedStore()
-const isEnded = computed(() => {
-  return !(Math.ceil(total.value / perPage) > currentPages.value)
-})
-
 function onIntersectionTrigger(isIntersecting: boolean)
 {
   if (isIntersecting) {
-    console.log('currentPages.value', currentPages.value)
     chunkStates.push(false)
   }
-  console.log(isIntersecting)
 }
 
 watch(
     () => [feedStore.searchQuery, feedStore.filters],
-    () => {
-      console.log('nice')
-      const func = feedStore.getFunction()
-      console.log('Изменения отслежены', func())
+    async () => {
+      chunkStates[0] = false
+      functionInstance.value = feedStore.getFunction();
+      firstChunk.value = await functionInstance.value()
+      chunkStates[0] = true
     },
     { deep: true }
 );
 
 onMounted(async () => {
   interests.value = (await staticStore.get('interests')).value
-  if (firstChunk.value) {
-    console.log(firstChunk.value)
-  }
-  // eventPosts.value = await (new GetEventsEndpoint()).call()
-  // console.log(eventPosts)
 })
 </script>
 
