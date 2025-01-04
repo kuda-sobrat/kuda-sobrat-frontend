@@ -28,7 +28,7 @@
             <div class="event-post__reactions" @click="onClickStar">
               <div class="event-post-other__participation blocked" :class="{'event-post-other__participation_active': eventParticipationState}">
               </div>
-              <event-participation-button v-model="eventParticipationState" @click="submitParticipationState"/>
+              <event-participation-button v-model="model.participationState" @click="submitParticipationState"/>
             </div>
           </div>
         </div>

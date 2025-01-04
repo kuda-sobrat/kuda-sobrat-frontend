@@ -7,7 +7,7 @@
 <!--          {{ model.attendees + (eventParticipationState ? 1 : 0) }}-->
 <!--        </span>-->
       </div>
-      <event-participation-button v-model="eventParticipationState" @click="submitParticipationState"/>
+      <event-participation-button v-model="model.participationState" @click="submitParticipationState"/>
     </div>
 
     <div class="active:fill-coral cursor-pointer" @click="onShare">

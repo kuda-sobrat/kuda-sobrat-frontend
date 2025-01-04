@@ -101,6 +101,8 @@ export type EventPost = {
     is_interest_matched: 1
     ranking_score: number
     event_group: EventGroup
+
+    participationState?: boolean,
 }
 
 export type EventGroup = {
