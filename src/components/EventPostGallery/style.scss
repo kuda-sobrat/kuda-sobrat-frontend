@@ -1,0 +1,14 @@
+.event-post-gallery {
+  --vc-pgn-width: 10px;
+  --vc-pgn-height: 10px;
+  --vc-pgn-margin: 2px;
+  --vc-pgn-border-radius: 100%;
+  --vc-pgn-background-color: var(--color-primary-dark);
+  --vc-pgn-active-color: var(--color-primary);
+
+  @apply min-w-[300px];
+
+  .carousel__pagination-button::after {
+    @apply rounded-full shadow-inner;
+  }
+}

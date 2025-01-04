@@ -1,0 +1,103 @@
+.modal {
+  @apply w-full min-h-[75vh] h-[100%];
+  @apply bg-white;
+  @apply p-2 max-md:pt-3 max-sm:pr-2;
+  @apply overflow-hidden;
+  @apply bg-white border-r-[2px] border-solid border-primary border-opacity-15;
+  @apply relative;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  &__close_mobile {
+    @apply cursor-pointer;
+    @apply transition-all;
+    content: '';
+    @apply bg-primary bg-opacity-70;
+    @apply rounded-full;
+    @apply absolute left-1/2 top-[5px] transform -translate-x-1/2;
+    @apply w-[9ch] h-[6px];
+    @apply cursor-pointer;
+    @apply sm_plus:hidden;
+
+    &.modal__close_disabled {
+      @apply transition-all;
+      @apply bg-gray-200;
+    }
+  }
+
+  &__close_mobile-wrapper {
+    content: '';
+    @apply absolute top-0 left-0 w-full h-[20px];
+  }
+
+  &__wrapper {
+    transition: all .3s ease-in-out;
+    @apply z-[1000];
+    @apply fixed;
+    @apply w-full h-full top-0 left-0;
+    @apply bg-dark-gray bg-opacity-15;
+
+    .container {
+      @apply p-0;
+      @apply flex items-center justify-center;
+    }
+  }
+
+  &__headnote {
+    @apply relative;
+    @apply text-[21px] font-[600];
+    @apply max-sm_plus:mb-1 max-md:mb-1.5 md:mb-2;
+    @apply leading-6;
+    @apply max-sm_plus:line-clamp-3 sm_plus:line-clamp-2;
+
+    @apply md:pt-2 max-md:pt-1.5 max-sm_plus:pt-0;
+  }
+
+  &__content {
+    @apply flex flex-col h-full justify-between;
+    @apply max-h-[100%];
+  }
+
+  &__close:not(.modal__close_mobile) {
+    @apply cursor-pointer;
+    @apply w-[24px] h-[24px];
+    //@apply absolute top-2 right-2;
+    @apply float-right;
+    @apply max-sm_plus:hidden;
+  }
+}
+
+.modal_sm {
+  @apply max-w-[300px];
+}
+
+.modal_md {
+  @apply max-w-[700px];
+}
+
+.modal_lg {
+  @apply max-w-[1400px];
+}
+
+.modal_limit {
+  @apply rounded-2xl;
+  @apply h-[90vh];
+}
+
+.modal__wrapper:has(.modal_limit) {
+  @apply flex items-center;
+  @apply max-sm_plus:p-1 sm_plus:p-2 md:p-5;
+  @apply max-sm_plus:pt-[9vh];
+  @apply max-sm_plus:items-end;
+}
+
+.modal__wrapper:has(.modal_active) {
+  @apply p-0;
+  .modal_active {
+    @apply h-full w-full;
+    @apply max-sm:p-2 max-md:p-3 md:p-5;
+    .modal__headnote {
+      @apply pt-[5vh];
+    }
+  }
+}

@@ -1,14 +1,15 @@
 import { defineNuxtConfig } from 'nuxt/config';
 import svgLoader from 'vite-svg-loader'
-
 export default defineNuxtConfig({
   vite: {
+    server: {
+      hmr: {
+        host: 'localhost',
+        port: 3000
+      }
+    },
     plugins: [
-      svgLoader({
-        // Опциональные настройки
-        // svgo: false, // Отключить оптимизацию SVGO при необходимости
-        // defaultImport: 'component', // По умолчанию 'url'. Установите 'component' для импорта как компоненты Vue
-      }),
+      svgLoader(),
     ],
     vue: {
       script: {
@@ -18,27 +19,57 @@ export default defineNuxtConfig({
     }
   },
   compatibilityDate: '2024-04-03',
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   ssr: false,
-  modules: ["@pinia/nuxt", "@nuxtjs/i18n", '@nuxtjs/tailwindcss', "@nuxt/image"],
+  modules: [
+    "@pinia/nuxt",
+    "@nuxtjs/i18n",
+    '@nuxtjs/tailwindcss',
+    "@nuxt/image",
+    '@nuxtjs/leaflet',
+    "vue3-carousel-nuxt",
+  ],
 
   app: {
     head: {
       meta: [
         {name: "robots", content: "noindex"}
       ],
+      link: [
+        { rel: 'icon', type: 'image/png', href: '/favicon.png' }
+      ],
       script: [
         {
-          src: "https://www.google.com/recaptcha/api.js?render=explicit",
-          // defer: true,
-          async: true
+          hid: 'yandex-metrika',
+          innerHTML: `(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+          (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+          
+          ym(99404238, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true
+          });`
         }
-      ]
+      ],
+      noscript: [
+        {
+          hid: 'yandex-metrika-noscript',
+          innerHTML: `<div><img src="https://mc.yandex.ru/watch/99404238" style="position:absolute; left:-9999px;" alt="" /></div>`
+        }
+      ],
+      __dangerouslyDisableSanitizersByTagID: {
+        'yandex-metrika': ['innerHTML'],
+        'yandex-metrika-noscript': ['innerHTML']
+      }
     }
   },
   runtimeConfig: {
     public: {
-      apiBase: process.env.NUXT_PUBLIC_API_BASE || 'http://localhost:8000/api'
+      base: '/',
+      apiBase: '/api',
     },
   },
   i18n: {
@@ -70,9 +101,4 @@ export default defineNuxtConfig({
     ]
   },
   css: ['@/assets/scss/main.scss'],
-  routeRules: {
-    "/api/**": {
-      proxy: {to: "http://127.0.0.1:8000/api/**"} // Local
-    },
-  }
 })

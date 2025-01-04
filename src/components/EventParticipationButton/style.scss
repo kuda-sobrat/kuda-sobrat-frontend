@@ -1,0 +1,40 @@
+.event-participation-button {
+  @apply cursor-pointer;
+  @apply flex flex-row items-center;
+  @apply select-none;
+  @apply text-dark-gray;
+  @apply relative;
+
+  &__image {
+    @apply h-[24px] w-[24px] max-md:h-[26px] max-md:w-[26px];
+  }
+
+  &__text {
+    @apply flex;
+    @apply ml-[-109%];
+
+    &_active {
+      @apply ml-0;
+      @apply text-coral-dark font-semibold;
+    }
+  }
+
+  &__text-wrapper {
+    @apply overflow-hidden pl-1;
+  }
+
+  * {
+    transition: all .2s;
+    @apply fill-primary;
+  }
+
+  &_active {
+    &__image {
+    }
+
+    * {
+      transition: all .2s;
+      @apply fill-coral;
+    }
+  }
+}

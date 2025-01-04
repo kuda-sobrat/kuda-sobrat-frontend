@@ -5,9 +5,14 @@
     "paths": {
       "~/*": ["./*"],
       "@/*": ["./*"],
-      "#app": [".nuxt/types/app/index.d.ts"],
-      "#imports": [".nuxt/types/imports.d.ts"],
-      "#components": [".nuxt/types/components.d.ts"]
+      "#app": [".nuxt/types/app"],
+      "#app/*": [".nuxt/types/app/*"],
+      "#build": [".nuxt/types/build"],
+      "#build/*": [".nuxt/types/build/*"],
+      "#components": [".nuxt/types/components"],
+      "#components/*": [".nuxt/types/components/*"],
+      "#imports": [".nuxt/types/imports"],
+      "#imports/*": [".nuxt/types/imports/*"]
     },
     "typeRoots": [
       "./node_modules/@types",

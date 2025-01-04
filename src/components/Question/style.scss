@@ -1,0 +1,37 @@
+@import "assets/scss/mixins";
+
+.question {
+  @apply h-full flex flex-col;
+  @apply relative;
+
+  &__title {
+    //@apply sticky top-0;
+    @apply py-2;
+    @apply inline-block;
+    @apply text-[20px] font-semibold text-dark-gray;
+    @apply leading-5;
+  }
+
+  &__description {
+    @apply inline-block;
+    @apply leading-5;
+  }
+
+  &__answers {
+    @apply md:mt-[20px] max-md:pt-2;
+    @apply snap-y snap-mandatory;
+    @apply w-full flex-grow overflow-auto;
+    @include scrollbar-none;
+    @apply flex flex-col gap-1;
+  }
+
+  .questions_overflow {
+    @apply max-sm:bg-gray-50;
+  }
+
+  &__answer {
+    @apply snap-end;
+    @apply cursor-pointer;
+    @apply p-1;
+  }
+}

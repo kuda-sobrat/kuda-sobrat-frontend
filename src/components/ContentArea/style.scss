@@ -1,0 +1,24 @@
+@import "assets/scss/mixins";
+.content-area {
+  @apply w-full;
+  @apply flex flex-row;
+  @apply max-lg:flex-col-reverse;
+  @apply max-lg:mt-2 lg:mt-3;
+  @apply gap-2;
+
+  .container {
+    @apply p-0;
+  }
+
+  &__main {
+    @apply flex-grow-[2];
+    @apply flex flex-col gap-2;
+    @apply snap-mandatory;
+  }
+
+  &__addition {
+    @apply flex-grow;
+    @apply min-w-[33%];
+    //@apply max-sm:sticky max-sm:top-0 z-[1000];
+  }
+}

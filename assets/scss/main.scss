@@ -2,3 +2,10 @@
 @import "fonts";
 @import "global";
 @import "ui";
+
+@layer base {
+  :root {
+    --color-primary: #5f6eae;
+    --color-primary-dark: #3E4A8E;
+  }
+}

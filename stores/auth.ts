@@ -1,6 +1,6 @@
 import {defineStore} from "pinia"
-import type {CookieRef} from "#app";
 import type {User} from "~/common/types/resources/user";
+import type {CookieRef} from "nuxt/app";
 
 export const useAuthStore = defineStore("user", {
     state: (): {
@@ -14,11 +14,13 @@ export const useAuthStore = defineStore("user", {
         cookie: {
             token: useCookie<string | null>("auth_token", {
                 path: "/",
-                maxAge: 60 * 60 * 24 * 7
+                maxAge: 60 * 60 * 24 * 7,
+                httpOnly: false
             }),
             user: useCookie<object | null>("user", {
                 path: "/",
-                maxAge: 60 * 60 * 24 * 7
+                maxAge: 60 * 60 * 24 * 7,
+                httpOnly: false
             })
         },
         user: null,

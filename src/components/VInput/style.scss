@@ -1,7 +1,9 @@
 @import "assets/scss/mixins";
 
 .v-input-wrapper {
-  @apply flex flex-col;
+  @apply flex-[0];
+  @apply w-full;
+  @apply min-w-[20px];
 }
 
 .v-input-label {
@@ -15,7 +17,9 @@
 }
 
 .v-input {
-  @include input-base;
+  &:not(.v-input_checkbox) {
+    @include input-base;
+  }
 
   &__inner {
     @apply p-1;
@@ -30,6 +34,52 @@
   &__inner_right {
     @apply max-w-[32px] right-0;
   }
+}
+
+.v-input_checkbox {
+  @apply opacity-0;
+  @apply w-[18px] h-[18px];
+  @apply cursor-pointer;
+  @apply absolute left-0;
+}
+
+.v-input-wrapper:has(.v-input__checkmark) {
+  @apply inline-flex;
+  @apply items-center;
+
+  input:checked ~ .v-input__checkmark {
+    @apply bg-coral;
+
+    svg {
+      & > * {
+        stroke-width: 3px;
+        @apply stroke-white;
+      }
+    }
+  }
+
+  :not(input:checked) ~ .v-input__checkmark {
+    svg {
+      @apply opacity-0;
+    }
+  }
+}
+
+.v-input__checkmark {
+  @apply pointer-events-none;
+  position: absolute;
+  @apply left-0;
+  @apply w-[100%] h-[100%];
+  @apply rounded;
+  @apply border-2 border-solid border-coral-dark;
+  @apply w-[18px] h-[18px];
+  svg {
+    @apply w-[100%] h-[100%];
+  }
+}
+
+.v-input-wrapper>div:has(.v-input__checkmark) {
+  @apply items-center justify-center gap-1;
 }
 
 .v-input_error {

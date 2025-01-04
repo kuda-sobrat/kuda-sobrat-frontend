@@ -29,4 +29,8 @@ COPY --from=build /app/ ./
 EXPOSE 3000
 
 # Запуск приложения
-CMD ["npm", "run", "start"]
+CMD if [ "$NODE_ENV" = "production" ]; then \
+        npm run start; \
+    else \
+        npm run dev; \
+    fi

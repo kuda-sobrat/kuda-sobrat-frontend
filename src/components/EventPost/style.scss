@@ -1,0 +1,109 @@
+.event-post {
+  @apply bg-white;
+  @apply p-2 max-md:pt-3 max-sm:pr-2;
+  @apply rounded-xl;
+  @apply bg-white border-r-[2px] border-solid border-primary border-opacity-15;
+  @apply overflow-hidden;
+  @apply flex flex-col gap-1;
+  @apply drop-shadow-md;
+
+  &__content {
+    @apply flex flex-row gap-1.5 justify-between relative;
+  }
+
+  &__body {
+    @apply z-10 rounded-md;
+    @apply cursor-pointer;
+    @apply flex sm:flex-[4] flex-col gap-1 justify-between backdrop-blur-sm;
+    @apply bg-white bg-opacity-85;
+  }
+
+  &__title {
+    @apply block;
+    @apply py-2;
+    @apply text-[16.5px] font-semibold text-dark-gray;
+    @apply leading-5;
+  }
+
+  &__tags {
+
+  }
+
+  &__description {
+    @apply leading-5;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+  }
+
+  &__location {
+    @apply py-1;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+
+  &__datetime {
+    @apply leading-4;
+    @apply py-1;
+  }
+
+  .gradient-overlay {
+    background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+  }
+
+  &__attachment {
+    transition: all .15s ease-in-out;
+    @apply flex flex-col max-lg:flex-[4] lg:flex-[3] gap-1 items-end;
+    @apply min-h-[240px];
+    @apply rounded-md overflow-hidden rounded-tr-[30px];
+    @apply cursor-pointer;
+    //@apply max-sm:absolute max-sm:top-0 max-sm:left-0 max-sm:max-h-full max-sm:overflow-hidden;
+  }
+
+  &__interest-point {
+    @apply absolute top-0 right-0;
+    @apply bg-red-200;
+    @apply min-w-[16px] min-h-[16px] w-[16px] h-[16px];
+    @apply rounded-full;
+    @apply z-20;
+    outline-offset: -1px;
+    @apply outline outline-[9nppx] outline-white;
+  }
+
+  &__favorite {
+    @apply w-[24px] h-[24px];
+
+    * {
+      transition: all .15s ease-in-out;
+      @apply fill-primary;
+    }
+
+    &_active {
+      * {
+        transition: all .15s ease-in-out;
+        @apply fill-coral;
+      }
+    }
+  }
+
+  &__footnote {
+    @apply flex flex-col gap-1 items-start;
+  }
+
+  &__footnote_row {
+    @apply flex-row-reverse items-end gap-2 justify-between;
+    @apply text-end;
+  }
+
+  &__reactions {
+    @apply flex flex-row gap-1 relative;
+    //@apply flex flex-row items-center;
+    //@apply text-dark-gray;
+    //@apply cursor-pointer;
+    //@apply px-1 py-0.5;
+    //@apply bg-gray-100 shadow-inner rounded-md;
+  }
+}

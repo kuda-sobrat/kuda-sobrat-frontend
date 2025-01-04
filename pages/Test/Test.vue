@@ -1,27 +1,24 @@
 <template>
   <div class="test-page">
     <div class="page-content">
-      [ TestPageContent ]
-      {{ loader }}
-      {{ data }}
-      <button @click="onClick()">
-        Нажми на кнопку
-      </button>
+      <div class="p-2 flex flex-col gap-2">
+        hello
+      </div>
     </div>
   </div>
 </template>
 
 <script setup="ts">
 import {defineI18nRoute} from "#i18n";
-import ExampleEndpoint from "~/common/api/endpoints/ExampleEndpoint";
-import {useLoader} from "~/common/composables/useLoader.ts";
+import {useStaticStore} from "~/stores/static.ts";
 
 // i18
 const i18nPrefix = "pages.Test"
 const nuxtApp = useNuxtApp()
-const $i = nuxtApp.$i(i18nPrefix)
 
-const loader = useLoader()
+const staticStore = useStaticStore()
+const interests = ref()
+const participationState = ref(false)
 
 defineI18nRoute({
   paths: {
@@ -30,12 +27,13 @@ defineI18nRoute({
   }
 })
 
-const data = ref()
-// const data = new ExampleEndpoint().call()
+definePageMeta({
+  layout: 'simple'
+})
 
-async function onClick() {
-  data.value = await new ExampleEndpoint().call()
-}
+onMounted(async () => {
+  interests.value = (await staticStore.get('interests')).value
+})
 
 </script>
 

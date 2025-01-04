@@ -31,7 +31,7 @@ const ctx = useDefaultState()
 // i18
 const i18nPrefix = "modules.AuthorizationForm"
 const nuxtApp = useNuxtApp()
-const $i = nuxtApp.$i(i18nPrefix)
+// const $i = nuxtApp.$i(i18nPrefix)
 const activeBlock = defineModel<number>('activeBlock', {
   default: 0
 })

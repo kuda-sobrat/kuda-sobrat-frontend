@@ -102,6 +102,10 @@ input {
   // transition: all linear .07s;
 }
 
+body, #__nuxt {
+  @apply w-[100%];
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -139,7 +143,18 @@ a {
 }
 
 .default-layout {
+  //@apply overflow-auto;
   @apply bg-light-gray;
+  //@include scrollbar-none;
+}
+
+@media (max-width: 564px) {
+  html {
+    @include scrollbar-none;
+  }
+}
+
+html {
 }
 
 h1 {
@@ -173,9 +188,7 @@ h1 {
 }
 
 .tile {
-  @apply mr-1 py-2 px-3;
-  @apply rounded-xl drop-shadow-sm;
-  @apply bg-white border-r-[2px] border-solid border-primary border-opacity-15;
+  @include tile;
 }
 
 .line {
@@ -185,7 +198,7 @@ h1 {
 }
 
 .container {
-  @apply max-h-screen h-[100%];
+  @apply max-md:px-2;
 }
 
 .icon {
@@ -219,6 +232,15 @@ h1 {
   }
 }
 
+.blocked {
+  @apply flex flex-row;
+  @apply text-light-gray-secondary;
+
+  img {
+    filter: invert(88%) sepia(3%) saturate(20%) hue-rotate(52deg) brightness(81%) contrast(89%);
+  }
+}
+
 .link {
   @apply text-blue-500;
   @apply cursor-pointer;
@@ -233,4 +255,20 @@ h1 {
 
 .filter-dark-gray {
   @include filter-dark-gray
+}
+
+.overflowing {
+  @apply relative;
+  @apply rounded;
+}
+
+.overflowing:after {
+  //content: 'a';
+  ////@apply mt-auto;
+  //@apply sticky bottom-0 left-0 w-full h-[20px];
+  ////bottom: 0;
+  ////left: 0;
+  ////right: 0;
+  ////height: 30px;
+  //background: linear-gradient(to bottom, transparent, white);
 }

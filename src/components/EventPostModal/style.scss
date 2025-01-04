@@ -1,0 +1,73 @@
+@import "assets/scss/mixins";
+
+.event-post-modal {
+  @apply h-full lg:pt-5 lg:pb-3 md:pt-2 md:pb-1.5;
+  @apply gap-2;
+
+  &__gallery {
+    @apply max-w-[500px] overflow-hidden rounded-xl;
+  }
+
+  &__content {
+    @apply min-w-[300px]
+  }
+
+  // Для md
+  @apply max-lg:grid max-lg:grid-cols-2 max-lg:grid-rows-[auto_1fr_1fr_auto];
+
+  &__content {
+    @apply max-lg:row-span-2 max-lg:row-start-2;
+  }
+
+  &__gallery {
+    @apply max-lg:row-span-2 max-lg:col-start-2 max-lg:row-start-2;
+  }
+
+  &__other {
+    @apply max-lg:col-span-2;
+  }
+
+  &__related {
+    @apply max-lg:col-span-2;
+  }
+
+  // Для max-md
+  @apply max-md:grid max-md:grid-cols-1 max-md:grid-rows-[minmax(400px,auto)_auto_auto_minmax(80px,auto)] overflow-auto;
+  @include scrollbar-none;
+
+  &__gallery {
+    @apply max-md:col-start-1 max-md:row-start-1 max-md:row-span-1;
+  }
+
+  &__content {
+    @apply max-md:row-start-3 max-md:row-span-1;
+  }
+
+  &__other {
+    @apply max-md:row-start-2 max-md:col-span-1;
+  }
+
+  &__related {
+    @apply max-md:col-span-1;
+  }
+
+  // Для lg
+  @apply lg:grid lg:grid-cols-[240px_1fr_auto] lg:grid-rows-[1fr_1fr_auto];
+
+  &__related {
+    @apply lg:col-start-1 lg:row-span-2;
+    @apply lg:row-span-2;
+  }
+
+  &__content {
+    @apply lg:row-span-2;
+  }
+
+  &__gallery {
+    @apply lg:row-span-2;
+  }
+
+  &__other {
+    @apply lg:col-span-3;
+  }
+}
