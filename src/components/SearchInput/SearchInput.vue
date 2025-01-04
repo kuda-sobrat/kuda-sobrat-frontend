@@ -14,7 +14,7 @@
       </template>
     </v-input>
     <div v-if="suggestions.length > 0 && suggestionsState" class="search-input__suggestions">
-      <div v-for="(suggestion, key) in suggestions" class="search-input__suggestion" :key="key" @click.stop="onSearch(suggestion.name)">
+      <div v-for="(suggestion, key) in suggestions" class="search-input__suggestion" :key="key" @click.stop="() => {router.push({path: '/'}); onSearch(suggestion.name)}">
         {{ suggestion.name }}
       </div>
     </div>
@@ -43,6 +43,7 @@ const feedStore = toReactive(useFeedStore())
 
 const suggestions = ref<any>([])
 const suggestionsState = ref(false)
+const router = useRouter()
 
 const debouncedSuggest = debounce(async (query: string) => {
   suggestionsState.value = true
@@ -72,8 +73,7 @@ const wrapperRef = ref(null)
 // Функция для обработки кликов по документу
 function onClickOutside(event: MouseEvent) {
   if (wrapperRef.value && !wrapperRef.value.contains(event.target as Node)) {
-    feedStore.searchQuery = model.value ?? ''
-    suggestionsState.value = false;
+    onSearch()
   }
 }
 

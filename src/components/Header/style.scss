@@ -9,9 +9,10 @@
   @apply max-md:border-b-[2px] max-md:border-primary max-md:border-solid max-md:border-opacity-30;
 
   .sections {
-    @apply md:p-4;
+    @apply md:p-2;
     .section-a {
       @apply flex items-center justify-items-center;
+      @apply max-md:mt-2.5 max-md:ml-1.5;
       @apply h-[100%];
       @apply text-[20px] text-primary;
     }

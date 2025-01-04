@@ -10,7 +10,7 @@
           <profile-link v-if="useAuthStore().token && lg"/>
         </div>
         <div class="section-c max-lg:hidden">
-          <div class="flex flex-row justify-between w-full">
+          <div class="flex flex-row justify-between w-full h-full pr-2">
             <div></div>
             <div v-if="useAuthStore().token" class="flex flex-row gap-2 items-end justify-end mr-8">
               <profile-link/>
@@ -34,7 +34,6 @@ import { useDefaultState } from './composables/useDefault'
 import SearchBar from "~/src/components/SearchBar/SearchBar.vue";
 import {useAuthStore} from "~/stores/auth";
 import ProfileLink from "~/src/components/ProfileLink/ProfileLink.vue";
-import {getIconComponent} from "~/common/composables/useIcons";
 // i18
 const i18nPrefix = "components.Header"
 const nuxtApp = useNuxtApp()

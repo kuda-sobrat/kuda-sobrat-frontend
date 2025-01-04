@@ -2,6 +2,7 @@
   <suspense>
     <template #default>
       <nuxt-layout>
+
         <global-scenario-component/>
         <nuxt-page class="w-[100%]"/>
       </nuxt-layout>
