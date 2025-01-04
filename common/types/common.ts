@@ -100,4 +100,14 @@ export type EventPost = {
     deleted_at?: string
     is_interest_matched: 1
     ranking_score: number
+    event_group: EventGroup
+}
+
+export type EventGroup = {
+    id: number,
+    name?: string,
+    description?: string,
+    created_at?: string,
+    updated_at?: string,
+    events: EventPost[]
 }

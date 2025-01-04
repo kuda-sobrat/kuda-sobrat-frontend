@@ -1,6 +1,6 @@
 <template>
   <div class=event-post-modal v-if="model">
-    <event-post-related class="event-post-modal__related"/>
+    <event-post-related class="event-post-modal__related" v-model="model"/>
     <event-post-content class="event-post-modal__content" :data="model"/>
     <event-post-gallery class="event-post-modal__gallery" :data="photoAttachments"/>
     <event-post-other class="event-post-modal__other" v-model="model"/>

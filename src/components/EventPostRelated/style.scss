@@ -1,6 +1,10 @@
+@import "assets/scss/mixins";
+
 .event-post-related {
   @apply flex max-lg:flex-row max-md:flex-col lg:flex-col gap-2;
   @apply lg:bg-gray-100 lg:shadow-inner lg:rounded-xl;
+  @apply overflow-auto;
+  @include scrollbar-none;
 
   &__title {
     @apply lg:font-[600];
@@ -16,7 +20,21 @@
     @apply max-lg:hidden
   }
 
+  &__post {
+    @apply p-1;
+    @apply leading-3;
+    @apply rounded-md;
+    @apply bg-white;
+  }
+
   &__body {
     @apply flex flex-col max-lg:flex-row max-lg:flex-wrap gap-2;
+    @apply p-1.5;
+  }
+
+  &__item-caption {
+    @apply leading-5;
+    overflow: hidden;
+    //display: -webkit-box;
   }
 }
