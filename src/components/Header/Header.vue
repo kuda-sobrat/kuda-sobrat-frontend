@@ -15,10 +15,8 @@
             <div v-if="useAuthStore().token" class="flex flex-row gap-2 items-end justify-end mr-8">
               <profile-link/>
             </div>
-<!--            <nuxt-link to="/auth" v-else class="flex gap-1 items-center hover:transition-all hover:text-coral">-->
             <nuxt-link to="/" v-else class="flex gap-1 items-center blocked">
               <span class="text-[14px]">Войти</span>
-<!--              <component :is="getIconComponent('/navigation/login-3.svg')" class="cursor-pointer" alt="Выход"/>-->
               <img src="/common/Заблокировано.png" alt="Заблокировано" class="ml-0.5">
 
             </nuxt-link>
@@ -42,34 +40,6 @@ const nuxtApp = useNuxtApp()
 const ctx = useDefaultState()
 const lg = ref(nuxtApp.$lg)
 
-const router = useRouter()
-
-const menuOpen = ref(false);
-
-const toggleMenu = () => {
-  menuOpen.value = !menuOpen.value;
-};
-
-// Animations
-const beforeEnter = (el) => {
-  el.style.opacity = 0;
-  el.style.transform = 'translateY(-10px)'; // Начальная позиция для анимации
-};
-
-const enter = (el, done) => {
-  el.offsetHeight; // триггер для перерисовки
-  el.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-  el.style.opacity = 1;
-  el.style.transform = 'translateY(0)'; // Конечная позиция для анимации
-  done(); // Сообщить, что анимация завершена
-};
-
-const leave = (el, done) => {
-  el.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-  el.style.opacity = 0;
-  el.style.transform = 'translateY(-10px)'; // Позиция при закрытии
-  done();
-};
 </script>
 
 <style lang="scss">
