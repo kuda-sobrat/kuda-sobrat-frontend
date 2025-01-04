@@ -1,5 +1,5 @@
 <template>
-  <div class=event-chunk style="all: inherit">
+  <div v-if="modelData" class=event-chunk style="all: inherit">
 <!-- TODO: Loader -->
     <event-post v-for="(item, key) in modelData" :key="key" v-model="modelData[key]" @open="onOpen"/>
   </div>

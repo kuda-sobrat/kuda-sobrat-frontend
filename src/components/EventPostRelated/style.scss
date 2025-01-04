@@ -7,6 +7,8 @@
   @include scrollbar-none;
 
   &__title {
+    @apply sticky top-0 z-20;
+    @apply drop-shadow-sm;
     @apply lg:font-[600];
     @apply max-lg:hidden;
     @apply lg:bg-white lg:pt-2 lg:pb-0.5 lg:px-2;
@@ -21,6 +23,8 @@
   }
 
   &__post {
+    @apply drop-shadow-md;
+    @apply text-dark-gray;
     @apply p-1;
     @apply leading-3;
     @apply rounded-md;

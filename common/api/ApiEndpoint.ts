@@ -42,7 +42,6 @@ export class ApiEndpoint<Request, Response> implements ApiAfterCall<Response> {
         this.handleResponse(await response)
         this.responseOriginal.value = (await response)
         this.response.value = this.responseOriginal.value.data
-        console.log(this.loader.value)
         this.loader.value.isLoading = false
         this.afterCall(this.response.value)
         return this.response.value

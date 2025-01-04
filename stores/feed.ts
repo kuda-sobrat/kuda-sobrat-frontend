@@ -6,7 +6,7 @@ export const useFeedStore = defineStore('feed', {
     state: () => ({
         searchQuery: '',
         filters: {
-            interests: [],
+            interest_ids: [],
             location: null, // { latitude: ..., longitude: ... }
             timeRange: null, // { start: ..., end: ... }
         },
@@ -21,7 +21,7 @@ export const useFeedStore = defineStore('feed', {
         },
         resetFilters() {
             this.filters = {
-                interests: [],
+                interest_ids: [],
                 location: null,
                 timeRange: null,
             };

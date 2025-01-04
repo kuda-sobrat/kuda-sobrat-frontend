@@ -15,14 +15,7 @@
         </div>
 
         <div class="event-post__footnote" :class="{'event-post__footnote_row': photoAttachments?.length <= 0}">
-          <div class="event-post__datetime">
-            <div class="text-[18px]">
-              {{ formatTimeIntl(startDate) }}
-            </div>
-            <div class="text-[14px]">
-              {{ formatDateDayOfWeekIntl(startDate) }}
-            </div>
-          </div>
+          <event-date :date="model?.start_datetime"/>
 
           <div>
             <div class="event-post__reactions" @click="onClickStar">
@@ -48,8 +41,8 @@
 import { useDefaultState } from './composables/useDefault'
 import type {EventPost} from "~/common/types/common";
 import type {ComputedRef} from "vue";
-import {formatDateDayOfWeekIntl, formatTimeIntl} from "~/common/composables/useHelpers";
 import EventParticipationButton from "~/src/components/EventParticipationButton/EventParticipationButton.vue";
+import EventDate from "~/src/components/EventDate/EventDate.vue";
 const ctx = useDefaultState()
 
 // i18
@@ -62,7 +55,6 @@ const photoAttachments = computed(() => {
   return model.value!.attachments?.filter(attachment => attachment.type === 'photo')
 })
 
-const isStarHover = ref(false)
 const starState = ref(false)
 const eventParticipationState = ref(false)
 const emit = defineEmits<{

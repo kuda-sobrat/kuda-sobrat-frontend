@@ -3,14 +3,14 @@
     <content-area>
       <div style="all: inherit">
         <event-chunk v-model="activePost" v-model:data="firstChunk" :method="functionInstance" :per-page="perPage" v-model:is-loaded="chunkStates[0]"/>
-        <event-chunk v-if="feedStore.total" v-model="activePost" :method="functionInstance" v-for="i in currentPages - 1" :chunk-id="i + 1" v-model:is-loaded="chunkStates[i]"/>
+        <event-chunk v-if="feedStore.total && currentPages > 1" v-model="activePost" :method="functionInstance" v-for="i in currentPages - 1" :chunk-id="i + 1" v-model:is-loaded="chunkStates[i]"/>
         <div class="relative">
-          <div v-if="!isEnded" class="w-full flex items-center justify-center mt-2">
+          <div v-if="!isEnded || isLoading" class="w-full flex items-center justify-center mt-2" :style="{marginTop: isLoading ? '33%' : ''}">
             <div class="events-feed-module__spinner"/>
           </div>
-          <intersection-observer-trigger v-if="canLoadMore && !isEnded" class="absolute bottom-[200vh] h-[10px] bg-red-200" @trigger="onIntersectionTrigger"/>
-          <end-of-events-feed/>
-          <intersection-observer-trigger v-if="canLoadMore && !isEnded" class="absolute bottom-[10vh] h-[10px] bg-red-200" @trigger="onIntersectionTrigger"/>
+          <intersection-observer-trigger v-if="canLoadMore && !isEnded" class="absolute bottom-[200vh] h-[10px] bg-red-200 bg-opacity-0" @trigger="onIntersectionTrigger"/>
+          <end-of-events-feed v-if="!isLoading"/>
+          <intersection-observer-trigger v-if="canLoadMore && !isEnded" class="absolute bottom-[10vh] h-[10px] bg-red-200 bg-opacity-0" @trigger="onIntersectionTrigger"/>
         </div>
       </div>
       <template #addition>
@@ -30,7 +30,6 @@ import ContentArea from "~/src/components/ContentArea/ContentArea.vue";
 import EventChunk from "~/src/components/EventChunk/EventChunk.vue";
 import IntersectionObserverTrigger from "~/src/components/IntersectionObserverTrigger/IntersectionObserverTrigger.vue";
 import EndOfEventsFeed from "~/src/components/EndOfEventsFeed/EndOfEventsFeed.vue";
-import {useStaticStore} from "~/stores/static";
 import EventsFilters from "~/src/components/EventsFilters/EventsFilters.vue";
 import Modal from "~/src/components/Modal/Modal.vue";
 import EventPostModal from "~/src/components/EventPostModal/EventPostModal.vue";
@@ -45,16 +44,13 @@ const nuxtApp = useNuxtApp()
 const firstChunk = ref<EventPostType[] | undefined>()
 const perPage = 20
 const chunkStates = reactive([])
-const interests = ref()
-const staticStore = useStaticStore()
 const activePost = ref()
 const currentPages = computed(() => {
   return chunkStates.length
 })
 const feedStore = useFeedStore()
-const feedState = ref(true)
-const activeFilterIndex = ref()
 const functionInstance = ref(feedStore.getFunction())
+const isLoading = ref()
 
 const isEnded = computed(() => {
   return !(Math.ceil(feedStore.total / perPage) > currentPages.value)
@@ -80,16 +76,16 @@ watch(
     () => [feedStore.searchQuery, feedStore.filters],
     async () => {
       chunkStates[0] = false
+      isLoading.value = true
+      firstChunk.value = []
       functionInstance.value = feedStore.getFunction();
       firstChunk.value = await functionInstance.value()
+      isLoading.value = false
       chunkStates[0] = true
     },
     { deep: true }
 );
 
-onMounted(async () => {
-  interests.value = (await staticStore.get('interests')).value
-})
 </script>
 
 <style lang="scss">

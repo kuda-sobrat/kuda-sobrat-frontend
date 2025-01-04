@@ -233,6 +233,7 @@ h1 {
 }
 
 .blocked {
+  @apply flex flex-row;
   @apply text-light-gray-secondary;
 
   img {

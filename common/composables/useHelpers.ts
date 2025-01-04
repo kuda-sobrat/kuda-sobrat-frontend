@@ -1,8 +1,8 @@
 export function formatTimeIntl(dateInput: Date, locale = 'ru-RU') {
-    const date = new Date(dateInput)
+    const date = new Date(dateInput ?? null)
 
     if (isNaN(date.getTime())) {
-        throw new Error('Недопустимый формат даты');
+        throw new Error('Недопустимый формат даты', dateInput);
     }
 
     const formatter = new Intl.DateTimeFormat(locale, {

@@ -21,7 +21,7 @@ const nuxtApp = useNuxtApp()
 const $i = nuxtApp.$i(i18nPrefix)
 
 const props = defineProps<{
-  date: string,
+  date?: string,
 }>()
 
 const date: ComputedRef<Date | null> = computed(() => {
