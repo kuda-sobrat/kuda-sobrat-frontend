@@ -16,7 +16,7 @@ export default class GetEventsEndpoint extends ApiEndpoint<Request, Response> {
     }
 
     override async call(request?: Request): Promise<Response> {
-        this.url = "/group/" + request?.group_id + "/events/"
+        this.url = "/group/" + request?.group_id + "/events"
 
         return super.call(request);
     }
