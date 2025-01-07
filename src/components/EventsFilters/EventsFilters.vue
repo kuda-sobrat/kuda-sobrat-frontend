@@ -8,15 +8,15 @@
         <div class="events-filters__item" :class="{'events-filters__item_active': activeFilterIndex == 0 || fixedIndex == 0}" @click="setActiveFilterIndex(0)">по интересам</div>
         <div class="events-filters__item" :class="{'events-filters__item_active': activeFilterIndex == 1}" @click="setActiveFilterIndex(1)">по популярности</div>
         <div class="events-filters__item blocked" :class="{'events-filters__item_active': activeFilterIndex == 2}">
-          <img src="/common/Заблокировано.png" class="float-left mr-1" alt="Заблокировано">
+          <img src="/common/Заблокировано.png" class="mr-1" alt="Заблокировано">
           по геолокации
         </div>
         <div class="events-filters__item blocked" :class="{'events-filters__item_active': activeFilterIndex == 3}">
-          <img src="/common/Заблокировано.png" class="float-left mr-1" alt="Заблокировано">
+          <img src="/common/Заблокировано.png" class="mr-1" alt="Заблокировано">
           по времени
         </div>
         <div class="events-filters__item blocked" :class="{'events-filters__item_active': activeFilterIndex == 4}">
-          <img src="/common/Заблокировано.png" class="float-left mr-1" alt="Заблокировано">
+          <img src="/common/Заблокировано.png" class="mr-1" alt="Заблокировано">
           по цене
         </div>
       </div>

@@ -5,7 +5,7 @@
         <div class="section-a">
           <nuxt-link to="/" class="header__title">Куда, собрат?</nuxt-link>
         </div>
-        <div class="section-main max-md:hidden flex flex-row items-center gap-2 justify-between">
+        <div class="section-main max-md:flex-[30%] max-md:mt-3 flex-[100%] flex flex-row items-center gap-2 justify-between">
           <search-bar class="flex-1"/>
           <profile-link v-if="useAuthStore().token && lg"/>
         </div>

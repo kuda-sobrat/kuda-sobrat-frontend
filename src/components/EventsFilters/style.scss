@@ -13,8 +13,6 @@
     @apply leading-4;
     @apply whitespace-nowrap;
 
-    @apply line-clamp-1;
-
     &_active, &:hover {
       @apply transition-all;
       @apply bg-gray-100;

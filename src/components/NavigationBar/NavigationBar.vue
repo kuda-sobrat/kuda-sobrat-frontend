@@ -8,6 +8,12 @@
         <div v-else class="navigation-bar__items">
           <navigation-item v-for="(_, index) in mainNavigationItems" v-model="mainNavigationItems[index]" :key="index" class="navigation-bar__item"/>
         </div>
+        <nuxt-link v-if="md || sm" class="absolute bottom-[100%]" to="/help">
+          <div class="navigation-bar__help">
+            <img class="max-h-[12px] inline mr-1" src="/common/помощь.png" alt="помощь"/>
+            <span>поддержать</span>
+          </div>
+        </nuxt-link>
       </div>
       <nuxt-link to="/help">
         <div v-if="!(md || sm)" class="navigation-bar__help">
@@ -16,7 +22,12 @@
         </div>
       </nuxt-link>
       <fridge v-model="fridgeState">
-        [Дополнительное меню]
+        Здесь будет размещена навигация. А пока можешь
+        <nuxt-link to="/help" class="link">
+          поддержать
+        </nuxt-link>
+        проект.
+        Спасибо за интерес!
       </fridge>
     </client-only>
   </div>
