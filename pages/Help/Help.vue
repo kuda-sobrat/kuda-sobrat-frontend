@@ -25,7 +25,7 @@
             </p>
           </li>
           <li class="relative">
-            <img src="/common/делись.png" alt="делись" class="absolute left-[100%] ml-8 -mt-10"/>
+            <img src="/common/делись.png" alt="делись" class="max-md:hidden absolute left-[100%] ml-8 -mt-10"/>
             <strong>Делись</strong>
             <p>Расскажи о проекте друзьям, поделись ссылкой в соцсетях или на форумах, если считаешь его полезным. Это поможет расширить сообщество.</p>
           </li>
