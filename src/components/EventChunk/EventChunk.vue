@@ -35,7 +35,7 @@ function onOpen(post: EventPostType) {
 }
 
 onMounted(async () => {
-  modelData.value = await props.method(chunkId)
+  modelData.value = await props.method(props.chunkId)
   isLoaded.value = true
 })
 </script>
