@@ -15,8 +15,8 @@
           </div>
         </nuxt-link>
       </div>
-      <nuxt-link to="/help">
-        <div v-if="!(md || sm)" class="navigation-bar__help">
+      <nuxt-link to="/help" class="max-md:hidden">
+        <div class="navigation-bar__help">
           <img class="max-h-[12px] inline mr-1" src="/common/помощь.png" alt="помощь"/>
           <span>поддержать</span>
         </div>

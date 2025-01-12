@@ -9,7 +9,7 @@
   }
 
   &__suggestions {
-    @apply absolute top-[100%] w-full h-auto;
+    @apply md:absolute top-[100%] w-full h-auto;
     @apply mt-2 m-0.5 -ml-2.5;
     @apply drop-shadow-md;
     @apply rounded-md;

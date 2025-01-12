@@ -13,7 +13,7 @@
         <TestIcon class="w-6 h-6"/>
       </template>
     </v-input>
-    <div v-if="suggestions.length > 0 && suggestionsState" class="search-input__suggestions">
+    <div v-if="suggestions.length > 0 && suggestionsState" class="search-input__suggestions max-md:fixed max-md:left-[10px]">
       <div v-for="(suggestion, key) in suggestions" class="search-input__suggestion" :key="key" @click.stop="() => {router.push({path: '/'}); onSearch(suggestion.name)}">
         {{ suggestion.name }}
       </div>
