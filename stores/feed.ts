@@ -26,13 +26,14 @@ export const useFeedStore = defineStore('feed', {
                 timeRange: null,
             };
         },
-        getFunction(): () => Promise<any> {
-            return async () => {
+        getFunction(): (page: number) => Promise<any> {
+            return async (page: number) => {
                 // Формируем параметры запроса
                 const params: any = {
                     query: this.searchQuery,
                     // Разворачиваем фильтры
                     ...this.filters,
+                    page: page,
                 };
 
                 let results;
