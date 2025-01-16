@@ -33,9 +33,6 @@ watch(() => notificationStore.value.appended, () => {
   }, 3000)
 })
 
-onMounted(() => {
-  notificationStore.value.addNotification('Скопировано в буфер обмена')
-})
 </script>
 
 <style lang="scss">
