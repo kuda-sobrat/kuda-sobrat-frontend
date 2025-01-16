@@ -33,7 +33,6 @@ const props = defineProps<{
 const currentSlide = ref(0)
 
 onMounted(() => {
-  console.log(props.images.length)
 })
 
 </script>

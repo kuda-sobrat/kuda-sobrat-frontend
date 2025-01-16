@@ -53,6 +53,15 @@ function onScenarioEnded() {
   delete query['scenario']
   useRouter().push({ query })
 }
+
+onMounted(async () => {
+  if (route.query.event) {
+    componentProps.value = {
+      id: Number(route.query.event)
+    }
+    currentComponent.value = (await import('~/src/components/EventPostScenario/EventPostScenario.vue')).default
+  }
+})
 </script>
 
 <style lang="scss">

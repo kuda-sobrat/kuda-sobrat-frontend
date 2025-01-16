@@ -1,0 +1,26 @@
+.notification-bar {
+  @apply fixed top-0 right-0 z-[1001];
+  @apply cursor-pointer;
+  @apply p-1;
+  @apply max-w-[400px] w-full;
+
+  .notification-enter-from {
+    @apply opacity-0 translate-y-2;
+  }
+  .notification-enter-to {
+    @apply opacity-100 translate-y-0;
+  }
+  .notification-enter-active {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .notification-leave-from {
+    @apply opacity-100 translate-y-0;
+  }
+  .notification-leave-to {
+    @apply opacity-0 -translate-y-2;
+  }
+  .notification-leave-active {
+    @apply transition-all duration-300 ease-in;
+  }
+}

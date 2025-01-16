@@ -51,6 +51,7 @@ const currentPages = computed(() => {
 const feedStore = useFeedStore()
 const functionInstance = ref(feedStore.getFunction())
 const isLoading = ref()
+const route = useRoute()
 
 const isEnded = computed(() => {
   return !(Math.ceil(feedStore.total / perPage) > currentPages.value)
@@ -86,6 +87,11 @@ watch(
     { deep: true }
 );
 
+watch(activePost, () => {
+  const query = { ...route.query }
+  query.event = activePost.value.id
+  useRouter().push({query})
+})
 </script>
 
 <style lang="scss">

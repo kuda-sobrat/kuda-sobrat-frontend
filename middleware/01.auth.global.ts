@@ -6,18 +6,20 @@ export default defineNuxtRouteMiddleware(async (to) => {
     const userStore = useAuthStore()
     userStore.init()
 
-    const excludedPaths = ['/help', '/test'];
+    const excludedPaths = [
+        '/help',
+        '/test',
+    ];
 
-    if (to.fullPath === '/logout') {
+    if (to.path === '/logout') {
         await userStore.reset()
     }
 
-    if (to.fullPath === '/auth' && userStore.token && userStore.user) {
+    if (to.path === '/auth' && userStore.token && userStore.user) {
         return navigateTo('/')
     }
-    console.log(to.fullPath in excludedPaths,)
 
-    if (to.fullPath === '/auth' || to.fullPath === '/' || excludedPaths.includes(to.fullPath) || to.fullPath.match(/^\/api\//i)) return
+    if (to.path === '/auth' || to.path === '/' || excludedPaths.includes(to.path) || to.path.match(/^\/api\//i)) return
 
     if (!userStore.user || !userStore.token) {
         return navigateTo('/auth')
