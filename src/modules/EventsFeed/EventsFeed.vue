@@ -92,8 +92,10 @@ watch(activePost, async () => {
   const query = { ...route.query }
   if (!isLoading.value && activePost.value.id) {
     query.event = activePost.value.id
+    isLoading.value = true
     activePost.value = await new GetEvent(activePost.value.id).call()
   } else {
+    isLoading.value = false
   }
   query.event = activePost.value.id
   useRouter().push({query})
