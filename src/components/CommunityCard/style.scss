@@ -1,0 +1,21 @@
+.community-card {
+  @apply flex flex-row gap-2;
+  @apply p-2;
+  @apply border-[2px] border-solid border-gray-100 rounded-xl;
+  @apply bg-white;
+  @apply max-lg:shadow-sm shadow-md;
+  &__image {
+    @apply text-[21px];
+    @apply flex items-center justify-center;
+    @apply bg-gray-300 rounded-full w-[34px] h-[34px];
+  }
+
+  &__body {
+    @apply text-[16px] leading-4;
+    @apply max-w-[120px] max-h-[32px] overflow-hidden;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+}

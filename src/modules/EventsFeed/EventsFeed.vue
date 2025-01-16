@@ -34,6 +34,7 @@ import EventsFilters from "~/src/components/EventsFilters/EventsFilters.vue";
 import Modal from "~/src/components/Modal/Modal.vue";
 import EventPostModal from "~/src/components/EventPostModal/EventPostModal.vue";
 import {useFeedStore} from "~/stores/feed";
+import GetEvent from "~/common/api/endpoints/v1/event/GetEvent";
 const ctx = useDefaultState()
 
 // i18
@@ -87,8 +88,14 @@ watch(
     { deep: true }
 );
 
-watch(activePost, () => {
+watch(activePost, async () => {
   const query = { ...route.query }
+  if (!isLoading.value && activePost.value.id) {
+    query.event = activePost.value.id
+    isLoading.value = true
+    activePost.value = await new GetEvent(activePost.value.id).call()
+  } else {
+  }
   query.event = activePost.value.id
   useRouter().push({query})
 })

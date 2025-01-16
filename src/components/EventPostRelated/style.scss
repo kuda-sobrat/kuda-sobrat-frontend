@@ -23,7 +23,7 @@
   }
 
   &__post {
-    @apply drop-shadow-md;
+    @apply shadow-md;
     @apply text-dark-gray;
     @apply p-1;
     @apply leading-3;
@@ -32,8 +32,8 @@
   }
 
   &__body {
-    @apply flex flex-col max-lg:flex-row max-lg:flex-wrap gap-2;
-    @apply p-1.5;
+    @apply flex flex-col max-lg:flex-row max-lg:flex-wrap gap-1;
+    @apply p-1;
   }
 
   &__item-caption {

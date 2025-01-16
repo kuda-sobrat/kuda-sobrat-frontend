@@ -1,34 +1,43 @@
 <template>
   <div class=event-post-content>
     <div class="overflow-auto">
-      <h2 class="event-post-content__title">
-        {{ data.name }}
-      </h2>
+      <a :href="data.event_sources[0]?.generated_link" class="cursor-pointer">
+        <h2 class="event-post-content__title">
+          {{ data.name }}
+        </h2>
+      </a>
       <span class="event-post-content__description">
         {{ data.description }}
       </span>
     </div>
-    <div class="grid grid-cols-[auto_1fr] gap-x-5 gap-y-1 items-center mt-4">
-      <div class="font-semibold text-primary">Куда?</div>
-      <div class="event-post-content__location">
-        {{ data.location_name }}
+    <div class="mt-6 flex flex-col gap-1">
+      <div class="flex flex-row">
+        <a :href="data.event_sources[0]?.generated_link" class="cursor-pointer" >
+          <component class="event-post-content__social" :is="getIconComponent('/social/vk.svg')" alt="VK"/>
+        </a>
       </div>
-      <div class="font-semibold text-primary">Когда?</div>
-      <div class="event-post__datetime">
-        <div class="text-[18px]">
-          {{ formatTimeIntl(startDate) }}
+      <div class="grid grid-cols-[auto_1fr] gap-x-5 gap-y-1 items-center">
+        <div class="font-semibold text-primary">Куда?</div>
+        <div class="event-post-content__location">
+          {{ data.location_name }}
         </div>
-        <div class="text-[14px]">
-          {{ formatDateDayOfWeekIntl(startDate) }}
+        <div class="font-semibold text-primary">Когда?</div>
+        <div class="event-post__datetime">
+          <div class="text-[18px]">
+            {{ formatTimeIntl(startDate) }}
+          </div>
+          <div class="text-[14px]">
+            {{ formatDateDayOfWeekIntl(startDate) }}
+          </div>
         </div>
-      </div>
-      <div v-if="endDate" class="font-semibold text-primary">До?</div>
-      <div v-if="endDate" class="event-post__datetime">
-        <div class="text-[18px]">
-          {{ formatTimeIntl(endDate) }}
-        </div>
-        <div class="text-[14px]">
-          {{ formatDateDayOfWeekIntl(endDate) }}
+        <div v-if="endDate" class="font-semibold text-primary">До?</div>
+        <div v-if="endDate" class="event-post__datetime">
+          <div class="text-[18px]">
+            {{ formatTimeIntl(endDate) }}
+          </div>
+          <div class="text-[14px]">
+            {{ formatDateDayOfWeekIntl(endDate) }}
+          </div>
         </div>
       </div>
     </div>
@@ -40,6 +49,7 @@ import { useDefaultState } from './composables/useDefault'
 import type {EventPost} from "~/common/types/common";
 import {formatDateDayOfWeekIntl, formatTimeIntl} from "~/common/composables/useHelpers";
 import type {ComputedRef} from "vue";
+import {getIconComponent} from "~/common/composables/useIcons";
 const ctx = useDefaultState()
 
 // i18

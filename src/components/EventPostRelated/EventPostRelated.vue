@@ -5,16 +5,11 @@
         Связанные сообщества
       </div>
       <div class="event-post-related__body pl-2">
-        ---
-<!--        <div>-->
-<!--          [1]-->
-<!--        </div>-->
-<!--        <div>-->
-<!--          [2]-->
-<!--        </div>-->
-<!--        <div>-->
-<!--          [3]-->
-<!--        </div>-->
+        <community-card
+            v-for="(community, index) in model?.communities"
+            :generated_link="(model!.communities[index]?.social_links)?.length > 0 ? model!.communities[index]?.social_links[0]?.generated_link : undefined"
+            :name="model!.communities[index]?.name"
+        />
       </div>
     </div>
 
@@ -43,6 +38,7 @@ import { useDefaultState } from './composables/useDefault'
 import GetEventsEndpoint from "~/common/api/endpoints/v1/group/GetEvents";
 import type {EventGroup, EventPost} from "~/common/types/common";
 import EventDate from "~/src/components/EventDate/EventDate.vue";
+import CommunityCard from "~/src/components/CommunityCard/CommunityCard.vue";
 const ctx = useDefaultState()
 
 // i18

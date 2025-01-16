@@ -4,7 +4,7 @@
   &__title {
     @apply block;
     @apply py-2;
-    @apply text-[16.5px] font-semibold text-dark-gray;
+    @apply text-[18px] font-semibold text-dark-gray;
     @apply leading-5;
   }
 
@@ -32,5 +32,20 @@
   &__datetime {
     @apply leading-4;
     @apply py-1;
+  }
+
+  &__social {
+    @apply h-[32px] w-[32px];
+
+    * {
+      transition: all .05s ease-in-out;
+    }
+
+    &:active {
+      * {
+        transition: all .05s ease-in-out;
+        @apply fill-coral opacity-50;
+      }
+    }
   }
 }
