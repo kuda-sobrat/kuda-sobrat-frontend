@@ -1,8 +1,8 @@
 <template>
   <div class=event-post-related>
-    <div class="event-post-related__communities">
+    <div v-if="model?.communities" class="event-post-related__communities">
       <div class="event-post-related__title">
-        Связанные сообщества
+        Сообщества
       </div>
       <div class="event-post-related__body pl-2">
         <community-card
