@@ -17,11 +17,17 @@
         <div class="event-post__footnote" :class="{'event-post__footnote_row': photoAttachments?.length <= 0}">
           <event-date :date="model?.start_datetime"/>
 
-          <div>
-            <div class="event-post__reactions" @click="onClickStar">
+          <div class="flex gap-1 related">
+            <div class="event-post__reactions related" @click="onClickStar">
               <div class="event-post-other__participation blocked" :class="{'event-post-other__participation_active': eventParticipationState}">
               </div>
               <event-participation-button v-model="model.participationState" @click="submitParticipationState"/>
+              <a v-if="model?.event_sources[0]?.generated_link" :href="model.event_sources[0].generated_link" class="event-post__cost">
+                {{ typeText }}
+              </a>
+              <div v-else class="event-post__cost">
+                {{ typeText }}
+              </div>
             </div>
           </div>
         </div>
@@ -39,7 +45,7 @@
 
 <script setup lang='ts'>
 import { useDefaultState } from './composables/useDefault'
-import type {EventPost} from "~/common/types/common";
+import {type EventPost, EventType} from "~/common/types/common";
 import type {ComputedRef} from "vue";
 import EventParticipationButton from "~/src/components/EventParticipationButton/EventParticipationButton.vue";
 import EventDate from "~/src/components/EventDate/EventDate.vue";
@@ -62,6 +68,19 @@ const emit = defineEmits<{
       post: EventPost
   ]
 }>()
+
+const typeText: ComputedRef<string> = computed(() => {
+  switch (model.value?.type) {
+    case EventType.FREE:
+      return 'Бесплатно!'
+    case EventType.PAID:
+      return model.value.cost ? Math.floor(Number(model.value.cost)) + 'руб.' : 'Унать стоимость'
+    case EventType.BY_APPOINTMENT:
+      return 'По записи'
+    default:
+      return ''
+  }
+})
 
 const startDate: ComputedRef<Date> = computed(() => {
   return new Date(model.value!.start_datetime)

@@ -13,12 +13,12 @@
       </div>
     </div>
 
-    <div v-if="group?.events" class="event-post-related__posts">
+    <div v-if="model?.event_group?.events" class="event-post-related__posts">
       <div class="event-post-related__title">
         Связанные записи
       </div>
       <div class="event-post-related__body">
-        <div v-for="(event, key) in group.events" class="event-post-related__post" :key="key" @click="onEventPostChange(event)">
+        <div v-for="(event, key) in model?.event_group.events" class="event-post-related__post" :key="key" @click="onEventPostChange(event)">
           <span class="event-post-related__item-caption">
             {{ event.name }}
           </span>
@@ -35,11 +35,9 @@
 
 <script setup lang='ts'>
 import { useDefaultState } from './composables/useDefault'
-import GetEventsEndpoint from "~/common/api/endpoints/v1/group/GetEvents";
-import type {EventGroup, EventPost} from "~/common/types/common";
+import type {EventPost} from "~/common/types/common";
 import EventDate from "~/src/components/EventDate/EventDate.vue";
 import CommunityCard from "~/src/components/CommunityCard/CommunityCard.vue";
-import GetEvent from "~/common/api/endpoints/v1/event/GetEvent";
 const ctx = useDefaultState()
 
 // i18
@@ -48,32 +46,17 @@ const nuxtApp = useNuxtApp()
 const $i = nuxtApp.$i(i18nPrefix)
 
 const model = defineModel<EventPost>()
-const group = ref<EventGroup | undefined>()
 const router = useRouter()
 const route = useRoute()
 
 const isLoading = ref(false)
 
 async function onEventPostChange(event: EventPost) {
-  isLoading.value = true
-  model.value = await new GetEvent(event.id).call()
-  isLoading.value = false
+  model.value = event
   // TODO: Изменение ссылки
-  // return router.push({path: route.path, query: {...route.query, event: event.id}})
+  return router.push({path: route.path, query: {...route.query, event: event.id}})
 }
 
-onMounted(async () => {
-  if (model.value?.event_group?.id) {
-    try {
-      isLoading.value = true
-      let response = await new GetEventsEndpoint().call({group_id: model.value?.event_group.id})
-      group.value = response.group
-      isLoading.value = false
-    } catch (e) {
-      console.log(e)
-    }
-  }
-})
 </script>
 
 <style lang="scss">

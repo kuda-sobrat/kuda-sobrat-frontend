@@ -1,6 +1,6 @@
 <template>
   <div class=event-post-scenario>
-    <modal v-if="activePost" v-model="activePost" @close="onClose">
+    <modal v-model="isActive" @close="onClose">
       <event-post-modal v-model="activePost"/>
     </modal>
   </div>
@@ -24,14 +24,17 @@ const props = defineProps<{
 }>()
 
 const activePost = ref()
+const isActive = ref(false)
 
 function onClose() {
+  isActive.value = false
   const query = { ...route.query }
   delete query.event
   return navigateTo({path: route.path, query})
 }
 
 onMounted(async () => {
+  isActive.value = true
   if (!route.query.event) {
     const query = { ...route.query }
     query.event = props.id

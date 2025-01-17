@@ -97,6 +97,12 @@ export type EventPostAttachment = {
     updated_at?: string,
 }
 
+export enum EventType {
+    PAID = "paid",
+    FREE = "free",
+    BY_APPOINTMENT = "by_appointment",
+}
+
 export type EventPost = {
     id: number
     community_id: number
@@ -115,6 +121,8 @@ export type EventPost = {
     updated_at: string
     context_posts: ContextPost[]
     attachments: EventPostAttachment[]
+    type: EventType
+    cost: string
     location_name: string
     formatted_address?: string
     popularity_score: number
