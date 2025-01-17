@@ -38,6 +38,20 @@ export type CascadeItemState = {
     level?: number,
 }
 
+export type SocialLink = {
+    id: number,
+    community_id: number,
+    social_network_id: number,
+    social_network_community_id: string,
+    path: string,
+    generated_link?: string,
+    social_network: {
+        id: number,
+        name: string,
+        base_url?: string
+    }
+}
+
 export type Community = {
     id: number
     name: string
@@ -45,6 +59,16 @@ export type Community = {
     last_checked_at: string
     verification_status: string
     is_verified: boolean
+    image_url?: string
+    social_links: SocialLink[]
+}
+
+export type EventSource = {
+    id: number
+    event_id: number
+    social_link_id: number
+    source_id: number
+    generated_link?: string
 }
 
 export type ContextPost = {
@@ -73,6 +97,12 @@ export type EventPostAttachment = {
     updated_at?: string,
 }
 
+export enum EventType {
+    PAID = "paid",
+    FREE = "free",
+    BY_APPOINTMENT = "by_appointment",
+}
+
 export type EventPost = {
     id: number
     community_id: number
@@ -91,6 +121,8 @@ export type EventPost = {
     updated_at: string
     context_posts: ContextPost[]
     attachments: EventPostAttachment[]
+    type: EventType
+    cost: string
     location_name: string
     formatted_address?: string
     popularity_score: number
@@ -101,6 +133,8 @@ export type EventPost = {
     is_interest_matched: 1
     ranking_score: number
     event_group: EventGroup
+    communities: Community[]
+    event_sources: EventSource[]
 
     participationState?: boolean,
 }

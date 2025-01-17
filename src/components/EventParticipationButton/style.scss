@@ -1,6 +1,6 @@
 .event-participation-button {
   @apply cursor-pointer;
-  @apply flex flex-row items-center;
+  @apply flex flex-row;
   @apply select-none;
   @apply text-dark-gray;
   @apply relative;
@@ -11,6 +11,7 @@
 
   &__text {
     @apply flex;
+    @apply leading-5;
     @apply ml-[-109%];
 
     &_active {
@@ -20,7 +21,8 @@
   }
 
   &__text-wrapper {
-    @apply overflow-hidden pl-1;
+    @apply flex items-end;
+    @apply overflow-hidden pl-1 pb-[0.5px];
   }
 
   * {

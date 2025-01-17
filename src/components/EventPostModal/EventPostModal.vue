@@ -1,9 +1,12 @@
 <template>
-  <div class=event-post-modal v-if="model">
+  <div v-if="model" class="event-post-modal">
     <event-post-related class="event-post-modal__related" v-model="model"/>
     <event-post-content class="event-post-modal__content" :data="model"/>
     <event-post-gallery class="event-post-modal__gallery" :data="photoAttachments"/>
     <event-post-other class="event-post-modal__other" v-model="model"/>
+  </div>
+  <div v-else class="h-full flex items-center justify-center">
+    <spinner/>
   </div>
 </template>
 
@@ -14,6 +17,7 @@ import EventPostContent from "~/src/components/EventPostContent/EventPostContent
 import EventPostGallery from "~/src/components/EventPostGallery/EventPostGallery.vue";
 import EventPostOther from "~/src/components/EventPostOther/EventPostOther.vue";
 import type {EventPost} from "~/common/types/common";
+import Spinner from "~/src/components/Spinner/Spinner.vue";
 const ctx = useDefaultState()
 
 // i18
@@ -25,7 +29,7 @@ const photoAttachments = computed(() => {
   return model.value!.attachments?.filter(attachment => attachment.type === 'photo')
 })
 
-const model = defineModel<EventPost>()
+const model = defineModel<EventPost | false>()
 </script>
 
 <style lang="scss">

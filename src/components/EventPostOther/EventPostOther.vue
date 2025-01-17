@@ -10,8 +10,8 @@
       <event-participation-button v-model="model.participationState" @click="submitParticipationState"/>
     </div>
 
-    <div class="active:fill-coral cursor-pointer" @click="onShare">
-      <component class="event-participation-button__image"
+    <div class="event-post-other__share active:fill-coral cursor-pointer" @click="onShare">
+      <component class="event-post-other__share-image"
                  :is="getIconComponent('/ui/share.svg')"
                  alt="Поделиться"
       />
@@ -27,6 +27,7 @@ import {getIconComponent} from "~/common/composables/useIcons";
 import type {EventPost} from "~/common/types/common";
 import EventParticipationButton from "~/src/components/EventParticipationButton/EventParticipationButton.vue";
 import {copyToClipboard} from "~/common/composables/useHelpers";
+import {useNotificationStore} from "~/stores/notifications";
 const ctx = useDefaultState()
 
 // i18
@@ -36,13 +37,15 @@ const $i = nuxtApp.$i(i18nPrefix)
 
 const model = defineModel<EventPost>()
 const eventParticipationState = ref(false)
+const notificationStore = toRef(useNotificationStore())
 
 function submitParticipationState() {
 
 }
 
 function onShare() {
-  copyToClipboard(window.location.origin + '/help')
+  copyToClipboard(window.location.origin + '?event=' + model.value.id)
+  notificationStore.value.addNotification('Скопировано в буфер обмена')
 }
 </script>
 

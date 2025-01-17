@@ -1,29 +1,24 @@
 <template>
   <div class=event-post-related>
-    <div class="event-post-related__communities">
+    <div v-if="model?.communities" class="event-post-related__communities">
       <div class="event-post-related__title">
-        Связанные сообщества
+        Сообщества
       </div>
       <div class="event-post-related__body pl-2">
-        ---
-<!--        <div>-->
-<!--          [1]-->
-<!--        </div>-->
-<!--        <div>-->
-<!--          [2]-->
-<!--        </div>-->
-<!--        <div>-->
-<!--          [3]-->
-<!--        </div>-->
+        <community-card
+            v-for="(community, index) in model?.communities"
+            :generated_link="(model!.communities[index]?.social_links)?.length > 0 ? model!.communities[index]?.social_links[0]?.generated_link : undefined"
+            :name="model!.communities[index]?.name"
+        />
       </div>
     </div>
 
-    <div v-if="group?.events" class="event-post-related__posts">
+    <div v-if="model?.event_group?.events" class="event-post-related__posts">
       <div class="event-post-related__title">
         Связанные записи
       </div>
       <div class="event-post-related__body">
-        <div v-for="(event, key) in group.events" class="event-post-related__post" :key="key">
+        <div v-for="(event, key) in model?.event_group.events" class="event-post-related__post" :key="key" @click="onEventPostChange(event)">
           <span class="event-post-related__item-caption">
             {{ event.name }}
           </span>
@@ -40,9 +35,9 @@
 
 <script setup lang='ts'>
 import { useDefaultState } from './composables/useDefault'
-import GetEventsEndpoint from "~/common/api/endpoints/v1/group/GetEvents";
-import type {EventGroup, EventPost} from "~/common/types/common";
+import type {EventPost} from "~/common/types/common";
 import EventDate from "~/src/components/EventDate/EventDate.vue";
+import CommunityCard from "~/src/components/CommunityCard/CommunityCard.vue";
 const ctx = useDefaultState()
 
 // i18
@@ -51,22 +46,17 @@ const nuxtApp = useNuxtApp()
 const $i = nuxtApp.$i(i18nPrefix)
 
 const model = defineModel<EventPost>()
-const group = ref<EventGroup | undefined>()
+const router = useRouter()
+const route = useRoute()
 
 const isLoading = ref(false)
 
-onMounted(async () => {
-  if (model.value?.event_group?.id) {
-    try {
-      isLoading.value = true
-      let response = await new GetEventsEndpoint().call({group_id: model.value?.event_group.id})
-      group.value = response.group
-      isLoading.value = false
-    } catch (e) {
-      console.log(e)
-    }
-  }
-})
+async function onEventPostChange(event: EventPost) {
+  model.value = event
+  // TODO: Изменение ссылки
+  return router.push({path: route.path, query: {...route.query, event: event.id}})
+}
+
 </script>
 
 <style lang="scss">

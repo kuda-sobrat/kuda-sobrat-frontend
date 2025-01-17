@@ -11,4 +11,21 @@
       @apply text-coral-dark;
     }
   }
+
+  &__share {
+    &:active {
+      * {
+        transition: all .05s;
+        @apply fill-coral;
+      }
+    }
+
+    * {
+      transition: all .2s;
+    }
+  }
+
+  &__share-image {
+    @apply h-[24px] w-[24px] max-md:h-[26px] max-md:w-[26px];
+  }
 }

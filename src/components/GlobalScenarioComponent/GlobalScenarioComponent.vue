@@ -12,8 +12,8 @@ const nuxtApp = useNuxtApp()
 const $i = nuxtApp.$i(i18nPrefix)
 
 const route = useRoute();
-const currentComponent = ref(null);
-const componentProps = ref();
+const currentComponent = shallowRef(null);
+const componentProps = shallowRef();
 
 watch(
     () => route.fullPath,
@@ -24,6 +24,13 @@ watch(
         currentComponent.value = await getComponentForScenario(scenario);
       } else {
         currentComponent.value = null;
+      }
+
+      if (route.query.event) {
+        componentProps.value = {
+          id: Number(route.query.event)
+        }
+        currentComponent.value = (await import('~/src/components/EventPostScenario/EventPostScenario.vue')).default
       }
     },
     { immediate: true }

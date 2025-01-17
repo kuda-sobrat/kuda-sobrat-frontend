@@ -70,7 +70,7 @@
     @apply rounded-full;
     @apply z-20;
     outline-offset: -1px;
-    @apply outline outline-[9nppx] outline-white;
+    @apply outline outline-white;
   }
 
   &__favorite {
@@ -94,8 +94,8 @@
   }
 
   &__footnote_row {
-    @apply flex-row-reverse items-end gap-2 justify-between;
-    @apply text-end;
+    @apply md:flex-row-reverse md:items-end gap-2 justify-between;
+    @apply md:text-end;
   }
 
   &__reactions {
@@ -105,5 +105,11 @@
     //@apply cursor-pointer;
     //@apply px-1 py-0.5;
     //@apply bg-gray-100 shadow-inner rounded-md;
+  }
+
+  &__cost {
+    @apply absolute -bottom-0.5 left-[106%];
+    @apply pr-2 pt-1 pb-0.5 rounded-tr-xl;
+    @apply bg-white text-primary font-semibold leading-5 whitespace-nowrap;
   }
 }
