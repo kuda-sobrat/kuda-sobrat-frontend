@@ -33,7 +33,7 @@
         </div>
       </div>
       <div v-if="photoAttachments?.length > 0" class="event-post__attachment" @click="emit('open', model)">
-        <img :src="photoAttachments[0].url" class="w-full h-full object-cover" :alt="model?.name"/>
+        <lazy-nuxt-img :src="photoAttachments[0].url" class="w-full h-full object-cover" :alt="model?.name"/>
         <div class="gradient-overlay absolute inset-0"/>
       </div>
       <div class="event-post__interest-point"/>
